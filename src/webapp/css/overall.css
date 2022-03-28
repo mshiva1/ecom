@@ -1,9 +1,17 @@
+#logo{
+    width:auto;
+    height:35px;
+    background-color:#e9f3ff;
+}
 .btn {
     z-index:1;
 }
-content{
+.content{
 margin :0px 50px;
 }
 #product-name{
-font-size:4rem;
+	font-size:4rem;
+}
+img {
+aspect-ratio:1;
 }

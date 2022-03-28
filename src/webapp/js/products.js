@@ -1,4 +1,4 @@
-function addNewProduct(id,imgsrc,name,price){
+function addNewProduct(id,imgsrc,name,price,quantity){
   var newItem =$("#product-0").clone();
   newItem.prop("id","product-"+id);
   newItem.prop("hidden",false);
@@ -14,7 +14,7 @@ function addNewProduct(id,imgsrc,name,price){
   newItem.find("#link-0").prop("id","link-"+id);
   newItem.find("#increment-0").attr("onclick","increment("+id+")");
   newItem.find("#increment-0").prop("id","increment-"+id);
-  newItem.find("#quantity-0").html(0);
+  newItem.find("#quantity-0").html(quantity);
   newItem.find("#quantity-0").prop("id","quantity-"+id);
   newItem.find("#decrement-0").attr("onclick","decrement("+id+")");
   newItem.find("#decrement-0").prop("id","decrement-"+id);
@@ -33,13 +33,15 @@ function decrement(id){
     //TODO update cart
     item.html(initial-1)
 }
+function loadItem(value,index,array){
+	var obj = value
+	addNewProduct(obj["id"],obj["img"],obj["name"],obj["price"],obj["quantity"])
+}
+function loadPage(){
+	var temp=JSON.parse(localStorage.getItem("items"));
+	temp.forEach(loadItem)
+}
 function init(){
-    addNewProduct(1,"","Kurkure1",10);
-    addNewProduct(2,"","Kurkure2",10);
-    addNewProduct(3,"","Kurkure3",10);
-    addNewProduct(4,"","Kurkure4",10);
-    addNewProduct(5,"","Kurkure5",10);
-    addNewProduct(6,"","Kurkure6",10);
-    addNewProduct(7,"","Kurkure7",10);
+	loadPage()
     }
 $(document).ready(init)
