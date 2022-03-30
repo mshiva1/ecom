@@ -1,27 +1,9 @@
-function increment(id){
-    let item=$("#quantity-"+id);
-    initial =parseInt(item.html())
-    //TODO update cart
-    item.html(initial+1)
-}
-function decrement(id){
-    let item=$("#quantity-"+id);
-    initial =parseInt(item.html())
-    if(initial==0) return;
-    //TODO update cart
-    item.html(initial-1)
-}
-function remove(id){
-    let item=$("#quantity-"+id);
-    initial =parseInt(item.html())
-    if(initial==0) return;
-    //TODO update cart
-    item.html(0)
-}
-
 function getData(id){
-	var temp=JSON.parse(localStorage.getItem("items"));
+	var temp=JSON.parse(localStorage.getItem("products"));
     var retval = temp.find(o => o.id == id);
+    cart= JSON.parse(localStorage.getItem("cart"))
+    current=localStorage.getItem("current")
+    retval.quantity=cart[current][id]
     return retval;
     }
 function load(id){

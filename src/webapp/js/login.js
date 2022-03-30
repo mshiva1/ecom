@@ -1,17 +1,37 @@
 function checkFor(username,password){
     //TODO check credentials
-    console.log(username,password)
-    var baseUrl = $("meta[name=baseUrl]").attr("content")
-    window.location.replace('products.html')
+    passwords=JSON.parse(localStorage.getItem("passwords"))
+    if(passwords[username]==password){
+        localStorage.setItem("current",username)
+        //TODO setup current user
+        window.location.replace('products.html')
+    }
+    else{
+        //TODO show wrong credentials
+    }
 }
 function checkUser(){
     var username=$("#login-form [name=username]").val()
     var password=$("#login-form [name=password]").val()
     checkFor(username,password)
 }
+function loadUsers(){
+    passwords={}
+    passwords["user1"]="password1";
+    passwords["user2"]="password2";
+    passwords["user3"]="password3";
+    localStorage.setItem("passwords",JSON.stringify(passwords))
+
+    cart={}
+    cart["user1"]={};
+    cart["user2"]={};
+    cart["user3"]={};
+    localStorage.setItem("cart",JSON.stringify(cart))
+
+}
 function getObject(id,name,img,price,description){
-		var retval = {};
-		retval["id"]=id;
+        var retval = {};
+        retval["id"]=id;
         retval["name"]=name;
         retval["img"]=img;
         retval["price"]=price;
@@ -19,7 +39,7 @@ function getObject(id,name,img,price,description){
         retval["quantity"]= 0;
         return retval;
 }
-function loadLocalStorage(){
+function loadProducts(){
 	items=[]
 	items.push( getObject(1,"Lays","https://m.media-amazon.com/images/I/71lMUEjjhcL._SX679_.jpg",20,"\nWeight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour :American Style Cream and Onion"))
     items.push( getObject(2,"Lays","https://m.media-amazon.com/images/I/711xAt29aeL._SX679_.jpg",20,"\nWeight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour :Classic Salted"))
@@ -33,12 +53,11 @@ function loadLocalStorage(){
     items.push( getObject(10,"Bingo Mad Angles","https://m.media-amazon.com/images/I/61m4foyFSVL._SX679_.jpg",20,"\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour :Pizza Aaah"))
     items.push( getObject(11,"Bingo Mad Angles","https://m.media-amazon.com/images/I/814gWY+drSL._SX679_.jpg",20,"\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour :Achaari Masti"))
     items.push( getObject(12,"Bingo Mad Angles","https://m.media-amazon.com/images/I/81mK1JX+2yL._SX679_.jpg",20,"\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour :Very Peri Peri"))
-	localStorage.setItem("items",JSON.stringify(items))
-    var temp=localStorage.getItem("items")
-   // console.log(temp)
+	localStorage.setItem("products",JSON.stringify(items))
 }
 function init(){
-    $("#login").click(checkUser)
-    loadLocalStorage()
+    $("#login").click(checkUser);
+    //loadProducts();
+    //loadUsers();
 }
 $(document).ready(init)

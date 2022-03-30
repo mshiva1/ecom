@@ -20,25 +20,14 @@ function addNewProduct(id,imgsrc,name,price,quantity){
   newItem.find("#decrement-0").prop("id","decrement-"+id);
   newItem.appendTo("#products");
 }
-function increment(id){
-    let item=$("#quantity-"+id);
-    initial =parseInt(item.html())
-    //TODO update cart
-    item.html(initial+1)
-}
-function decrement(id){
-    let item=$("#quantity-"+id);
-    initial =parseInt(item.html())
-    if(initial==0) return;
-    //TODO update cart
-    item.html(initial-1)
-}
 function loadItem(value,index,array){
 	var obj = value
-	addNewProduct(obj["id"],obj["img"],obj["name"],obj["price"],obj["quantity"])
+	addNewProduct(obj["id"],obj["img"],obj["name"],obj["price"],cart[current][obj["id"]])
 }
 function loadPage(){
-	var temp=JSON.parse(localStorage.getItem("items"));
+    cart= JSON.parse(localStorage.getItem("cart"))
+    current= localStorage.getItem("current")
+	var temp=JSON.parse(localStorage.getItem("products"));
 	temp.forEach(loadItem)
 }
 function init(){
