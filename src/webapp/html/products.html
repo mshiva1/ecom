@@ -18,21 +18,27 @@
     </div>
     <div id="products" class="col-lg-10 bg-color-success">
         <div hidden  id="product-0" class="float-left col-12 col-sm-6 col-md-4 col-lg-3 col-lg-2 my-2" >
-        <div class="card">
-            <img class="custom-product-image card-img-top" id="img-0" src="../resources/prod0.jpg" alt="Card image" style="width:100%" onerror=this.src="../resources/undefined.jpg">
-            <div class="card-body">
-                <h4 id= "name-0" class="card-title">Kurkure</h4>
-                Rs : <flex id= "price-0" class="card-text"></flex>
+            <div class="card">
+                <img class="custom-product-image card-img-top" id="img-0" src="../resources/prod0.jpg" alt="Card image" style="width:100%" onerror=this.src="../resources/undefined.jpg">
+                <div class="card-body">
+                    <h4 id= "name-0" class="card-title"></h4>
+                    Rs : <flex id= "price-0" class="card-text"></flex>
+                </div>
+                <a id="link-0" href="products-0.html" class="stretched-link"></a>
+                <div class="d-flex card-footer justify-content-center ">
+                    <button class="btn btn-outline-primary" id="decrement-0" onclick="decrement(0)" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                        </svg>
+                    </button>&nbsp;
+                    <button class="btn disabled" id="quantity-0" type="button">0</button>&nbsp;
+                    <button class="btn btn-outline-primary" id="increment-0" onclick="increment(0)" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <a id="link-0" href="products-0.html" class="stretched-link"></a>
-            <div class="d-flex card-footer justify-content-center ">
-                <button class="btn btn-primary" id="decrement-0" onclick="decrement(0)" type="button">-</button>
-                &nbsp;
-                <button class="btn disabled" id="quantity-0" type="button">0</button>
-                &nbsp;
-                <button class="btn btn-primary" id="increment-0" onclick="increment(0)" type="button">+</button>
-            </div>
-        </div>
         </div>
     </div>
     </div>

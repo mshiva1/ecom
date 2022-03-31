@@ -7,11 +7,16 @@
     z-index:1;
 }
 .content{
-margin :0px 50px;
+	margin :0px 100px;
+	color:#111111;
 }
 #product-name{
 	font-size:4rem;
 }
 img {
 aspect-ratio:1;
+}
+svg{
+    width:15px;
+	aspect-ratio:1;
 }

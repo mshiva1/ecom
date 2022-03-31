@@ -28,6 +28,7 @@ function init(){
     const id =  new URLSearchParams(window.location.search).get('id');
     if(id!=null)
     load(id);
+    else redirectToPageNotFound();
 }
 
 $(document).ready(init)
