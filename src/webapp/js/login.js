@@ -1,16 +1,22 @@
 function checkFor(username,password){
-    //TODO check credentials
+console.log("checkFor")
     passwords=JSON.parse(localStorage.getItem("passwords"))
     if(passwords[username]==password){
         localStorage.setItem("current",username)
-        //TODO setup current user
+
+    const redirect =  new URLSearchParams(window.location.search).get('redirect');
+        if(redirect==undefined)
         window.location.replace('products.html')
+        else
+        window.location.replace(redirect)
     }
     else{
+    $("#wrong-cred-message").html("Wrong Credentials");
         //TODO show wrong credentials
     }
 }
 function checkUser(){
+console.log("user")
     var username=$("#login-form [name=username]").val()
     var password=$("#login-form [name=password]").val()
     checkFor(username,password)
@@ -55,7 +61,13 @@ function loadProducts(){
     items.push( getObject(12,"Bingo Mad Angles","https://m.media-amazon.com/images/I/81mK1JX+2yL._SX679_.jpg",20,"\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour :Very Peri Peri"))
 	localStorage.setItem("products",JSON.stringify(items))
 }
+function logOutIfRequired(){
+  if(localStorage.getItem("current")!=undefined)
+  logOut()
+  //TODO show successful logout message
+}
 function init(){
+    logOutIfRequired()
     $("#login").click(checkUser);
     //loadProducts();
     //loadUsers();

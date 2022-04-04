@@ -1,6 +1,7 @@
 function getData(id){
 	var temp=JSON.parse(localStorage.getItem("products"));
     var retval = temp.find(o => o.id == id);
+    if(retval==undefined) redirectToPageNotFound()
     cart= JSON.parse(localStorage.getItem("cart"))
     current=localStorage.getItem("current")
     retval.quantity=cart[current][id]
@@ -8,6 +9,7 @@ function getData(id){
     }
 function load(id){
     var current=getData(id)
+
     $("#title").html(current.name)
     $("#product-img").prop("src",current.img);
     $("#product-name").html(current.name)
@@ -23,10 +25,12 @@ function load(id){
     $("#delete-0").attr("onclick","remove("+id+")");
     $("#delete-0").prop("id","delete-"+id);
     }
-
+function redirectToPageNotFound(){
+  window.location.replace("pageNotFound.html")
+}
 function init(){
     const id =  new URLSearchParams(window.location.search).get('id');
-    if(id!=null)
+    if(id!=undefined)
     load(id);
     else redirectToPageNotFound();
 }

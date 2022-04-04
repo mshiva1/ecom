@@ -3,10 +3,7 @@ function addNewProduct(id,imgsrc,name,price,quantity){
   newItem.prop("id","product-"+id);
   newItem.prop("hidden",false);
   newItem.find("#name-0").html(name);
-  if(imgsrc=='')
-    newItem.find("#img-0").prop("src","../resources/prod"+1+".jpg");//TODO change image for all
-  else
-    newItem.find("#img-0").prop("src",imgsrc);
+  newItem.find("#img-0").prop("src",imgsrc);
   newItem.find("#name-0").prop("id","name-"+id);
   newItem.find("#price-0").html(price);
   newItem.find("#price-0").prop("id","price-"+id);
@@ -29,6 +26,7 @@ function loadPage(){
     current= localStorage.getItem("current")
 	var temp=JSON.parse(localStorage.getItem("products"));
 	temp.forEach(loadItem)
+	$("#products").append(getClearString);
 }
 function init(){
 	loadPage()
