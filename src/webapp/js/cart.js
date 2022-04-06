@@ -69,10 +69,12 @@ function emptyCartDisplay() {
 	$("#cart-header").css("display", "none")
 
 }
-function loadPage() {
+async function loadPage() {
 	cart = JSON.parse(localStorage.getItem("cart"))
 	current = localStorage.getItem("current")
-	products = JSON.parse(localStorage.getItem("products"))
+	await fetch('../resources/products.json')
+    	    .then(response => response.json())
+    	    .then(jsonResponse => products=jsonResponse)
 	var temp = cart[current];
 	totalAmount = 0;
 	totalQuantity = 0;
@@ -90,10 +92,12 @@ function loadPage() {
 	$("#total-quantity").html(totalQuantity);
 	$("#total-price").html(totalAmount);
 }
-function checkOut() {
+async function checkOut() {
 	cart = JSON.parse(localStorage.getItem("cart"))
 	current = localStorage.getItem("current")
-	products = JSON.parse(localStorage.getItem("products"))
+	await fetch('../resources/products.json')
+    	    .then(response => response.json())
+    	    .then(jsonResponse => products=jsonResponse)
 	var temp = cart[current];
 	var itemArray = []
 	for (const item in temp) {

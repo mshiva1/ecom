@@ -21,10 +21,14 @@ function loadItem(value, index, array) {
   var obj = value
   addNewProduct(obj["id"], obj["img"], obj["name"], obj["price"], cart[current][obj["id"]])
 }
-function loadPage() {
+async function loadPage() {
   cart = JSON.parse(localStorage.getItem("cart"))
   current = localStorage.getItem("current")
-  var temp = JSON.parse(localStorage.getItem("products"));
+
+	await fetch('../resources/products.json')
+	    .then(response => response.json())
+	    .then(jsonResponse => temp=jsonResponse)
+
   temp.forEach(loadItem)
   $("#products").append(getClearString);
 }

@@ -60,18 +60,20 @@ function readFileData(file, callback) {
   }
   Papa.parse(file, config);
 }
-function checkUserLogStatus() {
+async function checkUserLogStatus() {
   if (window.location.href.includes("login.html")) return;
   current = localStorage.getItem("current")
-  passwords = JSON.parse(localStorage.getItem("passwords"))
+  await fetch('../resources/passwords.json')
+  	    .then(response => response.json())
+  	    .then(jsonResponse => passwords=jsonResponse)
   if (current == undefined || passwords[current] == undefined)
     window.location.replace("login.html?redirect=" + window.location.href + "")
   else {
     cart = JSON.parse(localStorage.getItem("cart"))
-    cart = cart[current]
+    cartCurrent = cart[current]
     let count = 0
-    for (const item in cart) {
-      count += cart[item]
+    for (const item in cartCurrent) {
+      count += cartCurrent[item]
     }
     $("#cart-count").html(count);
   }
@@ -87,6 +89,6 @@ function enableTooltip(){
 function init() {
   setNavAndFooter();
   checkUserLogStatus();
-  enableTooltip();
+  //enableTooltip();
 }
 $(document).ready(init)

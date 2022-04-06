@@ -1,14 +1,16 @@
-function getData(id) {
-    var temp = JSON.parse(localStorage.getItem("products"));
-    var retval = temp.find(o => o.id == id);
+async function getData(id) {
+	await fetch('../resources/products.json')
+    	    .then(response => response.json())
+    	    .then(jsonResponse => temp=jsonResponse)
+    var retval = await temp.find(o => o.id == id);
     if (retval == undefined) redirectToPageNotFound()
     cart = JSON.parse(localStorage.getItem("cart"))
     current = localStorage.getItem("current")
     retval.quantity = cart[current][id]
     return retval;
 }
-function load(id) {
-    var current = getData(id)
+async function load(id) {
+    var current = await getData(id)
 
     $("#title").html(current.name)
     $("#product-img").prop("src", current.img);

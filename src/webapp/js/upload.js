@@ -32,13 +32,15 @@ function readFileDataCallback(results) {
   fileData = results.data;
   loadData(fileData)
 }
-function loadData(fileData) {
+async function loadData(fileData) {
   console.log(fileData)
   clearDisplay();
   var temp = fileData
   totalAmount = 0;
   total_quantity = 0;
-  products = JSON.parse(localStorage.getItem("products"))
+  await fetch('../resources/products.json')
+  	    .then(response => response.json())
+  	    .then(jsonResponse => products=jsonResponse)
   for (const item in temp) {
     console.log(item);
     if (temp[item] != 0) {
