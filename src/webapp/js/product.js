@@ -17,7 +17,6 @@ async function load(id) {
     $("#product-name").html(current.name)
     $("#product-price").html(current.price)
     $("#product-description").html(current.description)
-
     $("#increment-0").attr("onclick", "increment(" + id + ")");
     $("#increment-0").prop("id", "increment-" + id);
     $("#quantity-0").html(current.quantity);

@@ -13,7 +13,6 @@ async function checkFor(username, password) {
     }
     else {
         $("#wrong-cred-message").html("Wrong Credentials");
-        //TODO show wrong credentials
     }
 }
 function checkUser() {
@@ -34,8 +33,10 @@ function getObject(id, name, img, price, description) {
 }
 function logOutIfRequired() {
     if (localStorage.getItem("current") != undefined)
+        {
         logOut()
-    //TODO show successful logout message
+        notify("success",5000,"User Logged out Sucessfully. Login Again")
+        }
 }
 function init() {
     logOutIfRequired()

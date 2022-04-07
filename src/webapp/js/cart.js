@@ -67,7 +67,7 @@ function emptyCartDisplay() {
 	// show that no items in cart and Link products page
 	$("#empty-cart").css("display", "block")
 	$("#cart-header").css("display", "none")
-
+    $("#cart-summary").css("display", "none")
 }
 async function loadPage() {
 	cart = JSON.parse(localStorage.getItem("cart"))

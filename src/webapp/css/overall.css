@@ -54,5 +54,10 @@ clear:both;
 }
 .quantity-button{
 z-index:2;
-padding :;
+padding :0;
 }
+.scaleup:hover {
+  transform: scale(1.05);
+  z-index: 3;
+  border: 1px;
+  }

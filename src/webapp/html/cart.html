@@ -19,22 +19,23 @@
     <div id="navbar-stub">
     </div>
     <div class="content">
+        <div class="text-center shadow-sm row py-4" id="empty-cart" style="display:none;">
+        There are no Items in Cart . <a href="products.html">Click here to add products</a>
+    </div>
         <div class="float-left col col-lg-8" id="cart-items">
-            <div class="text-center shadow-sm row py-4" id="empty-cart" style="display:none;">
-                There are no Items in Cart . <a href="products.html">Click here to add products</a>
-            </div>
+
             <div class="items-in-cart row my-2"  id="cart-header">
-                <div class="d-flex col-12 align-items-center border">
+                <div class="d-flex col-12 align-items-center shadow-sm">
                     <div class="col-3 float-left">
                         &nbsp;
                     </div>
-                    <div class="col-3 float-left">
+                    <div class="col-4 float-left">
                         <h4> Name </h4>
                     </div>
                     <div class="col-2 float-left">
                         <h4> Price</h4>
                     </div>
-                    <div class="col-4 row float-left d-block text-right">
+                    <div class="col-3 row float-left d-block text-right">
                         <h4> Quantity</h4>
                     </div>
                 </div>
@@ -48,13 +49,13 @@
                             onerror=this.src="../resources/undefined.jpg" src="../resources/prod1.jpg"
                             style="width:100%">
                     </div>
-                    <div class="col-3 float-left">
-                        <h3 id="cart-item-name-0"></h3>
+                    <div class="col-4 float-left">
+                        <h4 id="cart-item-name-0"></h4>
                     </div>
                     <div class="col-2 float-left">
-                        <h5> Rs <span id="cart-item-price-0"></span></h5>
+                        <h4> Rs <span id="cart-item-price-0"></span></h4>
                     </div>
-                    <div class="col-4 row float-left ">
+                    <div class="col-3 row float-left ">
                         <div class="col-12 m-1 text-right">
                             <button class="btn btn-sm btn-outline-danger" id="remove-0" onclick="removeItem(0)"
                                 type="button">
@@ -96,14 +97,18 @@
                     <h2>Cart Summary</h2>
                 </div>
                 <div class="my-3">
-                    <h3>
-                        <pre>Total Quantity :   <span id="total-quantity"></span> </pre>
+                    <h3 class="d-flex">
+                        <span class="col-8 p-0">Total Quantity </span>
+                        <span class="col-3 p-0">: <span id="total-quantity"></span>
+                        </span>
                     </h3>
-                    <h3>
-                        <pre>Total  Amount  :Rs <span id="total-price"></span> </pre>
+                    <h3 class="d-flex">
+                        <span class="col-8 p-0">Total Amount </span>
+                        <span class="col-3 p-0">: Rs<span id="total-price"></span>
+                        </span>
                     </h3>
                     <div class="text-right my-2">
-                        <button class="btn btn btn-success" id="checkout">CheckOut</button>
+                        <button class="btn btn btn-success m-2" id="checkout">CheckOut</button>
                     </div>
                 </div>
             </div>
