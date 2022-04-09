@@ -25,9 +25,9 @@ async function loadPage() {
   cart = JSON.parse(localStorage.getItem("cart"))
   current = localStorage.getItem("current")
 
-	await fetch('../resources/products.json')
-	    .then(response => response.json())
-	    .then(jsonResponse => temp=jsonResponse)
+  await fetch('../resources/products.json')
+    .then(response => response.json())
+    .then(jsonResponse => temp = jsonResponse)
 
   temp.forEach(loadItem)
   $("#products").append(getClearString);

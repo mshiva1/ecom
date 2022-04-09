@@ -15,17 +15,16 @@
 </head>
 
 <body>
-
     <div id="navbar-stub">
     </div>
     <div class="content">
         <div class="text-center shadow-sm row py-4" id="empty-cart" style="display:none;">
-        There are no Items in Cart . <a href="products.html">Click here to add products</a>
-    </div>
-        <div class="float-left col col-lg-8" id="cart-items">
+            There are no Items in Cart . <a href="products.html">Click here to add products</a>
+        </div>
+        <div class="float-left col col-lg-8 px-3" id="cart-items">
 
-            <div class="items-in-cart row my-2"  id="cart-header">
-                <div class="d-flex col-12 align-items-center shadow-sm">
+            <div class="items-in-cart row my-2" id="cart-header">
+                <div class="d-flex col-12 align-items-center py-2 shadow-sm">
                     <div class="col-3 float-left">
                         &nbsp;
                     </div>
@@ -40,8 +39,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="items-in-cart row my-2" hidden id="cart-item-0">
                 <div class="d-flex col-12 align-items-center shadow-sm">
                     <div class="col-3 float-left">
@@ -50,10 +47,10 @@
                             style="width:100%">
                     </div>
                     <div class="col-4 float-left">
-                        <h4 id="cart-item-name-0"></h4>
+                        <h5 id="cart-item-name-0"></h5>
                     </div>
                     <div class="col-2 float-left">
-                        <h4> Rs <span id="cart-item-price-0"></span></h4>
+                        <h5> Rs <span id="cart-item-price-0"></span></h5>
                     </div>
                     <div class="col-3 row float-left ">
                         <div class="col-12 m-1 text-right">
@@ -67,18 +64,19 @@
                             </button>
                         </div>
                         <div class="col-12 m-1 text-right">
-                            <button class="btn btn-sm btn-outline-primary quantity-button" id="decrement-0" onclick="decrementItem(0)"
-                                type="button">
+                            <button class="btn btn-sm btn-outline-primary quantity-button" id="decrement-0"
+                                onclick="decrementItem(0)" type="button">
                                 <svg class="bi bi-dash-lg" fill="currentColor" height="16" viewBox="0 0 16 16"
                                     width="16" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
                                         fill-rule="evenodd" />
                                 </svg>
-                            </button>&nbsp;
+                            </button>
                             <button class="btn btn-sm disabled font-weight-bold quantity-button" id="quantity-0"
-                                type="button">0</button>&nbsp;
-                            <button class="btn btn-sm btn-outline-primary quantity-button" id="increment-0" onclick="incrementItem(0)"
-                                type="button">
+                                type="button">0
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary quantity-button" id="increment-0"
+                                onclick="incrementItem(0)" type="button">
                                 <svg class="bi bi-plus-lg" fill="currentColor" height="16" viewBox="0 0 16 16"
                                     width="16" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -91,22 +89,22 @@
                 </div>
             </div>
         </div>
-        <div class="float-right sticky col-lg-4" id="cart-summary">
-            <div class="col-12 shadow-sm  my-2">
+        <div class="float-right shadow-sm col-lg-4 my-2" id="cart-summary">
+            <div class="col-12  my-2">
                 <div class="header">
-                    <h2>Cart Summary</h2>
+                    <h4>Cart Summary</h4>
                 </div>
                 <div class="my-3">
-                    <h3 class="d-flex">
+                    <h4 class="d-flex">
                         <span class="col-8 p-0">Total Quantity </span>
-                        <span class="col-3 p-0">: <span id="total-quantity"></span>
+                        <span class="col-4 p-0">: <span id="total-quantity"></span>
                         </span>
-                    </h3>
-                    <h3 class="d-flex">
+                    </h4>
+                    <h4 class="d-flex">
                         <span class="col-8 p-0">Total Amount </span>
-                        <span class="col-3 p-0">: Rs<span id="total-price"></span>
+                        <span class="col-4 p-0">: Rs<span id="total-price"></span>
                         </span>
-                    </h3>
+                    </h4>
                     <div class="text-right my-2">
                         <button class="btn btn btn-success m-2" id="checkout">CheckOut</button>
                     </div>

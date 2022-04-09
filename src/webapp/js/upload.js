@@ -8,21 +8,22 @@ function addNewOrderItem(id, imgsrc, name, price, quantity) {
   newItem.find("#img-0").prop("src", imgsrc);
   newItem.find("#order-item-price-0").html(price);
   newItem.find("#order-item-price-0").prop("id", "order-item-price-" + id);
-  newItem.find("#link-0").prop("href", "product.html?id=" + id);
-  newItem.find("#link-0").prop("id", "link-" + id);
-  newItem.find("#increment-0").attr("onclick", "incrementItem(" + id + ")");
-  newItem.find("#increment-0").prop("id", "increment-" + id);
   newItem.find("#quantity-0").html(quantity);
   newItem.find("#quantity-0").prop("id", "quantity-" + id);
-  newItem.appendTo("#order-items-shown");
+  //newItem.appendTo("tbody");
   total_quantity += quantity;
   totalAmount += quantity * price;
+  return newItem;
 }
 function getProduct(id, products) {
   return products.find(o => o.id == id)
 }
 function clearDisplay() {
-  $("#order-items-shown").empty()
+  var items = $(".item")
+  for (var i in items)
+    if (items[i].id != undefined && items[i].id != "order-item-0") {
+      items[i].remove()
+    }
 }
 function getOrderItems() {
   var file = $('#order-file')[0].files[0];
@@ -33,21 +34,22 @@ function readFileDataCallback(results) {
   loadData(fileData)
 }
 async function loadData(fileData) {
-  console.log(fileData)
   clearDisplay();
   var temp = fileData
   totalAmount = 0;
   total_quantity = 0;
   await fetch('../resources/products.json')
-  	    .then(response => response.json())
-  	    .then(jsonResponse => products=jsonResponse)
+    .then(response => response.json())
+    .then(jsonResponse => products = jsonResponse)
+  itemsArray = []
   for (const item in temp) {
-    console.log(item);
     if (temp[item] != 0) {
       var obj = getProduct(temp[item]["ID"], products);
-      addNewOrderItem(temp[item]["ID"], obj["img"], temp[item]["Name"], parseInt(temp[item]["Price"]), parseInt(temp[item]["Quantity"]))
+      //TODO validations + checkDuplicate
+      itemsArray.push(addNewOrderItem(temp[item]["ID"], obj["img"], temp[item]["Name"], parseInt(temp[item]["Price"]), parseInt(temp[item]["Quantity"])))
     }
   }
+  $("tbody").append(itemsArray)
   $("#order-details").css("display", "block")
   $("#total-quantity").html(total_quantity);
   $("#total-price").html(totalAmount);

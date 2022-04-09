@@ -1,7 +1,7 @@
 async function checkFor(username, password) {
     await fetch('../resources/passwords.json')
-                           	    .then(response => response.json())
-                           	    .then(jsonResponse => passwords=jsonResponse)
+        .then(response => response.json())
+        .then(jsonResponse => passwords = jsonResponse)
     if (passwords[username] == password) {
         await localStorage.setItem("current", username)
 
@@ -32,11 +32,10 @@ function getObject(id, name, img, price, description) {
     return retval;
 }
 function logOutIfRequired() {
-    if (localStorage.getItem("current") != undefined)
-        {
+    if (localStorage.getItem("current") != undefined) {
         logOut()
-        notify("success",5000,"User Logged out Sucessfully. Login Again")
-        }
+        notify("success", 5000, "User Logged out Sucessfully. Login Again")
+    }
 }
 function init() {
     logOutIfRequired()

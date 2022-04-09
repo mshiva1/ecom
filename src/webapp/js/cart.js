@@ -67,14 +67,14 @@ function emptyCartDisplay() {
 	// show that no items in cart and Link products page
 	$("#empty-cart").css("display", "block")
 	$("#cart-header").css("display", "none")
-    $("#cart-summary").css("display", "none")
+	$("#cart-summary").css("display", "none")
 }
 async function loadPage() {
 	cart = JSON.parse(localStorage.getItem("cart"))
 	current = localStorage.getItem("current")
 	await fetch('../resources/products.json')
-    	    .then(response => response.json())
-    	    .then(jsonResponse => products=jsonResponse)
+		.then(response => response.json())
+		.then(jsonResponse => products = jsonResponse)
 	var temp = cart[current];
 	totalAmount = 0;
 	totalQuantity = 0;
@@ -83,8 +83,14 @@ async function loadPage() {
 			var obj = {};
 			obj["id"] = item;
 			obj["quantity"] = temp[item];
+			console.log(item)
 			var obj = getProduct(item, products);
-			addNewCartItem(item, obj["img"], obj["name"], obj["price"], temp[item])
+			if (obj == undefined) {
+				removeItem(item)
+				notify("Error", 0, "Some Error occured, so some Items are removed");
+			}
+			else
+				addNewCartItem(item, obj["img"], obj["name"], obj["price"], temp[item])
 		}
 	}
 	if (totalQuantity == 0)
@@ -96,8 +102,8 @@ async function checkOut() {
 	cart = JSON.parse(localStorage.getItem("cart"))
 	current = localStorage.getItem("current")
 	await fetch('../resources/products.json')
-    	    .then(response => response.json())
-    	    .then(jsonResponse => products=jsonResponse)
+		.then(response => response.json())
+		.then(jsonResponse => products = jsonResponse)
 	var temp = cart[current];
 	var itemArray = []
 	for (const item in temp) {

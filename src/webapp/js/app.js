@@ -1,6 +1,5 @@
-function notify(type,timer,message,head){
-
-console.log("type="+type+":timer="+timer+":message="+message+":head="+head);
+function notify(type, timer, message) {
+  console.log("type=" + type + ":timer=" + timer + ":message=" + message);
 }
 function setNavAndFooter() {
   var navstr = ''
@@ -48,7 +47,7 @@ function remove(id) {
   if (initial == 0) return;
   username = localStorage.getItem("current")
   cart = JSON.parse(localStorage.getItem("cart"))
-  cart[username][id.toString()] = 0
+  delete cart[username][id.toString()]
   localStorage.setItem("cart", JSON.stringify(cart))
   item.html(0)
   checkUserLogStatus()
@@ -68,8 +67,8 @@ async function checkUserLogStatus() {
   if (window.location.href.includes("login.html")) return;
   current = localStorage.getItem("current")
   await fetch('../resources/passwords.json')
-  	    .then(response => response.json())
-  	    .then(jsonResponse => passwords=jsonResponse)
+    .then(response => response.json())
+    .then(jsonResponse => passwords = jsonResponse)
   if (current == undefined || passwords[current] == undefined)
     window.location.replace("login.html?redirect=" + window.location.href + "")
   else {
@@ -86,7 +85,7 @@ function logOut() {
   localStorage.removeItem("current")
   window.location.replace("login.html")
 }
-function enableTooltip(){
+function enableTooltip() {
   $('[data-toggle="tooltip"]').tooltip()
 
 }

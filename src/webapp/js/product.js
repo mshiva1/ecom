@@ -1,7 +1,7 @@
 async function getData(id) {
-	await fetch('../resources/products.json')
-    	    .then(response => response.json())
-    	    .then(jsonResponse => temp=jsonResponse)
+    await fetch('../resources/products.json')
+        .then(response => response.json())
+        .then(jsonResponse => temp = jsonResponse)
     var retval = await temp.find(o => o.id == id);
     if (retval == undefined) redirectToPageNotFound()
     cart = JSON.parse(localStorage.getItem("cart"))
