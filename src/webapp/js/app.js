@@ -10,7 +10,10 @@ function removeToast(toastId){
 	$("#"+toastId).remove()
 }
 function askConfirmRemove(id,nextFun="remove"){
+console.log(id+""+nextFun)
   $("#remove-item-name").html(name)
+
+console.log(id+""+nextFun)
   $("#confirm-remove-button").attr("onclick",nextFun+"("+id+")")
   $("#confirm-remove").modal("toggle");
 }

@@ -18,6 +18,7 @@
     <div id="navbar-stub">
     </div>
     <div class="content">
+        <div id="toast-body" style="position: absolute; right: 0;"></div>
         <div class="col col-md-6 float-left my-2" id="image_carrier">
             <div class="">
                 <img alt="Card image" class="custom-product-image" id="product-img"
@@ -37,7 +38,9 @@
                         <path d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z" fill-rule="evenodd" />
                     </svg>
                 </button> &nbsp;
-                <button class="btn btn-sm focus-edit disabled" id="quantity-0" type="button">0</button> &nbsp;
+                <span id="quantity" tabindex="-1" class="inline"><button class="btn btn-sm focus-edit" id="quantity-0" type="button">0</button>
+                <input class="form-control p-0" type="text" style="width:60px;display:none" id="quantity-0-edit">
+                </span>&nbsp;
                 <button class="btn btn-sm btn-outline-primary" id="increment-0" onclick="increment(0)" type="button">
                     <svg class="bi bi-plus-lg" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
                         xmlns="http://www.w3.org/2000/svg">
