@@ -13,9 +13,27 @@ function addNewProduct(id, imgsrc, name, price, quantity) {
   newItem.find("#increment-0").prop("id", "increment-" + id);
   newItem.find("#quantity-0").html(quantity);
   newItem.find("#quantity-0").prop("id", "quantity-" + id);
-  newItem.find("#decrement-0").attr("onclick", "decrement(" + id + ")");
+  newItem.find("#decrement-0").attr("onclick", "decrement(" + id + ",'removeAtProducts')");
   newItem.find("#decrement-0").prop("id", "decrement-" + id);
+  newItem.find("#addcart-0").attr("onclick", "addcart(" + id + ")");
+  newItem.find("#addcart-0").prop("id", "addcart-" + id);
+  newItem.find("#one-button-0").prop("id", "one-button-" + id);
+  newItem.find("#three-button-0").prop("id", "three-button-" + id);
+  if(quantity>0)
+  newItem.find("#one-button-"+id).css("display","none")
+  else
+  newItem.find("#three-button-"+id).css("display","none")
   newItem.appendTo("#products");
+}
+function removeAtProducts(id){
+  remove(id);
+  $("#one-button-"+id).css("display","block")
+  $("#three-button-"+id).css("display","none")
+}
+function addcart(id){
+  $("#one-button-"+id).css("display","none")
+  $("#three-button-"+id).css("display","block")
+  increment(id)
 }
 function loadItem(value, index, array) {
   var obj = value

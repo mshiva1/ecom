@@ -1,5 +1,18 @@
-function notify(type, timer, message) {
+function notify(type,toastId, timer, message,color) {
   console.log("type=" + type + ":timer=" + timer + ":message=" + message);
+  toast='<div class="toast" data-autohide="false" style="color:white;background-color:'+color+'" id="'+toastId+'"><div class="toast-header"><strong class="mr-auto">'+type+'</strong><button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="toast-body">'+message+'</div></div>'
+  $("#toast-body").append(toast)
+  $(".toast").toast("show")
+  if(timer!=0)
+  setTimeout(function(){ removeToast(toastId); }, timer)
+}
+function removeToast(toastId){
+	$("#"+toastId).remove()
+}
+function askConfirmRemove(id,nextFun="remove"){
+  $("#remove-item-name").html(name)
+  $("#confirm-remove-button").attr("onclick",nextFun+"("+id+")")
+  $("#confirm-remove").modal("toggle");
 }
 function setNavAndFooter() {
   var navstr = ''
@@ -30,10 +43,14 @@ function increment(id) {
   checkUserLogStatus()
 
 }
-function decrement(id) {
+function decrement(id,nextFun="remove") {
   let item = $("#quantity-" + id);
   initial = parseInt(item.html())
   if (initial == 0) return;
+  if (initial == 1){
+    askConfirmRemove(id,nextFun)
+    return;
+  }
   username = localStorage.getItem("current")
   cart = JSON.parse(localStorage.getItem("cart"))
   cart[username][id.toString()] = initial - 1
@@ -87,11 +104,9 @@ function logOut() {
 }
 function enableTooltip() {
   $('[data-toggle="tooltip"]').tooltip()
-
 }
 function init() {
   setNavAndFooter();
   checkUserLogStatus();
-  //enableTooltip();
 }
 $(document).ready(init)

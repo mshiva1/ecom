@@ -23,7 +23,7 @@ async function load(id) {
     $("#quantity-0").prop("id", "quantity-" + id);
     $("#decrement-0").attr("onclick", "decrement(" + id + ")");
     $("#decrement-0").prop("id", "decrement-" + id);
-    $("#delete-0").attr("onclick", "remove(" + id + ")");
+    $("#delete-0").attr("onclick", "askRemoveConfirm(" + id + ")");
     $("#delete-0").prop("id", "delete-" + id);
 }
 function redirectToPageNotFound() {

@@ -1,8 +1,17 @@
 var totalAmount, totalQuantity;
 function removeItem(id) {
+	askConfirmRemoveCart(id)
+	return ;
+}
+function askConfirmRemoveCart(id){
+  $("#remove-item-name").html(name)
+  $("#confirm-remove-button").attr("onclick","finalRemoveItem("+id+")")
+  $("#confirm-remove").modal("toggle");
+}
+function finalRemoveItem(id){
 	initial = parseInt($("#quantity-" + id).html())
 	price = parseInt($("#cart-item-price-" + id).html())
-	remove(id)
+  remove(id)
 	$("#cart-item-" + id).remove()
 	totalQuantity -= initial
 	totalAmount -= initial * price;
@@ -83,11 +92,10 @@ async function loadPage() {
 			var obj = {};
 			obj["id"] = item;
 			obj["quantity"] = temp[item];
-			console.log(item)
 			var obj = getProduct(item, products);
 			if (obj == undefined) {
 				removeItem(item)
-				notify("Error", 0, "Some Error occured, so some Items are removed");
+				notify("Error","error-in-cart", 0, "Some Error occured, so some Items are removed","red");
 			}
 			else
 				addNewCartItem(item, obj["img"], obj["name"], obj["price"], temp[item])
