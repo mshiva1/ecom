@@ -34,7 +34,7 @@ function getObject(id, name, img, price, description) {
 function logOutIfRequired() {
     if (localStorage.getItem("current") != undefined) {
         localStorage.removeItem("current")
-        notify("Logout Success","logout-success", 5000, "User Logged out Sucessfully. Login Again","green")
+        notify("Logout Success", "logout-success", 5000, "User Logged out Sucessfully. Login Again", "green")
     }
 }
 function init() {

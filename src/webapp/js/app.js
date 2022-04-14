@@ -1,20 +1,20 @@
-function notify(type,toastId, timer, message,color) {
+function notify(type, toastId, timer, message, color) {
   console.log("type=" + type + ":timer=" + timer + ":message=" + message);
-  toast='<div class="toast" data-autohide="false" style="color:white;background-color:'+color+'" id="'+toastId+'"><div class="toast-header"><strong class="mr-auto">'+type+'</strong><button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="toast-body">'+message+'</div></div>'
+  toast = '<div class="toast" data-autohide="false" style="color:white;background-color:' + color + '" id="' + toastId + '"><div class="toast-header"><strong class="mr-auto">' + type + '</strong><button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="toast-body">' + message + '</div></div>'
   $("#toast-body").append(toast)
   $(".toast").toast("show")
-  if(timer!=0)
-  setTimeout(function(){ removeToast(toastId); }, timer)
+  if (timer != 0)
+    setTimeout(function () { removeToast(toastId); }, timer)
 }
-function removeToast(toastId){
-	$("#"+toastId).remove()
+function removeToast(toastId) {
+  $("#" + toastId).remove()
 }
-function askConfirmRemove(id,nextFun="remove"){
-console.log(id+""+nextFun)
+function askConfirmRemove(id, nextFun = "remove") {
+  console.log(id + "" + nextFun)
   $("#remove-item-name").html(name)
 
-console.log(id+""+nextFun)
-  $("#confirm-remove-button").attr("onclick",nextFun+"("+id+")")
+  console.log(id + "" + nextFun)
+  $("#confirm-remove-button").attr("onclick", nextFun + "(" + id + ")")
   $("#confirm-remove").modal("toggle");
 }
 function setNavAndFooter() {
@@ -32,9 +32,6 @@ function currentTimeAndDate() {
     d.getFullYear() + " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" + ("0" + d.getSeconds()).slice(-2);
   $("#date-time").html(datestring)
 }
-function getClearString() {
-  return '<div class="clear-both" > </div>';
-}
 function increment(id) {
   let item = $("#quantity-" + id);
   initial = parseInt(item.html())
@@ -46,12 +43,12 @@ function increment(id) {
   checkUserLogStatus()
 
 }
-function decrement(id,nextFun="remove") {
+function decrement(id, nextFun = "remove") {
   let item = $("#quantity-" + id);
   initial = parseInt(item.html())
   if (initial == 0) return;
-  if (initial == 1){
-    askConfirmRemove(id,nextFun)
+  if (initial == 1) {
+    askConfirmRemove(id, nextFun)
     return;
   }
   username = localStorage.getItem("current")

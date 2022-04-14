@@ -1,17 +1,17 @@
 var totalAmount, totalQuantity;
 function removeItem(id) {
 	askConfirmRemoveCart(id)
-	return ;
+	return;
 }
-function askConfirmRemoveCart(id){
-  $("#remove-item-name").html(name)
-  $("#confirm-remove-button").attr("onclick","finalRemoveItem("+id+")")
-  $("#confirm-remove").modal("toggle");
+function askConfirmRemoveCart(id) {
+	$("#remove-item-name").html(name)
+	$("#confirm-remove-button").attr("onclick", "finalRemoveItem(" + id + ")")
+	$("#confirm-remove").modal("toggle");
 }
-function finalRemoveItem(id){
+function finalRemoveItem(id) {
 	initial = parseInt($("#quantity-" + id).html())
 	price = parseInt($("#cart-item-price-" + id).html())
-  remove(id)
+	remove(id)
 	$("#cart-item-" + id).remove()
 	totalQuantity -= initial
 	totalAmount -= initial * price;
@@ -95,7 +95,7 @@ async function loadPage() {
 			var obj = getProduct(item, products);
 			if (obj == undefined) {
 				removeItem(item)
-				notify("Error","error-in-cart", 0, "Some Error occured, so some Items are removed","red");
+				notify("Error", "error-in-cart", 0, "Some Error occured, so some Items are removed", "red");
 			}
 			else
 				addNewCartItem(item, obj["img"], obj["name"], obj["price"], temp[item])

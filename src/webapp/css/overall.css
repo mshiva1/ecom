@@ -2,7 +2,6 @@
   width: auto;
   height: 45px;
   aspect-ratio: auto;
-  background-color: #e9f3ff;
 }
 
 .btn {
@@ -10,9 +9,9 @@
 }
 
 .content {
-  padding: 5rem 3%;
+  padding: 65px 3% 0 3%;
   color: #111111;
-  min-height: calc(100vh - 60px)
+  min-height: calc(100vh - 65px)
 }
 
 #product-name {
@@ -24,7 +23,7 @@ img {
 }
 
 svg {
-  width: 1 rem;
+  width: 16px;
 }
 
 .svg-lg {
@@ -49,21 +48,18 @@ svg {
 }
 
 #cart-count {
-  width:0;
+  width: 0;
   font-size: 15px;
   margin-left: -10px;
 }
 
-.clear-both {
-  clear: both;
-}
 
 .quantity-button {
   z-index: 2;
 }
 
-.scaleup1:hover {
-  transform: scale(1.05);
+.scaleup:hover {
+  transform: scale(1.1);
   z-index: 3;
   border: 1px;
 }
@@ -73,12 +69,74 @@ svg {
   border-bottom: 1px solid black;
 }
 
-#cart-header,
-#cart-summary,
-#item-table-head,
-#order-summary {
+.custom-stick-top {
+  height: fit-content;
   background-color: #f2f2f2;
   position: sticky;
-  top: 60px;
+  top: 70px;
   z-index: 2;
+}
+
+#filters {
+  top: 75px;
+}
+
+.custom-product-image {
+  max-width: 250px;
+}
+
+@media (max-width: 576px) {
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  h5 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width:576px and max-width: 768px) {
+  h3 {
+    font-size: 22px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+}
+
+@media (min-width:768px and max-width: 992px) {
+  h3 {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 22px;
+  }
+
+  h5 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width:992px) {
+  h3 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 27px;
+  }
+
+  h5 {
+    font-size: 25px;
+  }
 }

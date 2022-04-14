@@ -53,7 +53,6 @@ async function loadData(fileData) {
   $("#order-details").css("display", "block")
   $("#total-quantity").html(total_quantity);
   $("#total-price").html(totalAmount);
-  $("#cart-items").append(getClearString);
   resetUploadDialog()
 }
 function resetUploadDialog() {

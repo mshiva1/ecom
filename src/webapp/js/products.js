@@ -19,20 +19,20 @@ function addNewProduct(id, imgsrc, name, price, quantity) {
   newItem.find("#addcart-0").prop("id", "addcart-" + id);
   newItem.find("#one-button-0").prop("id", "one-button-" + id);
   newItem.find("#three-button-0").prop("id", "three-button-" + id);
-  if(quantity>0)
-  newItem.find("#one-button-"+id).css("display","none")
+  if (quantity > 0)
+    newItem.find("#one-button-" + id).css("display", "none")
   else
-  newItem.find("#three-button-"+id).css("display","none")
+    newItem.find("#three-button-" + id).css("display", "none")
   newItem.appendTo("#products");
 }
-function removeAtProducts(id){
+function removeAtProducts(id) {
   remove(id);
-  $("#one-button-"+id).css("display","block")
-  $("#three-button-"+id).css("display","none")
+  $("#one-button-" + id).css("display", "block")
+  $("#three-button-" + id).css("display", "none")
 }
-function addcart(id){
-  $("#one-button-"+id).css("display","none")
-  $("#three-button-"+id).css("display","block")
+function addcart(id) {
+  $("#one-button-" + id).css("display", "none")
+  $("#three-button-" + id).css("display", "block")
   increment(id)
 }
 function loadItem(value, index, array) {
@@ -48,7 +48,6 @@ async function loadPage() {
     .then(jsonResponse => temp = jsonResponse)
 
   temp.forEach(loadItem)
-  $("#products").append(getClearString);
 }
 function init() {
   loadPage()
