@@ -12,149 +12,159 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" rel="stylesheet">
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" rel="stylesheet">
     <link href="../css/overall.css" rel="stylesheet">
     <script src="../js/app.js"></script>
     <script src="../js/products.js"></script>
 </head>
 
 <body>
-<div id="navbar-stub">
-</div>
-<div class="content">
-    <div id="toast-body" style="position: absolute; right: 0;"></div>
-    <div class="row justify-content-between align-items-end">
-        <h3 class="col-4 py-2">Products</h3>
-        <div class="col-5 col-sm-4 col-md-4 col-lg-2">
-            <select class="form-control p-0" id="sort-by" style="font-size:small">
-                <option value="default">Default</option>
-                <option value="low-to-high">Price: Low to High</option>
-                <option value="high-to-low">Price: High to Low</option>
-                <option value="rating-low-to-high">Rating: Low to High</option>
-                <option value="rating-high-to-low">Rating: High to Low</option>
-            </select>
-        </div>
+    <div id="navbar-stub">
     </div>
-
-    <div class="row">
-
-        <div class="col-lg-2 border rounded-2 bg-light d-none d-lg-block custom-stick-top" id="filters">
-            <h5>Filters</h5>
-            <form>
-                <div id="filter-price">
-                    <label for="prices">Price Range:</label>
-                    <input type="text" class="w-75 bg-light p-2" id="prices" readonly style="border:0;">
-                    <div id="slider-range"></div>
-                </div>
-                <br>
-                <div id="filter-rating">
-                    <label>Min Rating: <span id="current-min-rating"></span></label>
-                    <br>
-                    <button id="rating-1" class="bg-light border-0" onclick="filterMinRate(1)" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                        </svg>
-                    </button>
-                    <button id="rating-2" class="bg-light border-0" onclick="filterMinRate(2)" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                        </svg>
-                    </button>
-                    <button id="rating-3" class="bg-light border-0" onclick="filterMinRate(3)" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                        </svg>
-                    </button>
-                    <button id="rating-4" class="bg-light border-0" onclick="filterMinRate(4)" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                        </svg>
-                    </button>
-                    <button id="rating-5" class="bg-light border-0" onclick="filterMinRate(5)" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                        </svg>
-                    </button>
-                </div>
-                <br>
-                <div id="brands-list">
-                    <label for="prices">Brands :</label>
-                    <div id="brand-0" hidden>
-                        <input type="checkbox" checked class="filter-brand-names" id="brand0" name="" value="">
-                        <label for="brand0" id="label-0"></label>
-                    </div>
-                </div>
-            </form>
+    <div class="content">
+        <div id="toast-body" style="position: absolute; right: 0;"></div>
+        <div class="row justify-content-between align-items-end">
+            <h3 class="col-4 py-2">Products</h3>
+            <div class="col-5 col-sm-4 col-md-4 col-lg-2">
+                <select class="form-control p-0" id="sort-by" style="font-size:small">
+                    <option value="default">Default</option>
+                    <option value="low-to-high">Price: Low to High</option>
+                    <option value="high-to-low">Price: High to Low</option>
+                    <option value="rating-low-to-high">Rating: Low to High</option>
+                    <option value="rating-high-to-low">Rating: High to Low</option>
+                </select>
+            </div>
         </div>
 
-        <div class="col col-lg-10 ">
-            <div class="row" id="products">
-                <div class=" col-lg-3 col-md-4 col-sm-6 col-12 my-2 scaleup" hidden id="product-0">
-                    <div class=" card shadow-sm border-0">
-                        <img alt="Card image" class="custom-product-image card-img-top" id="img-0"
-                             onerror=this.src="../resources/undefined.jpg" src="../resources/prod0.jpg"
-                             style="width:100%;margin:auto">
-                        <div class="card-body">
-                            <h4 class="card-title" id="name-0"></h4>
-                            Rs : <span class="card-text" id="price-0"></span>
-                            <div id="three-button-0">
-                                <div class="d-flex justify-content-center">
-                                    <button class="btn btn-sm btn-outline-primary quantity-button" id="decrement-0"
+        <div class="row">
+
+            <div class="col-lg-2 border rounded-2 bg-light d-none d-lg-block custom-stick-top" id="filters">
+                <h5>Filters</h5>
+                <form>
+                    <div id="filter-price">
+                        <label for="prices">Price Range:</label>
+                        <input type="text" class="w-75 bg-light p-2" id="prices" readonly style="border:0;">
+                        <div id="slider-range"></div>
+                    </div>
+                    <br>
+                    <div id="filter-rating">
+                        <label>Min Rating: <span id="current-min-rating"></span></label>
+                        <br>
+                        <button id="rating-1" class="bg-light border-0" onclick="filterMinRate(1)" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-star" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+                        </button>
+                        <button id="rating-2" class="bg-light border-0" onclick="filterMinRate(2)" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-star" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+                        </button>
+                        <button id="rating-3" class="bg-light border-0" onclick="filterMinRate(3)" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-star" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+                        </button>
+                        <button id="rating-4" class="bg-light border-0" onclick="filterMinRate(4)" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-star" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+                        </button>
+                        <button id="rating-5" class="bg-light border-0" onclick="filterMinRate(5)" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-star" viewBox="0 0 16 16">
+                                <path
+                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <br>
+                    <div id="brands-list">
+                        <label for="prices">Brands :</label>
+                        <div id="brand-0" hidden>
+                            <input type="checkbox" checked class="filter-brand-names" id="brand0" name="" value="">
+                            <label for="brand0" id="label-0"></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col col-lg-10 ">
+                <div class="row" id="products">
+                    <div class=" col-lg-3 col-md-4 col-sm-6 col-12 my-2 scaleup" hidden id="product-0">
+                        <div class=" card shadow-sm border-0">
+                            <img alt="Card image" class="custom-product-image card-img-top" id="img-0"
+                                onerror=this.src="../resources/undefined.jpg" src="../resources/prod0.jpg"
+                                style="width:100%;margin:auto">
+                            <div class="card-body">
+                                <h4 class="card-title" id="name-0"></h4>
+                                Rs : <span class="card-text" id="price-0"></span>
+                                <div id="three-button-0">
+                                    <div class="d-flex justify-content-center">
+                                        <button class="btn btn-sm btn-outline-primary quantity-button" id="decrement-0"
                                             onclick="decrement(0)" type="button">
-                                        <svg class="bi bi-dash" fill="currentColor" height="16" viewBox="0 0 16 16"
-                                             width="16" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
-                                                  fill-rule="evenodd" />
-                                        </svg>
-                                    </button>&nbsp;
-                                    <button class="btn btn-sm disabled" id="quantity-0"
+                                            <svg class="bi bi-dash" fill="currentColor" height="16" viewBox="0 0 16 16"
+                                                width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                                                    fill-rule="evenodd" />
+                                            </svg>
+                                        </button>&nbsp;
+                                        <button class="btn btn-sm disabled" id="quantity-0"
                                             type="button">0</button>&nbsp;
-                                    <button class="btn btn-sm btn-outline-primary quantity-button" id="increment-0"
+                                        <button class="btn btn-sm btn-outline-primary quantity-button" id="increment-0"
                                             onclick="increment(0)" type="button">
-                                        <svg class="bi bi-plus" fill="currentColor" height="16" viewBox="0 0 16 16"
-                                             width="16" xmlns="http://www.w3.org/2000/svg">
-                                            <path
+                                            <svg class="bi bi-plus" fill="currentColor" height="16" viewBox="0 0 16 16"
+                                                width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path
                                                     d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
                                                     fill-rule="evenodd" />
-                                        </svg>
-                                    </button>
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="one-button-0">
-                                <div class="d-flex justify-content-center">
-                                    <button class="btn btn-sm btn-outline-primary px-3 quantity-button"
+                                <div id="one-button-0">
+                                    <div class="d-flex justify-content-center">
+                                        <button class="btn btn-sm btn-outline-primary px-3 quantity-button"
                                             id="addcart-0" onclick="addcart(0)" type="button">
-                                        Add to Cart
-                                    </button>
+                                            Add to Cart
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
 
+                            </div>
+                            <a class="stretched-link" href="products-0.html" id="link-0"></a>
                         </div>
-                        <a class="stretched-link" href="products-0.html" id="link-0"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" id="confirm-remove" role="dialog">
+            <div class="modal-dialog " role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirm Remove</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>This Product will be removed from Cart <span id="remove-item-name"></span>?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" id="confirm-remove-button" data-dismiss="modal"
+                            class="btn btn-danger">Confirm</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" tabindex="-1" id="confirm-remove" role="dialog">
-        <div class="modal-dialog " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Confirm Remove</h5>
-                </div>
-                <div class="modal-body">
-                    <p>This Product will be removed from Cart <span id="remove-item-name"></span>?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" id="confirm-remove-button" data-dismiss="modal"
-                            class="btn btn-danger">Confirm</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="footer-stub"></div>
+    <div id="footer-stub"></div>
 </body>
 
 </html>
