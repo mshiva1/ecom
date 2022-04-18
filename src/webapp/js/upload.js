@@ -1,4 +1,6 @@
 var totalAmount, total_quantity;
+
+//new order-item is added
 function addNewOrderItem(id, imgsrc, name, price, quantity) {
   var newItem = $("#order-item-0").clone();
   newItem.prop("id", "order-item-" + id);
@@ -10,14 +12,17 @@ function addNewOrderItem(id, imgsrc, name, price, quantity) {
   newItem.find("#order-item-price-0").prop("id", "order-item-price-" + id);
   newItem.find("#quantity-0").html(quantity);
   newItem.find("#quantity-0").prop("id", "quantity-" + id);
-  //newItem.appendTo("tbody");
   total_quantity += quantity;
   totalAmount += quantity * price;
   return newItem;
 }
+
+//get product with id:id
 function getProduct(id, products) {
   return products.find(o => o.id == id)
 }
+
+//clears the display
 function clearDisplay() {
   var items = $(".item")
   for (var i in items)
@@ -25,14 +30,20 @@ function clearDisplay() {
       items[i].remove()
     }
 }
+
+//read file
 function getOrderItems() {
   var file = $('#order-file')[0].files[0];
   readFileData(file, readFileDataCallback);
 }
+
+//read file data
 function readFileDataCallback(results) {
   fileData = results.data;
   loadData(fileData)
 }
+
+//load Data into html
 async function loadData(fileData) {
   clearDisplay();
   var temp = fileData
@@ -55,18 +66,22 @@ async function loadData(fileData) {
   $("#total-price").html(totalAmount);
   resetUploadDialog()
 }
+
+//Reset file name
 function resetUploadDialog() {
-  //Reset file name
   var $file = $('#order-file');
   $file.val('');
   $('#order-file-name').html("Choose File");
 }
+
+//update file name
 function updateFileName() {
   var $file = $('#order-file');
   var str = $file.val();
   str = str.substring(str.lastIndexOf('\\') + 1)
   $('#order-file-name').html(str);
 }
+
 function init() {
   $('#order-file-button').click(getOrderItems);
   $("#order-file").on("change", updateFileName)

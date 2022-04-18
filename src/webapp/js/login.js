@@ -1,3 +1,4 @@
+//access file and check for username and password
 async function checkFor(username, password) {
     await fetch('../resources/passwords.json')
         .then(response => response.json())
@@ -15,28 +16,22 @@ async function checkFor(username, password) {
         $("#wrong-cred-message").html("Wrong Credentials");
     }
 }
+
+//validation function
 function checkUser() {
-    console.log("user")
     var username = $("#login-form [name=username]").val()
     var password = $("#login-form [name=password]").val()
     checkFor(username, password)
 }
-function getObject(id, name, img, price, description) {
-    var retval = {};
-    retval["id"] = id;
-    retval["name"] = name;
-    retval["img"] = img;
-    retval["price"] = price;
-    retval["description"] = description;
-    retval["quantity"] = 0;
-    return retval;
-}
+
+//if page is accessed with user logged in Logout happens automatically
 function logOutIfRequired() {
     if (localStorage.getItem("current") != undefined) {
         localStorage.removeItem("current")
         notify("Logout Success", "logout-success", 5000, "User Logged out Sucessfully. Login Again", "green")
     }
 }
+
 function init() {
     logOutIfRequired()
     $("#login").click(checkUser);

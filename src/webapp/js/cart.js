@@ -1,13 +1,19 @@
 var totalAmount, totalQuantity;
+
+//remove item from cart
 function removeItem(id) {
 	askConfirmRemoveCart(id)
 	return;
 }
+
+//ask for confirmation while removing
 function askConfirmRemoveCart(id) {
 	$("#remove-item-name").html(name)
 	$("#confirm-remove-button").attr("onclick", "finalRemoveItem(" + id + ")")
 	$("#confirm-remove").modal("toggle");
 }
+
+//invoked when confirmation is clicked
 function finalRemoveItem(id) {
 	initial = parseInt($("#quantity-" + id).html())
 	price = parseInt($("#cart-item-price-" + id).html())
@@ -20,6 +26,8 @@ function finalRemoveItem(id) {
 	$("#total-quantity").html(totalQuantity);
 	$("#total-price").html(totalAmount);
 }
+
+//increment quantity of product with id:id
 function incrementItem(id) {
 	increment(id);
 	totalQuantity += 1
@@ -27,6 +35,8 @@ function incrementItem(id) {
 	$("#total-quantity").html(totalQuantity);
 	$("#total-price").html(totalAmount);
 }
+
+//decrement quantity of product with id:id
 function decrementItem(id) {
 	initial = parseInt($("#quantity-" + id).html())
 	if (initial == 1) {
@@ -41,6 +51,8 @@ function decrementItem(id) {
 	$("#total-quantity").html(totalQuantity);
 	$("#total-price").html(totalAmount);
 }
+
+//adds new item to the html page
 function addNewCartItem(id, imgsrc, name, price, quantity) {
 	var newItem = $("#cart-item-0").clone();
 	newItem.prop("id", "cart-item-" + id);
@@ -67,17 +79,22 @@ function addNewCartItem(id, imgsrc, name, price, quantity) {
 	totalQuantity += quantity;
 	totalAmount += quantity * price;
 }
+
+//return product with id:id
 function getProduct(id, products) {
 	return products.find(o => o.id == id)
 }
+
+//invoked when no items in cart
 function emptyCartDisplay() {
-	//disable checkout button
-	$("#checkout").prop("disabled", true)
 	// show that no items in cart and Link products page
 	$("#empty-cart").css("display", "block")
 	$("#cart-header").css("display", "none")
 	$("#cart-summary").css("display", "none")
+	$("#cart-items").css("display", "none")
 }
+
+//loads the page initially
 async function loadPage() {
 	cart = JSON.parse(localStorage.getItem("cart"))
 	current = localStorage.getItem("current")
@@ -106,6 +123,8 @@ async function loadPage() {
 	$("#total-quantity").html(totalQuantity);
 	$("#total-price").html(totalAmount);
 }
+
+//runs when checkout is clicked
 async function checkOut() {
 	cart = JSON.parse(localStorage.getItem("cart"))
 	current = localStorage.getItem("current")
@@ -131,15 +150,20 @@ async function checkOut() {
 	});
 	downloadCsvFile(csv)
 	emptyCart(current)
-	window.location.replace("cart.html")
+	notify("Checkout Success", "checkout-success", 5000, "Order Placed Successfully. Thank You", "green")
+	emptyCartDisplay()
+	checkUserLogStatus()
 }
+
+//empties the cart
 function emptyCart(id) {
 	cart = JSON.parse(localStorage.getItem("cart"))
 	delete cart[current]
 	cart[current] = {}
 	localStorage.setItem("cart", JSON.stringify(cart))
-
 }
+
+//for downloading csv file of order items
 function downloadCsvFile(csvData) {
 	CSVFile = new Blob([csvData], {
 		type: "text/csv"
@@ -153,6 +177,8 @@ function downloadCsvFile(csvData) {
 	tempLink.click();
 	document.body.removeChild(tempLink);
 }
+
+
 function init() {
 	$("#checkout").click(checkOut)
 	loadPage()

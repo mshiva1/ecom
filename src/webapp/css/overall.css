@@ -85,6 +85,13 @@ svg {
   max-width: 250px;
 }
 
+#toast-body {
+  z-index: 100;
+  position: absolute;
+  right: 10px;
+  top: 78px;
+}
+
 @media (max-width: 576px) {
   h3 {
     font-size: 20px;

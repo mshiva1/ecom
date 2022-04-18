@@ -1,3 +1,4 @@
+//gets data from json and returns data of specific item
 async function getData(id) {
     await fetch('../resources/products.json')
         .then(response => response.json())
@@ -9,9 +10,10 @@ async function getData(id) {
     retval.quantity = cart[current][id]
     return retval;
 }
+
+//load the data of productId into page
 async function load(id) {
     var current = await getData(id)
-
     $("#title").html(current.name)
     $("#product-img").prop("src", current.img);
     $("#product-name").html(current.name)
@@ -29,6 +31,8 @@ async function load(id) {
     $("#delete-0").attr("onclick", "askConfirmRemove(" + id + ")");
     $("#delete-0").prop("id", "delete-" + id);
 }
+
+//invoked when quantity is clicked
 function startEdit(id) {
     initial = $("#quantity-" + id).html()
     $("#quantity-" + id + "-edit").css("display", "inline-block")
@@ -36,6 +40,8 @@ function startEdit(id) {
     $("#quantity-" + id + "-edit").val(initial)
     $("#quantity-" + id).css("display", "none")
 }
+
+//invoked when focus is moved from quantity
 function endEdit(id) {
     initial = $("#quantity-" + id).val()
     input = initial;
@@ -57,20 +63,25 @@ function endEdit(id) {
         $("#quantity-" + id).css("display", "inline-block")
     }
 }
+
+//function called when item is removed from cart by typing quantity as 0
 function removePlusDisplay(id) {
     remove(id)
     $("#quantity-" + id + "-edit").css("display", "none")
     $("#quantity-" + id).css("display", "inline-block")
 }
+
+//page redirected to pageNotFound.html if given id is not found
 function redirectToPageNotFound() {
     window.location.replace("pageNotFound.html")
 }
+
+
 function init() {
     const id = new URLSearchParams(window.location.search).get('id');
     if (id != undefined)
         load(id);
     else redirectToPageNotFound();
 }
-
 $(document).ready(init)
 
