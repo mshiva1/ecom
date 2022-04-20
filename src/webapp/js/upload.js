@@ -76,10 +76,11 @@ async function loadData(fileData) {
       newError.push(temp[item]["Quantity"])
       newError.push(error)
       errorsArray.push(newError)
-      //TODO validations + checkDuplicate
 
-      if (error == "no error")
+      if (error == "no error") {
+        //TODO  checkDuplicate
         itemsArray.push(addNewOrderItem(temp[item]["ID"], obj["img"], obj["name"], parseInt(obj["price"]), parseInt(temp[item]["Quantity"])))
+      }
       else {
         errorsCount++;
       }
