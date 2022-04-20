@@ -53,18 +53,75 @@ async function loadData(fileData) {
     .then(response => response.json())
     .then(jsonResponse => products = jsonResponse)
   itemsArray = []
+  errorsArray = []
+  errorsCount = 0
   for (const item in temp) {
     if (temp[item] != 0) {
+      var error = "no error"
+
+
       var obj = getProduct(temp[item]["ID"], products);
+      if (Number.isInteger(parseInt((temp[item]["Quantity"]))) == false)
+        error = "Quantity should be an Integer"
+      //error in quantity
+      else if (obj == undefined)
+        error = "Product ID:" + temp[item]["ID"] + " doesnt exist"
+      //error in product id
+
+
+      var newError = []
+      newError.push(temp[item]["ID"])
+      newError.push(temp[item]["Name"])
+      newError.push(temp[item]["Price"])
+      newError.push(temp[item]["Quantity"])
+      newError.push(error)
+      errorsArray.push(newError)
       //TODO validations + checkDuplicate
-      itemsArray.push(addNewOrderItem(temp[item]["ID"], obj["img"], temp[item]["Name"], parseInt(temp[item]["Price"]), parseInt(temp[item]["Quantity"])))
+
+      if (error == "no error")
+        itemsArray.push(addNewOrderItem(temp[item]["ID"], obj["img"], obj["name"], parseInt(obj["price"]), parseInt(temp[item]["Quantity"])))
+      else {
+        errorsCount++;
+      }
     }
   }
-  $("tbody").append(itemsArray)
-  $("#order-details").css("display", "block")
-  $("#total-quantity").html(total_quantity);
-  $("#total-price").html(totalAmount);
-  resetUploadDialog()
+  if (errorsCount == 0) {
+    $("tbody").append(itemsArray)
+    $("#order-details").css("display", "flex")
+    $("#total-quantity").html(total_quantity);
+    $("#total-price").html(totalAmount);
+    $("#display-error").css("display", "none")
+    resetUploadDialog()
+  }
+  else {
+    var csv = Papa.unparse({
+      "fields": ["ID", "Name", "Price", "Quantity", "Error"],
+      "data": errorsArray
+    });
+    resetUploadDialog()
+    downloadCsvFile(csv)
+    showUploadError()
+  }
+}
+//for showing that error occured while parsing
+function showUploadError() {
+  notify("Error", "upload-error", 0, "Some error occured while parsing the CSV file . Check Downloaded File for more details", "Red")
+  $("#display-error").css("display", "block")
+  $("#order-details").css("display", "none")
+}
+//for downloading csv file of error items
+function downloadCsvFile(csvData) {
+  CSVFile = new Blob([csvData], {
+    type: "text/csv"
+  });
+  var tempLink = document.createElement('a');
+  tempLink.download = "Errors.csv";
+  var url = window.URL.createObjectURL(CSVFile);
+  tempLink.href = url;
+  tempLink.style.display = "none";
+  document.body.appendChild(tempLink);
+  tempLink.click();
+  document.body.removeChild(tempLink);
 }
 
 //Reset file name
@@ -85,5 +142,6 @@ function updateFileName() {
 function init() {
   $('#order-file-button').click(getOrderItems);
   $("#order-file").on("change", updateFileName)
+  $("#display-error").css("display", "none")
 }
 $(document).ready(init)
