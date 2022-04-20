@@ -47,6 +47,14 @@ svg {
   background-color: #e9f3ff;
 }
 
+.material-icons-outlined {
+  font-size: unset;
+}
+
+.icon-large {
+  font-size: 24px;
+}
+
 #cart-count {
   width: 0;
   font-size: 15px;
@@ -55,11 +63,12 @@ svg {
 
 
 .quantity-button {
+  padding: 0;
   z-index: 2;
 }
 
 .scaleup:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   z-index: 3;
   border: 1px;
 }
@@ -92,6 +101,31 @@ svg {
   top: 78px;
 }
 
+.icon-normal {
+  font-size: 18px;
+  padding: 0;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  cursor: pointer;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.navbar {
+  z-index: 5
+}
+
 @media (max-width: 576px) {
   h3 {
     font-size: 20px;
@@ -107,6 +141,10 @@ svg {
 
   .content {
     font-size: 11px;
+  }
+
+  .icon-sm {
+    font-size: 12 px;
   }
 }
 
@@ -126,6 +164,10 @@ svg {
   .content {
     font-size: 12px;
   }
+
+  .icon-sm {
+    font-size: 13px;
+  }
 }
 
 @media (min-width:768px and max-width: 992px) {
@@ -144,26 +186,41 @@ svg {
   .content {
     font-size: 14px;
   }
+
+  .icon-sm {
+    font-size: 15px;
+  }
 }
 
 @media (min-width:992px) {
   h3 {
-    font-size: 27px;
-  }
-
-  h4 {
     font-size: 25px;
   }
 
+  h4 {
+    font-size: 23px;
+  }
+
   h5 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   h6 {
-    font-size: 20 px;
+    font-size: 18px;
   }
 
   .content {
+    font-size: 15px;
+  }
+
+  .icon-sm {
     font-size: 16px;
+  }
+}
+
+@media (max-width : 992px) {
+  #filters {
+    position: absolute;
+    top: 130px;
   }
 }
