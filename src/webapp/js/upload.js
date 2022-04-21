@@ -3,6 +3,7 @@ var totalAmount, total_quantity;
 //new order-item is added
 function addNewOrderItem(id, imgsrc, name, price, quantity) {
   var newItem = $("#order-item-0").clone();
+  newItem.prop("id_no", id);
   newItem.prop("id", "order-item-" + id);
   newItem.prop("hidden", false);
   newItem.find("#order-item-name-0").html('<a id="link-0" href="product.html?id=' + id + '">' + name + '</a>');
@@ -39,7 +40,7 @@ function getOrderItems() {
 
 //read file data
 function readFileDataCallback(results) {
-  fileData = results.data;
+  var fileData = results.data;
   loadData(fileData)
 }
 
@@ -59,16 +60,15 @@ async function loadData(fileData) {
     if (temp[item] != 0) {
       var error = "no error"
 
-
       var obj = getProduct(temp[item]["ID"], products);
       if (Number.isInteger(parseInt((temp[item]["Quantity"]))) == false)
         error = "Quantity should be an Integer"
       //error in quantity
       else if (obj == undefined)
-        error = "Product ID:" + temp[item]["ID"] + " doesnt exist"
+        error = "Product ID:" + temp[item]["ID"] + " doesn't exist"
       //error in product id
 
-
+			//adds in error list to show up on csv on error
       var newError = []
       newError.push(temp[item]["ID"])
       newError.push(temp[item]["Name"])
@@ -77,9 +77,20 @@ async function loadData(fileData) {
       newError.push(error)
       errorsArray.push(newError)
 
+			//only add if no error
       if (error == "no error") {
-        //TODO  checkDuplicate
-        itemsArray.push(addNewOrderItem(temp[item]["ID"], obj["img"], obj["name"], parseInt(obj["price"]), parseInt(temp[item]["Quantity"])))
+        //find if previous element present with same ID
+        var prev= await itemsArray.find(o => o.prop("id_no") == temp[item]["ID"]);
+
+        //if undefined means no item exist previously
+        if(prev == undefined)
+          itemsArray.push(addNewOrderItem(temp[item]["ID"], obj["img"], obj["name"], parseInt(obj["price"]), parseInt(temp[item]["Quantity"])));
+        else{
+          // in this case previous element exists
+          var x=parseInt(prev.find("#quantity-"+temp[item]["ID"]).html())
+          x=x+parseInt(temp[item]["Quantity"])
+          prev.find("#quantity-"+temp[item]["ID"]).html(x)
+          }
       }
       else {
         errorsCount++;
@@ -104,9 +115,9 @@ async function loadData(fileData) {
     showUploadError()
   }
 }
-//for showing that error occured while parsing
+//for showing that error occurred while parsing
 function showUploadError() {
-  notify("Error", "upload-error", 0, "Some error occured while parsing the CSV file . Check Downloaded File for more details", "Red")
+  notify("Error", "upload-error", 0, "Some error occurred while parsing the CSV file . Check Downloaded File for more details", "Red")
   $("#display-error").css("display", "block")
   $("#order-details").css("display", "none")
 }

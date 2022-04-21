@@ -5,8 +5,8 @@ async function getData(id) {
         .then(jsonResponse => temp = jsonResponse)
     var retval = await temp.find(o => o.id == id);
     if (retval == undefined) redirectToPageNotFound()
-    cart = JSON.parse(localStorage.getItem("cart"))
-    current = localStorage.getItem("current")
+    var cart = JSON.parse(localStorage.getItem("cart"))
+    var current = localStorage.getItem("current")
     retval.quantity = cart[current][id]
     return retval;
 }
@@ -34,7 +34,7 @@ async function load(id) {
 
 //invoked when quantity is clicked
 function startEdit(id) {
-    initial = $("#quantity-" + id).html()
+    var initial = $("#quantity-" + id).html()
     $("#quantity-" + id + "-edit").css("display", "inline-block")
     $("#quantity-" + id + "-edit").focus()
     $("#quantity-" + id + "-edit").val(initial)
@@ -43,8 +43,8 @@ function startEdit(id) {
 
 //invoked when focus is moved from quantity
 function endEdit(id) {
-    initial = $("#quantity-" + id).val()
-    input = initial;
+    var initial = $("#quantity-" + id).val()
+    var input = initial;
     input = parseInt($("#quantity-" + id + "-edit").val())
     if (isNaN(input)) {
         notify("Error", "edit-error", 0, "Please enter only an Integer", "red")
@@ -54,7 +54,7 @@ function endEdit(id) {
     else {
         let item = $("#quantity-" + id);
         username = localStorage.getItem("current")
-        cart = JSON.parse(localStorage.getItem("cart"))
+        var cart = JSON.parse(localStorage.getItem("cart"))
         cart[username][id.toString()] = input
         localStorage.setItem("cart", JSON.stringify(cart))
         item.html(input)

@@ -2,6 +2,7 @@ var itemsArray = []
 var maximum = 0, minimum = 0;
 var brandsSet = new Set()
 var minRatingDisplayed = 1;
+var cart;
 
 //load specific item 
 function loadItem(value, index, array) {
@@ -83,13 +84,14 @@ function addNewBrand(brandName) {
 //load Page on init
 async function loadPage() {
   cart = JSON.parse(localStorage.getItem("cart"))
-  current = localStorage.getItem("current")
+  var current = localStorage.getItem("current")
 
   await fetch('../resources/products.json')
     .then(response => response.json())
     .then(jsonResponse => temp = jsonResponse)
 
   itemsArray = []
+  //empty itemsArray at initial
   await temp.forEach(loadItem)
   //loads slider based on maximum and minimum
   initiateSlider(maximum, minimum)
@@ -103,8 +105,8 @@ async function loadPage() {
 
 //called when sort or filters are changed
 function loadAllItems() {
-  filterObject = {};
-  sortMethod = $("#sort-by").val();
+  var filterObject = {};
+  var sortMethod = $("#sort-by").val();
   filterObject["min"] = $("#slider-range").slider("values", 0);
   filterObject["max"] = $("#slider-range").slider("values", 1);
   filterObject["rating"] = minRatingDisplayed;
@@ -114,8 +116,8 @@ function loadAllItems() {
 
 //get brands from Form that are checked //used for filters 
 function getBrandsFromForm() {
-  brands = $(".filter-brand-names")
-  retval = new Set()
+  var brands = $(".filter-brand-names")
+  var retval = new Set()
   brands.each(function (index, element) { if ($(this).prop("checked")) retval.add($(this).prop("id")); });
   return retval;
 }
@@ -196,8 +198,8 @@ function addcart(id) {
   increment(id)
 }
 
-//toogle
-function toogleFilter() {
+//toggle
+function toggleFilter() {
   if ($("#filters").css("display") == "none") {
     $("#filters").removeClass("d-none")
     $("#filters").addClass("d-flex")

@@ -15,8 +15,8 @@ function askConfirmRemoveCart(id) {
 
 //invoked when confirmation is clicked
 function finalRemoveItem(id) {
-	initial = parseInt($("#quantity-" + id).html())
-	price = parseInt($("#cart-item-price-" + id).html())
+	let initial = parseInt($("#quantity-" + id).html())
+	let price = parseInt($("#cart-item-price-" + id).html())
 	remove(id)
 	$("#cart-item-" + id).remove()
 	totalQuantity -= initial
@@ -38,7 +38,7 @@ function incrementItem(id) {
 
 //decrement quantity of product with id:id
 function decrementItem(id) {
-	initial = parseInt($("#quantity-" + id).html())
+	let initial = parseInt($("#quantity-" + id).html())
 	if (initial == 1) {
 		removeItem(id)
 		return;
@@ -96,8 +96,8 @@ function emptyCartDisplay() {
 
 //loads the page initially
 async function loadPage() {
-	cart = JSON.parse(localStorage.getItem("cart"))
-	current = localStorage.getItem("current")
+	var cart = JSON.parse(localStorage.getItem("cart"))
+	var current = localStorage.getItem("current")
 	await fetch('../resources/products.json')
 		.then(response => response.json())
 		.then(jsonResponse => products = jsonResponse)
@@ -126,8 +126,8 @@ async function loadPage() {
 
 //runs when checkout is clicked
 async function checkOut() {
-	cart = JSON.parse(localStorage.getItem("cart"))
-	current = localStorage.getItem("current")
+	var cart = JSON.parse(localStorage.getItem("cart"))
+	var current = localStorage.getItem("current")
 	await fetch('../resources/products.json')
 		.then(response => response.json())
 		.then(jsonResponse => products = jsonResponse)
@@ -157,7 +157,7 @@ async function checkOut() {
 
 //empties the cart
 function emptyCart(id) {
-	cart = JSON.parse(localStorage.getItem("cart"))
+	var cart = JSON.parse(localStorage.getItem("cart"))
 	delete cart[current]
 	cart[current] = {}
 	localStorage.setItem("cart", JSON.stringify(cart))
