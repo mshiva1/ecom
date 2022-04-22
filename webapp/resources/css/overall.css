@@ -1,6 +1,6 @@
 /* applicable to multiple pages */
-.content {
-  padding: 65px 3% 0 3%;
+.container {
+  padding: 65px 0 0 0;
   color: #111111;
   min-height: calc(100vh - 65px)
 }
@@ -75,6 +75,10 @@ img {
 #filters {                  /* filters, products page*/
   top: 75px;
 }
+#slider-range{
+	width:90%;
+	margin :0 5%;
+}
 #overlay {                  /*overlay for filters, products page*/
    display: none;
    position: fixed;
@@ -120,7 +124,7 @@ img {
     font-size: 16px;
   }
 
-  .content {
+  .container {
     font-size: 11px;
   }
 
@@ -142,7 +146,7 @@ img {
     font-size: 18px;
   }
 
-  .content {
+  .container {
     font-size: 12px;
   }
 
@@ -164,7 +168,7 @@ img {
     font-size: 20px;
   }
 
-  .content {
+  .container {
     font-size: 14px;
   }
 
@@ -190,7 +194,7 @@ img {
     font-size: 18px;
   }
 
-  .content {
+  .container {
     font-size: 15px;
   }
 
