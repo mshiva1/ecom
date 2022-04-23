@@ -13,11 +13,11 @@
 <body>
 <div id="navbar-stub">
 </div>
-<div id="product-found" class="container">
+<div class="container" id=product-found" >
     <div id="toast-body"></div>
     <div class="row">
         <div class="col-12 col-md-6 my-2" id="image-carrier">
-            <img alt="Card image" class="" id="product-img" onerror=this.src="../resources/undefined.jpg" src=""
+            <img class="" id="product-img" onerror=this.src="../resources/undefined.jpg" src="" alt="Card image"
                  style="width:100%;">
         </div>
         <div class="col-12 col-md-6 my-lg-4 my-3">
@@ -35,10 +35,9 @@
                             remove
                         </span>
                 </button> &nbsp;
-                <span id="quantity" tabindex="-1" class="inline"><button class="btn btn-sm focus-edit"
+                <span class="inline" id="quantity" tabindex="-1" ><button class="btn btn-sm focus-edit"
                                                                          id="quantity-0" type="button">0</button>
-                        <input class="form-control p-1" type="text" style="width:40px;display:none"
-                               id="quantity-0-edit">
+                        <input class="form-control p-1" id="quantity-0-edit" type="text" style="width:40px;display:none" >
                     </span>&nbsp;
                 <button class="btn btn-sm btn-outline-primary" id="increment-0" onclick="increment(0)"
                         type="button">
@@ -75,15 +74,15 @@
                     <p>This Product will be removed from Cart <span id="remove-item-name"></span>?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" id="confirm-remove-button" data-dismiss="modal"
-                            class="btn btn-danger">Confirm</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-danger" id="confirm-remove-button" type="button" data-dismiss="modal"
+                            >Confirm</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div id="product-not-found" class="container content-justify-center" style="display:none">
+<div class="container content-justify-center" id="product-not-found" style="display:none">
     <div class="col-12">
         <div class="col-12 text-center shadow-sm p-4">
             This Link is broken . <a href="products.html">Click here to see all products</a>

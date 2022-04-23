@@ -3,7 +3,7 @@ function notify(type, toastId, timer, message, color) {
   toast = '<div class="toast" data-autohide="false" style="color:white;background-color:' + color + '" id="' + toastId + '"><div class="toast-header"><strong class="mr-auto">' + type + '</strong><button type="button" class="ml-2 mb-1 close" onclick=removeToast("' + toastId + '") aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="toast-body">' + message + '</div></div>'
   $("#toast-body").append(toast)
   $(".toast").toast("show")
-  if (timer != 0)
+  if (timer )
     setTimeout(function () { removeToast(toastId); }, timer)
 }
 

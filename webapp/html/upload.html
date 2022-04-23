@@ -19,8 +19,8 @@
     <div class="row">
         <div class="d-flex col-12 col-md-6 col-lg-5 m-2 p-4" id="upload-order">
             <div class="col-10">
-                <input class="custom-file-input" id="order-file" required type="file">
-                <label class="custom-file-label" for="order-file" id="order-file-name">Choose file</label>
+                <input class="custom-file-input" id="order-file" type="file" required>
+                <label class="custom-file-label" id="order-file-name" for="order-file" >Choose file</label>
             </div>
             <div class="col-2">
                 <button class="btn btn-outline-primary" id="order-file-button">Upload</button>
@@ -29,28 +29,28 @@
     </div>
     <span id="display-error">There are some Errors. Check Downloaded File for errors </span>
 
-    <div id="order-details" style="display:none" class="row">
+    <div class="row" id="order-details" style="display:none">
         <div class="col-lg-8" id="order-items">
             <table class="table custom-bordered table-striped align-items-center" id="item-table">
                 <thead>
-                <tr class="shadow-sm row  custom-stick-top" id="item-table-head">
+                <tr class="shadow-sm row custom-stick-top" id="item-table-head">
                     <th scope="col" style="width:16.66%">&nbsp;</th>
-                    <th scope="col" class="p-0" style="width:41.66%">
+                    <th class="p-0" scope="col" style="width:41.66%">
                         <h4>Name</h4>
                     </th>
-                    <th scope="col" class="p-0" style="width:20.83%">
+                    <th class="p-0" scope="col" style="width:20.83%">
                         <h4>Price</h4>
                     </th>
-                    <th scope="col" class="p-0" style="width:20.83%">
+                    <th class="p-0" scope="col" style="width:20.83%">
                         <h4>Quantity</h4>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
 
-                <tr class="item" hidden id="order-item-0">
+                <tr class="item" id="order-item-0" hidden >
                     <td class="px-3">
-                        <img alt="Card image" class="order-image" id="img-0"
+                        <img class="order-image" id="img-0" alt="Card image"
                              onerror=this.src="../resources/undefined.jpg" src="../resources/prod1.jpg"
                              style="width:100%">
                     </td>

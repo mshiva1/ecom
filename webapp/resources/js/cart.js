@@ -105,7 +105,7 @@ async function loadPage() {
 	totalAmount = 0;
 	totalQuantity = 0;
 	for (const item in temp) {
-		if (item != 0 && temp[item] != 0) {
+		if (item  && temp[item] ) {
 			var obj = {};
 			obj["id"] = item;
 			obj["quantity"] = temp[item];
@@ -134,7 +134,7 @@ async function checkOut() {
 	var temp = cart[current];
 	var itemArray = []
 	for (const item in temp) {
-		if (item != 0 && temp[item] != 0) {
+		if (item  && temp[item] ) {
 			var obj = [];
 			var prod = getProduct(item, products);
 			obj.push(item);

@@ -57,7 +57,7 @@ async function loadData(fileData) {
   errorsArray = []
   errorsCount = 0
   for (const item in temp) {
-    if (temp[item] != 0) {
+    if (temp[item] ) {
       var error = "no error"
 
       var obj = getProduct(temp[item]["ID"], products);
