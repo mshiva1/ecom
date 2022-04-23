@@ -4,7 +4,10 @@ async function getData(id) {
         .then(response => response.json())
         .then(jsonResponse => temp = jsonResponse)
     var retval = await temp.find(o => o.id == id);
-    if (retval == undefined) redirectToPageNotFound()
+    if (retval == undefined) {
+        productNotFound();
+        return undefined;
+    }
     var cart = JSON.parse(localStorage.getItem("cart"))
     var current = localStorage.getItem("current")
     retval.quantity = cart[current][id]
@@ -72,17 +75,18 @@ function removePlusDisplay(id) {
     $("#quantity-" + id).css("display", "inline-block")
 }
 
-//page redirected to pageNotFound.html if given id is not found
-function redirectToPageNotFound() {
-    window.location.replace("pageNotFound.html")
-}
+//called when specific product not found
+function productNotFound(){
+    $("#product-not-found").css("display","block")
+    $("#product-found").css("display","none")
 
+}
 
 function init() {
     const id = new URLSearchParams(window.location.search).get('id');
     if (id != undefined)
         load(id);
-    else redirectToPageNotFound();
+    else productNotFound()
 }
 $(document).ready(init)
 
