@@ -1,55 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link href="../resources/css/overall.css" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        <link href="../resources/css/overall.css" rel="stylesheet">
+    </head>
 
-<body>
+    <body>
     <div class="container">
-        <div id="toast-body" style="top:10px"></div>
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-9 col-lg-7">
-                <div class="row justify-content-center ">
-                    <div class="jumbotron border  border-secondary col-10 text-center bg-light text-white rounded-0 d-block d-sm-none">
-                        <img class="d-inline-block align-top" id="logo" src="../resources/logo.png" alt="Increff" >
+        <!--<div id="toast-body" style="top:10px"></div>-->
+
+        <div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-9 col-lg-7">
+                    <div class="row justify-content-center ">
+                        <div class="jumbotron border  border-secondary col-10 text-center bg-light text-white rounded-0 d-block d-sm-none m-0">
+                            <img class="d-inline-block align-top" id="logo" src="../resources/logo.png" alt="Increff" >
+                        </div>
                     </div>
-                </div>
-                <div class="row justify-content-center">
-                    <span class="text-justify my-3 border border-secondary jumbotron col-4  bg-light text-white rounded-0 d-none d-sm-block">
-                        <img class="d-inline-block align-top" id="logo" src="../resources/logo.png" alt="Increff">
-                    </span>
-                    <form class="form col-10 my-3 p-2 col-sm-7 form-inline border border-secondary" id="login-form">
-                        <div class="col-12 form-group">
-                            <label class="col-sm-4 col col-form-label" for="username">Username</label>
-                            <div class="col-sm-8 col ">
-                                <input class="form-control w-100" id="username" name="username" required type="text">
+                    <div class="row justify-content-center">
+                        <span class="text-justify my-3 border border-secondary jumbotron col-4  bg-light text-white rounded-0 d-none d-sm-block">
+                            <img class="d-inline-block align-top" id="logo" src="../resources/logo.png" alt="Increff">
+                        </span>
+                        <form class="form col-10 my-sm-3 p-2 col-sm-7 form-inline border border-secondary" id="login-form">
+                            <div class="col-12 form-group">
+                                <label class="col-sm-4 col col-form-label" for="username">Username</label>
+                                <div class="col-sm-8 col ">
+                                    <input class="form-control w-100" id="username" name="username" required type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 form-group">
-                            <label class="col-sm-4 col col-form-label " for="password">Password</label>
-                            <div class="col-sm-8 col ">
-                                <input class="form-control w-100" id="password" name="password" required
-                                    type="password">
+                            <div class="col-12 form-group">
+                                <label class="col-sm-4 col col-form-label " for="password">Password</label>
+                                <div class="col-sm-8 col ">
+                                    <input class="form-control w-100" id="password" name="password" required
+                                           type="password">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group col-12 text-center text-danger justify-content-center" id="wrong-cred-message">
-                            &nbsp;
-                        </div>
-                        <div class="form-group col-12 justify-content-center text-center">
-                            <button class="btn btn-primary" form="login-form" id="login" type="button">Login</button>
-                        </div>
-                    </form>
+                            <div class="form-group col-12 text-center text-danger justify-content-center" id="wrong-cred-message">
+                                &nbsp;
+                            </div>
+                            <div class="form-group col-12 justify-content-center text-center">
+                                <button class="btn btn-primary" form="login-form" id="login" type="button">Login</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="footer-stub"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -57,6 +59,6 @@
     <script src="../resources/js/app.js"></script>
     <script src="../resources/js/login.js"></script>
 
-</body>
+    </body>
 
-</html>
+    </html>

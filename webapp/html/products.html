@@ -7,7 +7,8 @@
     <title>Products</title>
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-    <link href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link href="../resources/css/overall.css" rel="stylesheet">
 </head>
@@ -22,7 +23,7 @@
             <div class="col-5 col-sm-4 col-md-4 col-lg-2 m-1">
                 <div class="row justify-content-between">
                     <button class="d-block d-lg-none col-2 btn btn-sm btn-outline-secondary p-0" type=button
-                            onclick="toggleFilter()">
+                        onclick="toggleFilter()">
                         <span class="material-icons-outlined m-1 icon-sm">
                             filter_alt
                         </span>
@@ -37,62 +38,86 @@
                 </div>
             </div>
         </div>
+        <div class="row m-0 d-flex d-lg-none" id="display-filters">
+            <button class="btn btn-sm filter-button border bg-info text-white px-2" id="filter-price-display">
+                Price :
+                <span id="price-display">
+
+                </span>
+                &#10005;
+            </button>
+            <button class="btn btn-sm filter-button border bg-info text-white px-2" id="filter-rating-display">
+                Minimum Rating :
+                <span id="rating-display">
+
+                </span>
+                &#10005;
+            </button>
+            <button class="btn btn-sm filter-button border bg-info text-white px-2" id="filter-brands-display">
+                Brands :
+                <span id="brands-display">
+
+                </span>
+                &#10005;
+            </button>
+
+        </div>
 
         <div class="row">
-            <div class="col-lg-2 col-12 d-lg-flex d-none custom-stick-top justify-content-center bg-transparent p-2" id="filters"
-                style="z-index:auto">
-                <div class="row ">
-                <div class=" border rounded-2 bg-light col-lg-12 col-md-6 col-sm-8 col-10 p-1" style="z-index:6">
-                    <div class="d-flex justify-content-between">
+            <div class="col-lg-2 col-12 d-lg-flex d-none custom-stick-top justify-content-center bg-transparent p-2"
+                id="filters" style="z-index:auto">
+                <div class="row w-100 justify-content-center">
+                    <div class=" border rounded-2 bg-light col-lg-12 col-md-6 col-sm-8 col-10 p-1" style="z-index:6">
+                        <div class="d-flex justify-content-between">
 
-                        <h5>Filters</h5>
-                        <button class="btn btn-sm btn-outline-danger p-0" id="remove-filters" type="button">
-                            <span class="material-icons-outlined m-1 icon-sm">
-                                                    filter_alt
-                                                </span>
-                        </button>
-                    </div>
-                    <form>
-                        <div id="filter-price">
-                            <label for="prices">Price Range:</label>
-                            <input class="w-75 bg-light p-2 border-0" id="prices" type="text"  readonly >
-                            <div id="slider-range"></div>
+                            <h5>Filters</h5>
+                            <button class="btn btn-sm btn-outline-danger p-0" id="remove-filters" type="button">
+                                <span class="material-icons-outlined m-1 icon-sm">
+                                    filter_alt
+                                </span>
+                            </button>
                         </div>
-                        <br>
-                        <div id="filter-rating">
-                            <label>Min Rating: <span id="current-min-rating"></span></label>
-                            <br>
-                            <button class="bg-light border-0 p-0" id="rating-1" onclick="filterMinRate(1)"
-                                type="button"></button>
-                            <button class="bg-light border-0 p-0" id="rating-2" onclick="filterMinRate(2)"
-                                type="button"></button>
-                            <button class="bg-light border-0 p-0" id="rating-3" onclick="filterMinRate(3)"
-                                type="button"></button>
-                            <button class="bg-light border-0 p-0" id="rating-4" onclick="filterMinRate(4)"
-                                type="button"></button>
-                            <button class="bg-light border-0 p-0" id="rating-5" onclick="filterMinRate(5)"
-                                type="button"></button>
-                        </div>
-                        <br>
-                        <div id="brands-list">
-                            <label for="prices">Brands :</label>
-                            <div id="brand-0" hidden>
-                                <input class="filter-brand-names" id="brand0" type="checkbox" checked name="" value="">
-                                <label for="brand0" id="label-0"></label>
+                        <form>
+                            <div id="filter-price">
+                                <label for="prices">Price Range:</label>
+                                <input class="w-75 bg-light p-2 border-0" id="prices" type="text" readonly>
+                                <div id="slider-range"></div>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                            <br>
+                            <div id="filter-rating">
+                                <label>Min Rating: <span id="current-min-rating"></span></label>
+                                <br>
+                                <button class="bg-light border-0 p-0" id="rating-1" onclick="filterMinRate(1)"
+                                    type="button"></button>
+                                <button class="bg-light border-0 p-0" id="rating-2" onclick="filterMinRate(2)"
+                                    type="button"></button>
+                                <button class="bg-light border-0 p-0" id="rating-3" onclick="filterMinRate(3)"
+                                    type="button"></button>
+                                <button class="bg-light border-0 p-0" id="rating-4" onclick="filterMinRate(4)"
+                                    type="button"></button>
+                                <button class="bg-light border-0 p-0" id="rating-5" onclick="filterMinRate(5)"
+                                    type="button"></button>
+                            </div>
+                            <br>
+                            <div id="brands-list">
+                                <label for="prices">Brands :</label>
+                                <div id="brand-0" hidden>
+                                    <input class="filter-brand-names" id="brand0" type="checkbox" checked name=""
+                                        value="">
+                                    <label for="brand0" id="label-0"></label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
             <div class="col col-lg-10 ">
                 <div class="row" id="products">
-                    <div class=" col-lg-3 col-md-4 col-sm-6 col-12 my-2 scaleup" id="product-0" hidden >
+                    <div class=" col-lg-3 col-md-4 col-sm-6 col-12 my-2 scaleup" id="product-0" hidden>
                         <div class=" card shadow-sm border-0">
                             <img alt="Card image" class="custom-product-image card-img-top" id="img-0"
-                                onerror=this.src="../resources/undefined.jpg" src="../resources/prod0.jpg"
-                                style="width:100%;margin:auto">
+                               src="../resources/prod0.jpg" style="width:100%;margin:auto">
                             <div class="card-body">
                                 <h4 class="card-title p-0" id="name-0"></h4>
                                 <div class="d-flex justify-content-between p-2">
@@ -146,7 +171,7 @@
                         <p>This Product will be removed from Cart <span id="remove-item-name"></span>?</p>
                     </div>
                     <div class="modal-footer">
-                        <button  class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         <button class="btn btn-danger" id="confirm-remove-button" type="button" data-dismiss="modal">
                             Confirm
                         </button>

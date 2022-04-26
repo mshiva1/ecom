@@ -81,7 +81,7 @@
   },
   {
     "id": 9,
-    "brand": "Mad Angles",
+    "brand": "Mad-Angles",
     "name": "Mad Angles Tomato",
     "img": "https://m.media-amazon.com/images/I/81r0LYFC0HL._SX679_.jpg",
     "price": 10,
@@ -91,7 +91,7 @@
   },
   {
     "id": 10,
-    "brand": "Mad Angles",
+    "brand": "Mad-Angles",
     "name": "Mad Angles Pizza",
     "img": "https://m.media-amazon.com/images/I/61m4foyFSVL._SX679_.jpg",
     "price": 20,
@@ -101,7 +101,7 @@
   },
   {
     "id": 11,
-    "brand": "Mad Angles",
+    "brand": "Mad-Angles",
     "name": "Mad Angles Achaari",
     "img": "https://m.media-amazon.com/images/I/814gWY+drSL._SX679_.jpg",
     "price": 30,
@@ -111,7 +111,7 @@
   },
   {
     "id": 12,
-    "brand": "Mad Angles",
+    "brand": "Mad-Angles",
     "name": "Mad Angles Peri Peri",
     "img": "https://m.media-amazon.com/images/I/81mK1JX+2yL._SX679_.jpg",
     "price": 30,

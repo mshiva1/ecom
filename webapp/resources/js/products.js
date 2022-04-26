@@ -56,12 +56,13 @@ function initiateSlider(maximum, minimum = 0) {
     min: minimum,
     max: maximum,
     values: [minimum, maximum],
-    slide: function (event, ui) {
-      $("#prices").val("Rs" + ui.values[0] + " - Rs" + ui.values[1]);
+    slide: async function (event, ui) {
+      await $("#prices").val("Rs" + ui.values[0] + " - Rs" + ui.values[1]);
+      loadAllItems()
     }
   });
-  $("#prices").val("Rs" + $("#slider-range").slider("values", 0) +
-    " - Rs" + $("#slider-range").slider("values", 1));
+  $("#prices").val("Rs " + $("#slider-range").slider("values", 0) +
+    " - Rs " + $("#slider-range").slider("values", 1));
 }
 
 //loading all brands into checkbox in filters div
@@ -104,7 +105,7 @@ async function loadPage() {
 }
 
 //called when sort or filters are changed
-function loadAllItems() {
+function loadAllItems(event) {
   var filterObject = {};
   var sortMethod = $("#sort-by").val();
   filterObject["min"] = $("#slider-range").slider("values", 0);
@@ -112,8 +113,37 @@ function loadAllItems() {
   filterObject["rating"] = minRatingDisplayed;
   filterObject["brand-set"] = getBrandsFromForm()
   sortFilterDisplay(filterObject, sortMethod)
+  if(minRatingDisplayed!=1){
+    $("#rating-display").html(minRatingDisplayed)
+    $("#filter-rating-display").css("display","block")
+        }
+      else{
+        $("#filter-rating-display").css("display","none")
+      }
+  if(filterObject["min"]!=0 || filterObject["max"]!=maximum){
+    $('#price-display').html(filterObject["min"]+"to"+filterObject["max"])
+    $("#filter-price-display").css("display","block")
+        }
+      else{
+        $("#filter-price-display").css("display","none")
+      }
+  if(!eqSet(filterObject["brand-set"],getAllBrandsFromForm()))
+    {
+    var str=''
+    filterObject["brand-set"].forEach(function(value){if(value!="brand0") str=str+value+", "})
+    $("#brands-display").html(str.substr(0,str.length-2))
+    $("#filter-brands-display").css("display","block")
+    }
+  else{
+    $("#filter-brands-display").css("display","none")
+  }
 }
-
+//compare sets
+function eqSet(as, bs) {
+    if (as.size !== bs.size) return false;
+    for (var a of as) if (!bs.has(a)) return false;
+    return true;
+}
 //get brands from Form that are checked //used for filters 
 function getBrandsFromForm() {
   var brands = $(".filter-brand-names")
@@ -185,6 +215,8 @@ function filterMinRate(minRating) {
   for (; i <= 5; i++)
     $("#rating-" + i).html(getLight(i))
 
+	$("#prices").val("Rs " + $("#slider-range").slider("values", 0) +
+      " - Rs " + $("#slider-range").slider("values", 1));
   $("#current-min-rating").html(minRating)
   minRatingDisplayed = minRating;
   loadAllItems()
@@ -221,7 +253,6 @@ function toggleFilter() {
 async function init() {
   await loadPage()
   $("#sort-by").on("change", loadAllItems)
-  $("#filter-price").focusout(loadAllItems)
   $(".filter-brand-names").on("change", loadAllItems)
   $("#remove-filters").on("click",removeFilters)
 }
