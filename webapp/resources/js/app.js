@@ -1,6 +1,6 @@
 // adds new message to user
 function notify(type, toastId, timer, message, color) {
-  toast = '<div class="toast" data-autohide="false" style="color:white;background-color:' + color + '" id="' + toastId + '"><div class="toast-header"><strong class="mr-auto">' + type + '</strong><button type="button" class="ml-2 mb-1 close" onclick=removeToast("' + toastId + '") aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="toast-body">' + message + '</div></div>'
+  toast = `<div class="toast" data-autohide="false" style="color:white;background-color:${color}" id="${toastId}"><div class="toast-header"><strong class="mr-auto">${type}</strong><button type="button" class="ml-2 mb-1 close" onclick=removeToast("${toastId}") aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="toast-body">${message}</div></div>`
   $("#toast-body").append(toast)
   $(".toast").toast("show")
   if (timer )
@@ -9,13 +9,13 @@ function notify(type, toastId, timer, message, color) {
 
 //invoked when message has to be removed
 function removeToast(toastId) {
-  $("#" + toastId).remove()
+  $(`#${toastId}`).remove()
 }
 
 //this invokes the confirmation modal for removing an item from cart
 function askConfirmRemove(id, nextFun = "remove") {
   $("#remove-item-name").html(name)
-  $("#confirm-remove-button").attr("onclick", nextFun + "(" + id + ")")
+  $("#confirm-remove-button").attr("onclick", `${nextFun}(${id})`)
   $("#confirm-remove").modal("toggle");
 }
 
@@ -41,9 +41,9 @@ function currentTimeAndDate() {
 
 //increment a quantity for product with id:id
 function increment(id) {
-  let item = $("#quantity-" + id);
+  let item = $(`#quantity-${id}`);
   initial = parseInt(item.html())
-  username = localStorage.getItem("current")
+  username = localStorage.getItem("currentUser")
   cart = JSON.parse(localStorage.getItem("cart"))
   cart[username][id.toString()] = initial + 1
   localStorage.setItem("cart", JSON.stringify(cart))
@@ -53,14 +53,14 @@ function increment(id) {
 
 //decrement a quantity for product with id:id
 function decrement(id, nextFun = "remove") {
-  let item = $("#quantity-" + id);
+  let item = $(`#quantity-${id}`);
   initial = parseInt(item.html())
   if (initial == 0) return;
   if (initial == 1) {
     askConfirmRemove(id, nextFun)
     return;
   }
-  username = localStorage.getItem("current")
+  username = localStorage.getItem("currentUser")
   cart = JSON.parse(localStorage.getItem("cart"))
   cart[username][id.toString()] = initial - 1
   localStorage.setItem("cart", JSON.stringify(cart))
@@ -70,10 +70,10 @@ function decrement(id, nextFun = "remove") {
 
 //remove the product with id:id
 function remove(id) {
-  let item = $("#quantity-" + id);
+  let item = $(`#quantity-${id}`);
   initial = parseInt(item.html())
   if (initial == 0) return;
-  username = localStorage.getItem("current")
+  username = localStorage.getItem("currentUser")
   cart = JSON.parse(localStorage.getItem("cart"))
   delete cart[username][id.toString()]
   localStorage.setItem("cart", JSON.stringify(cart))
@@ -98,18 +98,18 @@ function readFileData(file, callback) {
 //if not logged in redirected to login.html
 async function checkUserLogStatus() {
   if (window.location.href.includes("login.html")) return;
-  current = localStorage.getItem("current")
+  currentUser = localStorage.getItem("currentUser")
   await fetch('../resources/passwords.json')
     .then(response => response.json())
     .then(jsonResponse => passwords = jsonResponse)
-  if (current == undefined || passwords[current] == undefined)
-    window.location.replace("login.html?redirect=" + window.location.href + "")
+  if (currentUser == undefined || passwords[currentUser] == undefined)
+    window.location.replace(`login.html?redirect=${window.location.href}`)
   else {
     cart = JSON.parse(localStorage.getItem("cart"))
-    cartCurrent = cart[current]
+    cartcurrent = cart[currentUser]
     let count = 0
-    for (const item in cartCurrent) {
-      count += cartCurrent[item]
+    for (const item in cartcurrent) {
+      count += cartcurrent[item]
     }
     $("#cart-count").html(count);
   }
@@ -117,7 +117,7 @@ async function checkUserLogStatus() {
 
 //invoked when logout is clicked
 function logOut() {
-  localStorage.removeItem("current")
+  localStorage.removeItem("currentUser")
   window.location.replace("login.html")
 }
 

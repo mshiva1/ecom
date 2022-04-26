@@ -9,7 +9,7 @@ function removeItem(id) {
 //ask for confirmation while removing
 function askConfirmRemoveCart(id) {
 	$("#remove-item-name").html(name)
-	$("#confirm-remove-button").attr("onclick", "finalRemoveItem(" + id + ")")
+	$("#confirm-remove-button").attr("onclick", `finalRemoveItem(${id})`)
 	$("#confirm-remove").modal("toggle");
 }
 
@@ -57,7 +57,7 @@ function addNewCartItem(id, imgsrc, name, price, quantity) {
 	var newItem = $("#cart-item-0").clone();
 	newItem.prop("id", "cart-item-" + id);
 	newItem.prop("hidden", false);
-	newItem.find("#cart-item-name-0").html('<a id="link-0" href="product.html?id=' + id + '">' + name + '</a>');
+	newItem.find("#cart-item-name-0").html(`<a id="link-0" href="product.html?id="${id}">${name}</a>`);
 	newItem.find("#cart-item-name-0").prop("id", "cart-item-name-" + id);
 	if (imgsrc == '')
 		newItem.find("#img-0").prop("src", "../resources/prod" + 1 + ".jpg");
@@ -67,13 +67,13 @@ function addNewCartItem(id, imgsrc, name, price, quantity) {
 	newItem.find("#cart-item-price-0").prop("id", "cart-item-price-" + id);
 	newItem.find("#link-0").prop("href", "product.html?id=" + id);
 	newItem.find("#link-0").prop("id", "link-" + id);
-	newItem.find("#increment-0").attr("onclick", "incrementItem(" + id + ")");
+	newItem.find("#increment-0").attr("onclick", `incrementItem(${id})`);
 	newItem.find("#increment-0").prop("id", "increment-" + id);
 	newItem.find("#quantity-0").html(quantity);
 	newItem.find("#quantity-0").prop("id", "quantity-" + id);
-	newItem.find("#decrement-0").attr("onclick", "decrementItem(" + id + ")");
+	newItem.find("#decrement-0").attr("onclick", `decrementItem(${id})`);
 	newItem.find("#decrement-0").prop("id", "decrement-" + id);
-	newItem.find("#remove-0").attr("onclick", "removeItem(" + id + ")");
+	newItem.find("#remove-0").attr("onclick", `remove(${id})`);
 	newItem.find("#remove-0").prop("id", "remove-" + id);
 	newItem.appendTo("#cart-items");
 	totalQuantity += quantity;
@@ -97,11 +97,11 @@ function emptyCartDisplay() {
 //loads the page initially
 async function loadPage() {
 	var cart = JSON.parse(localStorage.getItem("cart"))
-	var current = localStorage.getItem("current")
+	var currentUser = localStorage.getItem("currentUser")
 	await fetch('../resources/products.json')
 		.then(response => response.json())
 		.then(jsonResponse => products = jsonResponse)
-	var temp = cart[current];
+	var temp = cart[currentUser];
 	totalAmount = 0;
 	totalQuantity = 0;
 	for (const item in temp) {
@@ -127,11 +127,11 @@ async function loadPage() {
 //runs when checkout is clicked
 async function checkOut() {
 	var cart = JSON.parse(localStorage.getItem("cart"))
-	var current = localStorage.getItem("current")
+	var currentUser = localStorage.getItem("currentUser")
 	await fetch('../resources/products.json')
 		.then(response => response.json())
 		.then(jsonResponse => products = jsonResponse)
-	var temp = cart[current];
+	var temp = cart[currentUser];
 	var itemArray = []
 	for (const item in temp) {
 		if (item  && temp[item] ) {
@@ -149,7 +149,7 @@ async function checkOut() {
 		"data": itemArray
 	});
 	downloadCsvFile(csv)
-	emptyCart(current)
+	emptyCart(currentUser)
 	notify("Checkout Success", "checkout-success", 5000, "Order Placed Successfully. Thank You", "green")
 	emptyCartDisplay()
 	checkUserLogStatus()
@@ -158,8 +158,8 @@ async function checkOut() {
 //empties the cart
 function emptyCart(id) {
 	var cart = JSON.parse(localStorage.getItem("cart"))
-	delete cart[current]
-	cart[current] = {}
+	delete cart[currentUser]
+	cart[currentUser] = {}
 	localStorage.setItem("cart", JSON.stringify(cart))
 }
 

@@ -4,7 +4,7 @@ async function checkFor(username, password) {
         .then(response => response.json())
         .then(jsonResponse => passwords = jsonResponse)
     if (passwords[username] == password) {
-        await localStorage.setItem("current", username)
+        await localStorage.setItem("currentUser", username)
 
         const redirect = new URLSearchParams(window.location.search).get('redirect');
         if (redirect == undefined)
@@ -26,8 +26,8 @@ function checkUser() {
 
 //if page is accessed with user logged in Logout happens automatically
 function logOutIfRequired() {
-    if (localStorage.getItem("current") != undefined) {
-        localStorage.removeItem("current")
+    if (localStorage.getItem("currentUser") != undefined) {
+        localStorage.removeItem("currentUser")
         notify("Logout Success", "logout-success", 5000, "User Logged out Successfully. Login Again", "green")
     }
 }

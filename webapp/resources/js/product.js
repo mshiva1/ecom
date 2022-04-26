@@ -9,30 +9,30 @@ async function getData(id) {
         return undefined;
     }
     var cart = JSON.parse(localStorage.getItem("cart"))
-    var current = localStorage.getItem("current")
-    retval.quantity = cart[current][id]
+    var currentUser = localStorage.getItem("currentUser")
+    retval.quantity = cart[currentUser][id]
     return retval;
 }
 
 //load the data of productId into page
 async function load(id) {
-    var current = await getData(id)
-    $("#title").html(current.name)
-    $("#product-img").prop("src", current.img);
-    $("#product-name").html(current.name)
-    $("#product-price").html(current.price)
-    $("#product-description").html(current.description)
-    $("#product-rating").html(getHtmlForRating(current.rating));
-    $("#increment-0").attr("onclick", "increment(" + id + ")");
+    var currentItem = await getData(id)
+    $("#title").html(currentItem.name)
+    $("#product-img").prop("src", currentItem.img);
+    $("#product-name").html(currentItem.name)
+    $("#product-price").html(currentItem.price)
+    $("#product-description").html(currentItem.description)
+    $("#product-rating").html(getHtmlForRating(currentItem.rating));
+    $("#increment-0").attr("onclick", `increment${id}`);
     $("#increment-0").prop("id", "increment-" + id);
-    $("#quantity-0").html(current.quantity);
+    $("#quantity-0").html(currentItem.quantity);
     $("#quantity-0-edit").prop("id", "quantity-" + id + "-edit");
     $("#quantity-0").prop("id", "quantity-" + id);
     $("#quantity-" + id).click(function () { startEdit(id) });
     $("#quantity-" + id + "-edit").blur(function () { endEdit(id) });
-    $("#decrement-0").attr("onclick", "decrement(" + id + ")");
+    $("#decrement-0").attr("onclick", `decrement{id}`;
     $("#decrement-0").prop("id", "decrement-" + id);
-    $("#delete-0").attr("onclick", "askConfirmRemove(" + id + ")");
+    $("#delete-0").attr("onclick",`askConfirmRemove{id}`;
     $("#delete-0").prop("id", "delete-" + id);
 }
 
@@ -49,7 +49,7 @@ function startEdit(id) {
 function endEdit(id) {
     var initial = $("#quantity-" + id).val()
     var input = initial;
-    input = parseInt($("#quantity-" + id + "-edit").val())
+    input = parseInt($(`#quantity-${id}-edit`).val())
     if (isNaN(input)) {
         notify("Error", "edit-error", 0, "Please enter only an Integer", "red")
     }
@@ -57,13 +57,13 @@ function endEdit(id) {
         askConfirmRemove(id, "removePlusDisplay")
     else {
         let item = $("#quantity-" + id);
-        username = localStorage.getItem("current")
+        username = localStorage.getItem("currentUser")
         var cart = JSON.parse(localStorage.getItem("cart"))
         cart[username][id.toString()] = input
         localStorage.setItem("cart", JSON.stringify(cart))
         item.html(input)
         checkUserLogStatus()
-        $("#quantity-" + id + "-edit").css("display", "none")
+        $(`#quantity-${id}-edit`).css("display", "none")
         $("#quantity-" + id).css("display", "inline-block")
     }
 }

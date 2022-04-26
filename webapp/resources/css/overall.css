@@ -20,9 +20,8 @@ img {
   font-size: 18px;
   padding: 0;
 }
-.quantity-button {
+. {
    padding: 0;
-   z-index: 2;
  }
 .custom-stick-top {
   height: fit-content;
@@ -204,8 +203,9 @@ img {
 }
 
 @media (max-width : 992px) {
-  #filters {
+  #filters{
     position: absolute;
+    z-index:auto;
     top: 130px;
   }
 }

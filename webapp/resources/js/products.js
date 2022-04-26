@@ -7,7 +7,7 @@ var cart;
 //load specific item 
 function loadItem(value, index, array) {
   var obj = value
-  addNewProduct(obj["id"], obj["img"], obj["brand"], obj["name"], obj["price"], obj["rating"], cart[current][obj["id"]],)
+  addNewProduct(obj["id"], obj["img"], obj["brand"], obj["name"], obj["price"], obj["rating"], cart[currentUser][obj["id"]],)
 }
 
 //add new Product to itemsArray 
@@ -27,15 +27,17 @@ function addNewProduct(id, imgsrc, brand, name, price, rating, quantity) {
   newItem.find("#price-0").prop("id", "price-" + id);
   newItem.find("#rating-0").html(getHtmlForRating(rating));
   newItem.find("#rating-0").prop("id", "rating-" + id);
-  newItem.find("#link-0").prop("href", "product.html?id=" + id);
+  newItem.find("#link-0").prop("href", `product.html?id=${id}`);
   newItem.find("#link-0").prop("id", "link-" + id);
-  newItem.find("#increment-0").attr("onclick", "increment(" + id + ")");
+  newItem.find("#link-price-0").prop("href", `product.html?id=${id}`);
+  newItem.find("#link-price-0").prop("id", "link-price-" + id);
+  newItem.find("#increment-0").attr("onclick", `increment(${id})`);
   newItem.find("#increment-0").prop("id", "increment-" + id);
   newItem.find("#quantity-0").html(quantity);
   newItem.find("#quantity-0").prop("id", "quantity-" + id);
-  newItem.find("#decrement-0").attr("onclick", "decrement(" + id + ",'removeAtProducts')");
+  newItem.find("#decrement-0").attr("onclick", `decrement(${id},'removeAtProducts')`);
   newItem.find("#decrement-0").prop("id", "decrement-" + id);
-  newItem.find("#addcart-0").attr("onclick", "addcart(" + id + ")");
+  newItem.find("#addcart-0").attr("onclick", `addcart(${id})`);
   newItem.find("#addcart-0").prop("id", "addcart-" + id);
   newItem.find("#one-button-0").prop("id", "one-button-" + id);
   newItem.find("#three-button-0").prop("id", "three-button-" + id);
@@ -57,7 +59,7 @@ function initiateSlider(maximum, minimum = 0) {
     max: maximum,
     values: [minimum, maximum],
     slide: async function (event, ui) {
-      await $("#prices").val("Rs" + ui.values[0] + " - Rs" + ui.values[1]);
+      await $("#prices").val("Rs " + ui.values[0] + " - Rs " + ui.values[1]);
       loadAllItems()
     }
   });
@@ -85,7 +87,7 @@ function addNewBrand(brandName) {
 //load Page on init
 async function loadPage() {
   cart = JSON.parse(localStorage.getItem("cart"))
-  var current = localStorage.getItem("current")
+  var currentUser = localStorage.getItem("currentUser")
 
   await fetch('../resources/products.json')
     .then(response => response.json())
@@ -102,6 +104,8 @@ async function loadPage() {
   loadBrandsInFilter()
   //load with this filters
   loadAllItems()
+  //remove display
+  removeFiltersDisplay()
 }
 
 //called when sort or filters are changed
@@ -147,6 +151,11 @@ function eqSet(as, bs) {
 //get brands from Form that are checked //used for filters 
 function getBrandsFromForm() {
   var brands = $(".filter-brand-names")
+  var checked =[]
+  brands.each(function (index, element) { if ($(this).prop("checked")) checked.push(this); });
+  if(checked.length == 0 || checked.length == 1 && checked[0].getAttribute("id")=="brand0")
+  return getAllBrandsFromForm()
+
   var retval = new Set()
   brands.each(function (index, element) { if ($(this).prop("checked")) retval.add($(this).prop("id")); });
   return retval;
@@ -199,15 +208,18 @@ async function setFilters(filterObject,sortMethod= null){
 }
 
 //removes all filters
-function removeFilters(){
+async function removeFilters(){
 var filterObject={}
 	filterObject.min=0;
 	filterObject.max=maximum;
 	filterObject.rating=1;
 	filterObject["brand-set"]=getAllBrandsFromForm()
-	setFilters(filterObject)
+	await setFilters(filterObject)
+	removeFiltersDisplay()
 }
-
+function removeFiltersDisplay(){
+  $(".filter-brand-names").each(function (index, element) {$(this).prop("checked",false); })
+}
 //invoked when min-rating in filter is changed
 function filterMinRate(minRating) {
   for (i = 1; i <= minRating; i++)
@@ -217,7 +229,6 @@ function filterMinRate(minRating) {
 
 	$("#prices").val("Rs " + $("#slider-range").slider("values", 0) +
       " - Rs " + $("#slider-range").slider("values", 1));
-  $("#current-min-rating").html(minRating)
   minRatingDisplayed = minRating;
   loadAllItems()
 }
@@ -236,7 +247,25 @@ function addcart(id) {
   $("#three-button-" + id).css("display", "block")
   increment(id)
 }
+//remove specific filter
+async function removeSpecificFilter(filter){
+  if(filter=='brands')
+  {
+  removeFiltersDisplay()
+  loadAllItems()
+  }
+  else if(filter=='rating'){
+  filterMinRate(1)
+  }
+  else if(filter=='price'){
+  $("#slider-range").slider("values", 0,0);
+  await $("#slider-range").slider("values", 1,maximum);
+  $("#prices").val("Rs " + $("#slider-range").slider("values", 0) +
+        " - Rs " + $("#slider-range").slider("values", 1));
+  loadAllItems()
+  }
 
+}
 //toggle
 function toggleFilter() {
   if ($("#filters").css("display") == "none") {
