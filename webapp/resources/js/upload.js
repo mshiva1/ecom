@@ -4,13 +4,13 @@ var totalAmount, total_quantity;
 function addNewOrderItem(id, imgsrc, name, price, quantity) {
   var newItem = $("#order-item-0").clone();
   newItem.prop("id_no", id);
-  newItem.prop("id",`order-item-${id}`);
+  newItem.prop("id", `order-item-${id}`);
   newItem.prop("hidden", false);
   newItem.find("#order-item-name-0").html(`<a id="link-0" href="product.html?id=${id}">${name}</a>`);
   newItem.find("#order-item-name-0").prop("id", `order-item-name-${id}`);
   newItem.find("#img-0").prop("src", imgsrc);
   newItem.find("#order-item-price-0").html(price);
-  newItem.find("#order-item-price-0").prop("id", `order-item-price-${id});
+  newItem.find("#order-item-price-0").prop("id", `order-item-price-${id}`);
   newItem.find("#quantity-0").html(quantity);
   newItem.find("#quantity-0").prop("id", `quantity-${id}`);
   total_quantity += quantity;
@@ -57,7 +57,7 @@ async function loadData(fileData) {
   errorsArray = []
   errorsCount = 0
   for (const item in temp) {
-    if (temp[item] ) {
+    if (temp[item]) {
       var error = "no error"
 
       var obj = getProduct(temp[item]["ID"], products);
@@ -68,7 +68,7 @@ async function loadData(fileData) {
         error = "Product ID:" + temp[item]["ID"] + " doesn't exist"
       //error in product id
 
-			//adds in error list to show up on csv on error
+      //adds in error list to show up on csv on error
       var newError = []
       newError.push(temp[item]["ID"])
       newError.push(temp[item]["Name"])
@@ -77,20 +77,20 @@ async function loadData(fileData) {
       newError.push(error)
       errorsArray.push(newError)
 
-			//only add if no error
+      //only add if no error
       if (error == "no error") {
         //find if previous element present with same ID
-        var prev= await itemsArray.find(o => o.prop("id_no") == temp[item]["ID"]);
+        var prev = await itemsArray.find(o => o.prop("id_no") == temp[item]["ID"]);
 
         //if undefined means no item exist previously
-        if(prev == undefined)
+        if (prev == undefined)
           itemsArray.push(addNewOrderItem(temp[item]["ID"], obj["img"], obj["name"], parseInt(obj["price"]), parseInt(temp[item]["Quantity"])));
-        else{
+        else {
           // in this case previous element exists
-          var x=parseInt(prev.find("#quantity-"+temp[item]["ID"]).html())
-          x=x+parseInt(temp[item]["Quantity"])
-          prev.find("#quantity-"+temp[item]["ID"]).html(x)
-          }
+          var x = parseInt(prev.find("#quantity-" + temp[item]["ID"]).html())
+          x = x + parseInt(temp[item]["Quantity"])
+          prev.find("#quantity-" + temp[item]["ID"]).html(x)
+        }
       }
       else {
         errorsCount++;

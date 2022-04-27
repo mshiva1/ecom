@@ -117,44 +117,43 @@ function loadAllItems(event) {
   filterObject["rating"] = minRatingDisplayed;
   filterObject["brand-set"] = getBrandsFromForm()
   sortFilterDisplay(filterObject, sortMethod)
-  if(minRatingDisplayed!=1){
+  if (minRatingDisplayed != 1) {
     $("#rating-display").html(minRatingDisplayed)
-    $("#filter-rating-display").css("display","block")
-        }
-      else{
-        $("#filter-rating-display").css("display","none")
-      }
-  if(filterObject["min"]!=0 || filterObject["max"]!=maximum){
-    $('#price-display').html(filterObject["min"]+"to"+filterObject["max"])
-    $("#filter-price-display").css("display","block")
-        }
-      else{
-        $("#filter-price-display").css("display","none")
-      }
-  if(!eqSet(filterObject["brand-set"],getAllBrandsFromForm()))
-    {
-    var str=''
-    filterObject["brand-set"].forEach(function(value){if(value!="brand0") str=str+value+", "})
-    $("#brands-display").html(str.substr(0,str.length-2))
-    $("#filter-brands-display").css("display","block")
-    }
-  else{
-    $("#filter-brands-display").css("display","none")
+    $("#filter-rating-display").css("display", "block")
+  }
+  else {
+    $("#filter-rating-display").css("display", "none")
+  }
+  if (filterObject["min"] != 0 || filterObject["max"] != maximum) {
+    $('#price-display').html(filterObject["min"] + "to" + filterObject["max"])
+    $("#filter-price-display").css("display", "block")
+  }
+  else {
+    $("#filter-price-display").css("display", "none")
+  }
+  if (!eqSet(filterObject["brand-set"], getAllBrandsFromForm())) {
+    var str = ''
+    filterObject["brand-set"].forEach(function (value) { if (value != "brand0") str = str + value + ", " })
+    $("#brands-display").html(str.substr(0, str.length - 2))
+    $("#filter-brands-display").css("display", "block")
+  }
+  else {
+    $("#filter-brands-display").css("display", "none")
   }
 }
 //compare sets
 function eqSet(as, bs) {
-    if (as.size !== bs.size) return false;
-    for (var a of as) if (!bs.has(a)) return false;
-    return true;
+  if (as.size !== bs.size) return false;
+  for (var a of as) if (!bs.has(a)) return false;
+  return true;
 }
 //get brands from Form that are checked //used for filters 
 function getBrandsFromForm() {
   var brands = $(".filter-brand-names")
-  var checked =[]
+  var checked = []
   brands.each(function (index, element) { if ($(this).prop("checked")) checked.push(this); });
-  if(checked.length == 0 || checked.length == 1 && checked[0].getAttribute("id")=="brand0")
-  return getAllBrandsFromForm()
+  if (checked.length == 0 || checked.length == 1 && checked[0].getAttribute("id") == "brand0")
+    return getAllBrandsFromForm()
 
   var retval = new Set()
   brands.each(function (index, element) { if ($(this).prop("checked")) retval.add($(this).prop("id")); });
@@ -164,7 +163,7 @@ function getBrandsFromForm() {
 function getAllBrandsFromForm() {
   var brands = $(".filter-brand-names")
   var retval = new Set()
-  brands.each(function (index, element) {retval.add($(this).prop("id")); });
+  brands.each(function (index, element) { retval.add($(this).prop("id")); });
   return retval;
 }
 
@@ -197,28 +196,28 @@ function sortFilterDisplay(filterObject, sortMethod) {
   newItemsArray.forEach(function (value, index, array) { value.appendTo("#products") })
 }
 //set specific filters
-async function setFilters(filterObject,sortMethod= null){
-	if(sortMethod)
-	$("#sort-by").val(sortMethod);
-  $("#slider-range").slider("values", 0,filterObject["min"]);
-  $("#slider-range").slider("values", 1,filterObject["max"]);
-	$(".filter-brand-names").each(function (index, element) {$(this).prop("checked",false); })
-  filterObject["brand-set"].forEach(function(value){$("#"+value).prop("checked",true)})
+async function setFilters(filterObject, sortMethod = null) {
+  if (sortMethod)
+    $("#sort-by").val(sortMethod);
+  $("#slider-range").slider("values", 0, filterObject["min"]);
+  $("#slider-range").slider("values", 1, filterObject["max"]);
+  $(".filter-brand-names").each(function (index, element) { $(this).prop("checked", false); })
+  filterObject["brand-set"].forEach(function (value) { $("#" + value).prop("checked", true) })
   await filterMinRate(filterObject["rating"])
 }
 
 //removes all filters
-async function removeFilters(){
-var filterObject={}
-	filterObject.min=0;
-	filterObject.max=maximum;
-	filterObject.rating=1;
-	filterObject["brand-set"]=getAllBrandsFromForm()
-	await setFilters(filterObject)
-	removeFiltersDisplay()
+async function removeFilters() {
+  var filterObject = {}
+  filterObject.min = 0;
+  filterObject.max = maximum;
+  filterObject.rating = 1;
+  filterObject["brand-set"] = getAllBrandsFromForm()
+  await setFilters(filterObject)
+  removeFiltersDisplay()
 }
-function removeFiltersDisplay(){
-  $(".filter-brand-names").each(function (index, element) {$(this).prop("checked",false); })
+function removeFiltersDisplay() {
+  $(".filter-brand-names").each(function (index, element) { $(this).prop("checked", false); })
 }
 //invoked when min-rating in filter is changed
 function filterMinRate(minRating) {
@@ -227,8 +226,8 @@ function filterMinRate(minRating) {
   for (; i <= 5; i++)
     $("#rating-" + i).html(getLight(i))
 
-	$("#prices").val("Rs " + $("#slider-range").slider("values", 0) +
-      " - Rs " + $("#slider-range").slider("values", 1));
+  $("#prices").val("Rs " + $("#slider-range").slider("values", 0) +
+    " - Rs " + $("#slider-range").slider("values", 1));
   minRatingDisplayed = minRating;
   loadAllItems()
 }
@@ -248,21 +247,20 @@ function addcart(id) {
   increment(id)
 }
 //remove specific filter
-async function removeSpecificFilter(filter){
-  if(filter=='brands')
-  {
-  removeFiltersDisplay()
-  loadAllItems()
+async function removeSpecificFilter(filter) {
+  if (filter == 'brands') {
+    removeFiltersDisplay()
+    loadAllItems()
   }
-  else if(filter=='rating'){
-  filterMinRate(1)
+  else if (filter == 'rating') {
+    filterMinRate(1)
   }
-  else if(filter=='price'){
-  $("#slider-range").slider("values", 0,0);
-  await $("#slider-range").slider("values", 1,maximum);
-  $("#prices").val("Rs " + $("#slider-range").slider("values", 0) +
-        " - Rs " + $("#slider-range").slider("values", 1));
-  loadAllItems()
+  else if (filter == 'price') {
+    $("#slider-range").slider("values", 0, 0);
+    await $("#slider-range").slider("values", 1, maximum);
+    $("#prices").val("Rs " + $("#slider-range").slider("values", 0) +
+      " - Rs " + $("#slider-range").slider("values", 1));
+    loadAllItems()
   }
 
 }
@@ -283,7 +281,7 @@ async function init() {
   await loadPage()
   $("#sort-by").on("change", loadAllItems)
   $(".filter-brand-names").on("change", loadAllItems)
-  $("#remove-filters").on("click",removeFilters)
+  $("#remove-filters").on("click", removeFilters)
 }
 
 $(document).ready(init)

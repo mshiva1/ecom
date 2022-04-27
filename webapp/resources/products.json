@@ -5,7 +5,7 @@
     "name": "Lays American Style",
     "img": "https://m.media-amazon.com/images/I/71lMUEjjhcL._SX679_.jpg",
     "price": 20,
-    "description": "\nWeight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour :American Style Cream and Onion",
+    "description": "\nWeight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : American Style Cream and Onion",
     "quantity": 0,
     "rating": 4
   },
@@ -15,7 +15,7 @@
     "name": "Lays Classic Salted",
     "img": "https://m.media-amazon.com/images/I/711xAt29aeL._SX679_.jpg",
     "price": 10,
-    "description": "\nWeight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour :Classic Salted",
+    "description": "\nWeight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : Classic Salted",
     "quantity": 0,
     "rating": 3
   },
@@ -25,7 +25,7 @@
     "name": "Lays Magic Masala",
     "img": "https://m.media-amazon.com/images/I/71J93R3+TkL._SX679_.jpg",
     "price": 20,
-    "description": "\nWeight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour :India's Magic Masala",
+    "description": "\nWeight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : India's Magic Masala",
     "quantity": 0,
     "rating": 1
   },
@@ -35,7 +35,7 @@
     "name": "Lays Tomato Tango",
     "img": "https://m.media-amazon.com/images/I/71Af8qfZQUL._SX679_.jpg",
     "price": 20,
-    "description": "\nWeight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour :Spanish Tomato Tango",
+    "description": "\nWeight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : Spanish Tomato Tango",
     "quantity": 0,
     "rating": 4
   },
@@ -45,7 +45,7 @@
     "name": "Kurkure Chilli Chatka",
     "img": "https://m.media-amazon.com/images/I/710CqT5lNBL._SX679_.jpg",
     "price": 20,
-    "description": "\nWeight: 90g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour :Chilli Chatka",
+    "description": "\nWeight: 90g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : Chilli Chatka",
     "quantity": 0,
     "rating": 4
   },
@@ -55,7 +55,7 @@
     "name": "Kurkure Masala",
     "img": "https://m.media-amazon.com/images/I/71FLHWoSDWL._SX679_.jpg",
     "price": 20,
-    "description": "\nWeight: 90g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour :Masala Munch",
+    "description": "\nWeight: 90g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : Masala Munch",
     "quantity": 0,
     "rating": 5
   },
@@ -65,7 +65,7 @@
     "name": "Kurkure Chutney",
     "img": "https://m.media-amazon.com/images/I/71TFvENBQML._SX679_.jpg",
     "price": 20,
-    "description": "\nWeight: 90g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour :Green Chutney Style",
+    "description": "\nWeight: 90g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : Green Chutney Style",
     "quantity": 0,
     "rating": 5
   },
@@ -75,47 +75,47 @@
     "name": "Kurkure Puffcorn",
     "img": "https://m.media-amazon.com/images/I/71OKcnJYceL._SX679_.jpg",
     "price": 20,
-    "description": "\nWeight: 90g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour :PuffCorn",
+    "description": "\nWeight: 90g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : PuffCorn",
     "quantity": 0,
     "rating": 3
   },
   {
     "id": 9,
-    "brand": "Mad-Angles",
+    "brand": "Bingo",
     "name": "Mad Angles Tomato",
     "img": "https://m.media-amazon.com/images/I/81r0LYFC0HL._SX679_.jpg",
     "price": 10,
-    "description": "\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour :Tomato Madness",
+    "description": "\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour : Tomato Madness",
     "quantity": 0,
     "rating": 2
   },
   {
     "id": 10,
-    "brand": "Mad-Angles",
+    "brand": "Bingo",
     "name": "Mad Angles Pizza",
     "img": "https://m.media-amazon.com/images/I/61m4foyFSVL._SX679_.jpg",
     "price": 20,
-    "description": "\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour :Pizza Aaah",
+    "description": "\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour : Pizza Aaah",
     "quantity": 0,
     "rating": 5
   },
   {
     "id": 11,
-    "brand": "Mad-Angles",
+    "brand": "Bingo",
     "name": "Mad Angles Achaari",
     "img": "https://m.media-amazon.com/images/I/814gWY+drSL._SX679_.jpg",
     "price": 30,
-    "description": "\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour :Achaari Masti",
+    "description": "\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour : Achaari Masti",
     "quantity": 0,
     "rating": 4
   },
   {
     "id": 12,
-    "brand": "Mad-Angles",
+    "brand": "Bingo",
     "name": "Mad Angles Peri Peri",
     "img": "https://m.media-amazon.com/images/I/81mK1JX+2yL._SX679_.jpg",
     "price": 30,
-    "description": "\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour :Very Peri Peri",
+    "description": "\nWeight: 66g \nVegetarian Snacks \nManufactured: ITC Foods \nFlavour : Very Peri Peri",
     "quantity": 0,
     "rating": 2
   }

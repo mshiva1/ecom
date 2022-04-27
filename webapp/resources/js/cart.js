@@ -73,7 +73,7 @@ function addNewCartItem(id, imgsrc, name, price, quantity) {
 	newItem.find("#quantity-0").prop("id", "quantity-" + id);
 	newItem.find("#decrement-0").attr("onclick", `decrementItem(${id})`);
 	newItem.find("#decrement-0").prop("id", "decrement-" + id);
-	newItem.find("#remove-0").attr("onclick", `remove(${id})`);
+	newItem.find("#remove-0").attr("onclick", `removeItem(${id})`);
 	newItem.find("#remove-0").prop("id", "remove-" + id);
 	newItem.appendTo("#cart-items");
 	totalQuantity += quantity;
@@ -105,7 +105,7 @@ async function loadPage() {
 	totalAmount = 0;
 	totalQuantity = 0;
 	for (const item in temp) {
-		if (item  && temp[item] ) {
+		if (item && temp[item]) {
 			var obj = {};
 			obj["id"] = item;
 			obj["quantity"] = temp[item];
@@ -134,7 +134,7 @@ async function checkOut() {
 	var temp = cart[currentUser];
 	var itemArray = []
 	for (const item in temp) {
-		if (item  && temp[item] ) {
+		if (item && temp[item]) {
 			var obj = [];
 			var prod = getProduct(item, products);
 			obj.push(item);

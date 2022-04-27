@@ -3,7 +3,7 @@ function notify(type, toastId, timer, message, color) {
   toast = `<div class="toast" data-autohide="false" style="color:white;background-color:${color}" id="${toastId}"><div class="toast-header"><strong class="mr-auto">${type}</strong><button type="button" class="ml-2 mb-1 close" onclick=removeToast("${toastId}") aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="toast-body">${message}</div></div>`
   $("#toast-body").append(toast)
   $(".toast").toast("show")
-  if (timer )
+  if (timer)
     setTimeout(function () { removeToast(toastId); }, timer)
 }
 
@@ -21,9 +21,8 @@ function askConfirmRemove(id, nextFun = "remove") {
 
 //inserts NavBar and Footer
 function setNavAndFooter() {
-  var navstr = ''
-  var navstr = '<header><nav class="navbar navbar-expand navbar-light fixed-top"><a class="navbar-brand" href="products.html"><img alt="Increff" class="d-inline-block align-top"  data-toggle="tooltip" data-placement="top" title="All Products" id="logo" src="../resources/logo.png"></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="d-flex collapse navbar-collapse" id="navbarCollapse"><ul class="col-12 px-0 navbar-nav justify-content-end"><li class="nav-item active"  data-toggle="tooltip" data-placement="top" title="Upload CSV"><a class="nav-link" href="upload.html"><span class="material-icons-outlined m-1 icon-large">file_upload</span></a></li><li class="nav-item active"  data-toggle="tooltip" data-placement="top" title="Current Cart"><a class="nav-link" href="cart.html"><span class="material-icons-outlined m-1 icon-large">shopping_cart</span><sub><span class="badge badge-pill" id="cart-count">0</span></sub></a></li><li class="nav-item active"><a class="nav-link" href="login.html"  data-toggle="tooltip" data-placement="top" title="Logout"><span class="material-icons-outlined icon-large m-1">logout</span></a></li></ul></div></nav></header>'
-  var footerstr = '<footer class="footer d-flex justify-content-between px-3">    <span>&copy; Increff  </span><span id="date-time"></span></footer>'
+  var navstr = '<nav class="navbar navbar-expand navbar-light container-fluid-sm"><a class="navbar-brand" href="products.html"><img alt="Increff" class="d-inline-block align-top"  data-toggle="tooltip" data-placement="top" title="All Products" id="logo" src="../resources/logo.png"></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="d-flex collapse navbar-collapse" id="navbarCollapse"><ul class="col-12 px-0 navbar-nav justify-content-end"><li class="nav-item active"  data-toggle="tooltip" data-placement="top" title="Upload CSV"><a class="nav-link" href="upload.html"><span class="material-icons-outlined m-1 icon-large">file_upload</span></a></li><li class="nav-item active"  data-toggle="tooltip" data-placement="top" title="Current Cart"><a class="nav-link" href="cart.html"><span class="material-icons-outlined m-1 icon-large">shopping_cart</span><sub><span class="badge badge-pill" id="cart-count">0</span></sub></a></li><li class="nav-item active"><a class="nav-link" href="login.html"  data-toggle="tooltip" data-placement="top" title="Logout"><span class="material-icons-outlined icon-large m-1">logout</span></a></li></ul></div></nav>'
+  var footerstr = '<footer class="footer d-flex justify-content-between px-3 container-fluid-sm">    <span>&copy; Increff  </span><span id="date-time"></span></footer>'
 
   $("#navbar-stub").html(navstr)
   $("#footer-stub").html(footerstr)

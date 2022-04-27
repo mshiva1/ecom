@@ -17,22 +17,23 @@ async function getData(id) {
 //load the data of productId into page
 async function load(id) {
     var currentItem = await getData(id)
+    if (currentItem == undefined) return;
     $("#title").html(currentItem.name)
     $("#product-img").prop("src", currentItem.img);
     $("#product-name").html(currentItem.name)
     $("#product-price").html(currentItem.price)
     $("#product-description").html(currentItem.description)
     $("#product-rating").html(getHtmlForRating(currentItem.rating));
-    $("#increment-0").attr("onclick", `increment${id}`);
+    $("#increment-0").attr("onclick", `increment(${id})`);
     $("#increment-0").prop("id", "increment-" + id);
     $("#quantity-0").html(currentItem.quantity);
     $("#quantity-0-edit").prop("id", "quantity-" + id + "-edit");
     $("#quantity-0").prop("id", "quantity-" + id);
     $("#quantity-" + id).click(function () { startEdit(id) });
     $("#quantity-" + id + "-edit").blur(function () { endEdit(id) });
-    $("#decrement-0").attr("onclick", `decrement{id}`;
+    $("#decrement-0").attr("onclick", `decrement(${id})`);
     $("#decrement-0").prop("id", "decrement-" + id);
-    $("#delete-0").attr("onclick",`askConfirmRemove{id}`;
+    $("#delete-0").attr("onclick", `askConfirmRemove(${id})`);
     $("#delete-0").prop("id", "delete-" + id);
 }
 
@@ -76,15 +77,14 @@ function removePlusDisplay(id) {
 }
 
 //called when specific product not found
-function productNotFound(){
-    $("#product-not-found").css("display","block")
-    $("#product-found").css("display","none")
-
+function productNotFound() {
+    $("#product-not-found").css("display", "block")
+    $("#product-found").css("display", "none")
 }
 
 function init() {
     const id = new URLSearchParams(window.location.search).get('id');
-    if (id != undefined)
+    if (id)
         load(id);
     else productNotFound()
 }

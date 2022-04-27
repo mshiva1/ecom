@@ -5,22 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-    <link href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link href="../resources/css/overall.css" rel="stylesheet">
 </head>
 
 <body>
-    <div id="navbar-stub">
+    <div id="navbar-stub" class="fixed-top">
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div id="toast-body"></div>
         <div class="text-center shadow-sm row py-4 m-0" id="empty-cart" style="display:none;">
             There are no Items in Cart . <a href="products.html">Click here to add products</a>
         </div>
         <div class="row m-0">
             <div class="col col-lg-8 px-3 py-2 my-0" id="cart-items">
-
                 <div class="items-in-cart row my-2 custom-stick-top" id="cart-header">
                     <div class="d-flex col-12 align-items-center py-2 shadow-sm px-0">
                         <div class="col-2 ">
@@ -37,22 +37,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="items-in-cart row my-2" id="cart-item-0" hidden >
-                    <div class="d-flex col-12 align-items-center shadow-sm px-0">
+                <div class="items-in-cart row my-2" id="cart-item-0" hidden>
+                    <div class="d-flex col-12 align-items-center shadow-sm p-1">
                         <div class="col-2 px-0">
-                            <img class="cart-image" id="img-0" alt="Card image"
-                                 src="../resources/prod1.jpg"
+                            <img class="cart-image" id="img-0" alt="Card image" src="../resources/prod1.jpg"
                                 style="width:100%">
                         </div>
                         <div class="col-5 px-1">
                             <h5 id="cart-item-name-0"></h5>
                         </div>
                         <div class="col-2 px-1">
-                            <h5> Rs <span id="cart-item-price-0"></span></h5>
+                            <h5>
+                                Rs <span id="cart-item-price-0">
+
+                                </span>
+                            </h5>
                         </div>
                         <div class="col-3 row px-0">
                             <div class="col-12 m-1 text-right p-0">
-                                <button class="btn btn-sm btn-outline-danger  p-1 m-1" id="remove-0"
+                                <button class="btn btn-sm btn-outline-danger  p-0 p-sm-1 m-1" id="remove-0"
                                     onclick="removeItem(0)" type="button">
                                     <span class="material-icons-outlined m-1 icon-sm">
                                         delete_outline
@@ -61,16 +64,16 @@
                             </div>
                             <div class="col-12 text-right p-0">
 
-                                <button class="btn btn-sm btn-outline-primary  p-1" id="decrement-0"
+                                <button class="btn btn-sm btn-outline-primary  p-0 p-sm-1" id="decrement-0"
                                     onclick="decrementItem(0)" type="button">
                                     <span class="material-icons-outlined m-1 icon-sm">
                                         remove
                                     </span>
                                 </button>
-                                <button class="btn btn-sm disabled font-weight-bold  p-1" id="quantity-0"
+                                <button class="btn btn-sm disabled font-weight-bold  p-0 p-sm-1" id="quantity-0"
                                     type="button">0
                                 </button>
-                                <button class="btn btn-sm btn-outline-primary  p-1" id="increment-0"
+                                <button class="btn btn-sm btn-outline-primary  p-0 p-sm-1" id="increment-0"
                                     onclick="incrementItem(0)" type="button">
                                     <span class="material-icons-outlined m-1 icon-sm">
                                         add
@@ -89,12 +92,16 @@
                     <div class="my-3">
                         <h4 class="d-flex">
                             <span class="col-8 p-0">Total Quantity </span>
-                            <span class="col-4 p-0">: <span id="total-quantity"></span>
+                            <span class="col-4 p-0">
+                                :
+                                <span id="total-quantity"></span>
                             </span>
                         </h4>
                         <h4 class="d-flex">
                             <span class="col-8 p-0">Total Amount </span>
-                            <span class="col-4 p-0">: Rs<span id="total-price"></span>
+                            <span class="col-4 p-0">
+                                : Rs
+                                <span id="total-price"></span>
                             </span>
                         </h4>
                         <div class="text-right my-2">
@@ -111,7 +118,9 @@
                         <h5 class="modal-title">Confirm Remove</h5>
                     </div>
                     <div class="modal-body">
-                        <p>This Product will be removed from Cart <span id="remove-item-name"></span>?</p>
+                        <p>This Product will be removed from Cart
+                            <span id="remove-item-name"></span>?
+                        </p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -124,9 +133,9 @@
     </div>
     <div id="footer-stub"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://storage.googleapis.com/static.increff.com/jquery/3.6.0/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="../resources/js/papaparse.min.js"></script>
     <script src="../resources/js/app.js"></script>
     <script src="../resources/js/cart.js"></script>

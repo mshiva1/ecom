@@ -26,7 +26,7 @@ function checkUser() {
 
 //if page is accessed with user logged in Logout happens automatically
 function logOutIfRequired() {
-    if (localStorage.getItem("currentUser") != undefined) {
+    if (localStorage.getItem("currentUser") != null) {
         localStorage.removeItem("currentUser")
         notify("Logout Success", "logout-success", 5000, "User Logged out Successfully. Login Again", "green")
     }
