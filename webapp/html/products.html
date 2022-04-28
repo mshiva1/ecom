@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
-
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link href="../resources/css/overall.css" rel="stylesheet">
+    <link href="../resources/css/app.css" rel="stylesheet">
 </head>
 
 <body>
@@ -19,16 +18,22 @@
     <div class="container-fluid">
         <div id="toast-body"></div>
         <div class="row justify-content-between align-items-end">
-            <h3 class="col-4 py-2 my-3">Products</h3>
-            <div class="col-5 col-sm-4 col-md-4 col-lg-2 m-1">
-                <div class="row justify-content-between">
-                    <button class="d-block d-lg-none col-2 btn btn-sm btn-outline-secondary p-0" type=button
-                        onclick="toggleFilter()">
+            <h3 class="col-3 py-2 my-3">Products</h3>
+            <div class="col-11 col-sm-8 col-md-8 col-lg-4 m-1">
+                <div class="row justify-content-between align-items-end">
+                    <h6 class="col-lg-6 col-6 font-italic">
+                        Showing <span id="display-item-count"></span> Items
+                    </h6>
+                    <div class="d-block d-lg-none col-2 col-md-1 p-1 align-items-center">
+                        <button class=" btn btn-sm btn-outline-secondary p-0 w-75" type=button
+                                onclick="toggleFilter()">
                         <span class="material-icons-outlined m-1 icon-sm">
                             filter_alt
                         </span>
-                    </button>
-                    <select class="col-9 col-lg-12 form-control p-0" id="sort-by" style="font-size:small">
+                        </button>
+                    </div>
+
+                    <select class="col-4 col-lg-6 form-control p-0" id="sort-by" style="font-size:small">
                         <option value="default">Default</option>
                         <option value="low-to-high">Price: Low to High</option>
                         <option value="high-to-low">Price: High to Low</option>
@@ -65,7 +70,7 @@
             <div class="col-lg-2 col-10 d-lg-flex d-none custom-stick-top justify-content-center bg-transparent p-2"
                 id="filters" style="z-index:auto">
                 <div class="row w-100 justify-content-center">
-                    <div class=" border rounded-2 bg-light col-lg-12 col-md-6 col-sm-8 col-10 p-1" style="z-index:6">
+                    <div class=" border bg-light col-lg-12 col-md-6 col-sm-8 col-10 p-1" style="z-index:6">
                         <div class="d-flex justify-content-between">
                             <h5>Filters</h5>
                             <button class="btn btn-sm btn-outline-danger p-0" id="remove-filters" type="button">
@@ -114,7 +119,7 @@
                         <div class=" card shadow-sm border-0">
                             <a id="link-0" class="text-center">
                                 <img alt="Card image" class="custom-product-image card-img-top" id="img-0"
-                                    src="../resources/prod0.jpg" style="width:100%;margin:auto">
+                                    src="" style="width:100%;margin:auto">
                             </a>
                             <div class="card-body">
                                 <a id="link-price-0" class="text-dark">

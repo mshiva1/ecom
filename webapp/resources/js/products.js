@@ -194,6 +194,7 @@ function sortFilterDisplay(filterObject, sortMethod) {
   //load after filter and sort
   itemsArray.forEach(function (value, index, array) { value.remove() })
   newItemsArray.forEach(function (value, index, array) { value.appendTo("#products") })
+  $("#display-item-count").html(newItemsArray.length)
 }
 //set specific filters
 async function setFilters(filterObject, sortMethod = null) {

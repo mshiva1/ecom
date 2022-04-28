@@ -8,7 +8,7 @@
     <link href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link href="../resources/css/overall.css" rel="stylesheet">
+    <link href="../resources/css/app.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
                 <div class="items-in-cart row my-2" id="cart-item-0" hidden>
                     <div class="d-flex col-12 align-items-center shadow-sm p-1">
                         <div class="col-2 px-0">
-                            <img class="cart-image" id="img-0" alt="Card image" src="../resources/prod1.jpg"
+                            <img class="cart-image" id="img-0" alt="Card image" src=""
                                 style="width:100%">
                         </div>
                         <div class="col-5 px-1">
@@ -86,9 +86,17 @@
             </div>
             <div class="col-lg-4 " id="cart-summary">
                 <div class="col-12  my-3 shadow-sm custom-stick-top shadow-sm">
-                    <div class="header">
-                        <h4>Cart Summary</h4>
-                    </div>
+                        <h4 class="row justify-content-between m-0">
+                            <span>Cart Summary</span>
+                            <span>
+                                <button class="btn btn-sm btn-outline-danger p-0" id="clear-cart" type="button" onclick="confirmClearCart()">
+                                <span class="material-icons-outlined m-1 icon-sm">
+                                    remove_shopping_cart
+                                </span>
+                            </button>
+                            </span>
+                        </h4>
+
                     <div class="my-3">
                         <h4 class="d-flex">
                             <span class="col-8 p-0">Total Quantity </span>
@@ -125,7 +133,25 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <button type="button" id="confirm-remove-button" data-dismiss="modal"
-                            class="btn btn-danger">Confirm</button>
+                                class="btn btn-danger">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" id="confirm-clear" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirm Clear Cart</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>All Products will be removed from Cart.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" id="confirm-clear-button" data-dismiss="modal"
+                                class="btn btn-danger" onclick="clearCart()">Confirm</button>
                     </div>
                 </div>
             </div>

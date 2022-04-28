@@ -8,7 +8,7 @@
     <link href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link href="../resources/css/overall.css" rel="stylesheet">
+    <link href="../resources/css/app.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,34 +29,44 @@
                 <h4 class="mx-2 my-1" id="product-rating">
                 </h4>
                 <div class="mx-2 my-lg-3 my-3">
-                    <button class="btn btn-sm btn-outline-primary" id="decrement-0" onclick="decrement(0)"
-                        type="button">
-                        <span class="material-icons-outlined m-1 icon-sm">
-                            remove
-                        </span>
-                    </button> &nbsp;
-                    <span class="inline" id="quantity" tabindex="-1">
-                        <button class="btn btn-sm focus-edit" id="quantity-0" type="button">
-                            0
-                        </button>
-                        <input class="form-control p-1" id="quantity-0-edit" type="text"
-                            style="width:40px;display:none">
-                    </span>&nbsp;
-                    <button class="btn btn-sm btn-outline-primary" id="increment-0" onclick="increment(0)"
-                        type="button">
-                        <span class="material-icons-outlined m-1 icon-sm">
-                            add
-                        </span>
-                    </button> &nbsp;&nbsp;
-                    <button class="btn btn-sm btn-outline-danger" id="delete-0" onclick="delete(0)" type="button">
+                    <div id="three-button">
+                        <div class="d-flex justify-content-start">
+                            <button class="btn btn-sm btn-outline-primary " id="decrement-0"
+                                    onclick="decrement(0)" type="button">
+                                            <span class="material-icons-outlined m-1 icon-sm">
+                                                remove
+                                            </span>
+                            </button>&nbsp;
+                            <button class="btn btn-sm disabled" id="quantity-0"
+                                    type="button">0</button>&nbsp;
+                            <button class="btn btn-sm btn-outline-primary " id="increment-0"
+                                    onclick="increment(0)" type="button">
+                                            <span class="material-icons-outlined m-1 icon-sm">
+                                                add
+                                            </span>
+                            </button>
+                            &nbsp;&nbsp;
+                            <button class="btn btn-sm btn-outline-danger" id="delete-0" onclick="delete(0)" type="button">
                         <span class="material-icons-outlined m-1 icon-sm">
                             delete_outline
                         </span>
-                    </button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="icon-sm" href="cart.html">
-                        Go To Cart
-                    </a>
+                            </button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a class="icon-sm p-1" href="cart.html">
+                                Go To Cart
+                            </a>
+                        </div>
+                    </div>
+                    <div id="one-button">
+                        <div class="d-flex justify-content-start">
+                            <button class="btn btn-sm btn-outline-primary px-3 py-2 " id="addcart-0"
+                                    onclick="increment(0)" type="button">
+                                Add to Cart
+                            </button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+
                 </div>
                 <div>
                     <br>

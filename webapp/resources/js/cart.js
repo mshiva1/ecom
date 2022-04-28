@@ -154,13 +154,24 @@ async function checkOut() {
 	emptyCartDisplay()
 	checkUserLogStatus()
 }
+//confirm clear cart
+function confirmClearCart(){
+$("#confirm-clear").modal("toggle");
+}
+
+//clear cart
+function clearCart(){
+	emptyCart()
+	emptyCartDisplay()
+	checkUserLogStatus()
+}
 
 //empties the cart
-function emptyCart(id) {
+async function emptyCart() {
 	var cart = JSON.parse(localStorage.getItem("cart"))
 	delete cart[currentUser]
 	cart[currentUser] = {}
-	localStorage.setItem("cart", JSON.stringify(cart))
+	await localStorage.setItem("cart", JSON.stringify(cart))
 }
 
 //for downloading csv file of order items
