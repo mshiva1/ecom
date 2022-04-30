@@ -155,12 +155,12 @@ async function checkOut() {
 	checkUserLogStatus()
 }
 //confirm clear cart
-function confirmClearCart(){
-$("#confirm-clear").modal("toggle");
+function confirmClearCart() {
+	$("#confirm-clear").modal("toggle");
 }
 
 //clear cart
-function clearCart(){
+function clearCart() {
 	emptyCart()
 	emptyCartDisplay()
 	checkUserLogStatus()

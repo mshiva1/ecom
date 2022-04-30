@@ -35,13 +35,34 @@ function clearDisplay() {
 //read file
 function getOrderItems() {
   var file = $('#order-file')[0].files[0];
-  readFileData(file, readFileDataCallback);
+  if (file.type != "text/csv") {
+    notify("Error", "upload-error", 0, "Please Select a CSV file. Only CSV files cab be read", "Red")
+    $("#order-details").css("display", "none")
+  }
+  else
+    readFileData(file, readFileDataCallback);
 }
-
+//check Headers
+function checkHeaders(filedata) {
+  console.log(filedata)
+  const item = filedata[0]
+  var setOfHeaders = new Set(["ID", "Quantity", "Name", "Price"])
+  for (const header in item)
+    setOfHeaders.delete(header)
+  if (setOfHeaders.size == 0)
+    return true;
+  else
+    return false;
+}
 //read file data
 function readFileDataCallback(results) {
   var fileData = results.data;
-  loadData(fileData)
+  if (checkHeaders(fileData))
+    loadData(fileData)
+  else {
+    notify("Error", "upload-error", 0, "There are some problems with the File Headers. Download the CSV again ", "Red")
+    $("#order-details").css("display", "none")
+  }
 }
 
 //load Data into html
@@ -150,7 +171,9 @@ function updateFileName() {
   str = str.substring(str.lastIndexOf('\\') + 1)
   $('#order-file-name').html(str);
 }
-
+function downloadSample() {
+  window.location.href = '../resources/sample.csv';
+}
 function init() {
   $('#order-file-button').click(getOrderItems);
   $("#order-file").on("change", updateFileName)

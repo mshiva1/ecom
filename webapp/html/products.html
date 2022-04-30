@@ -25,11 +25,10 @@
                         Showing <span id="display-item-count"></span> Items
                     </h6>
                     <div class="d-block d-lg-none col-2 col-md-1 p-1 align-items-center">
-                        <button class=" btn btn-sm btn-outline-secondary p-0 w-75" type=button
-                                onclick="toggleFilter()">
-                        <span class="material-icons-outlined m-1 icon-sm">
-                            filter_alt
-                        </span>
+                        <button class=" btn btn-sm btn-outline-secondary p-0 w-75" type=button onclick="toggleFilter()">
+                            <span class="material-icons-outlined m-1 icon-sm">
+                                filter_alt
+                            </span>
                         </button>
                     </div>
 
@@ -89,15 +88,15 @@
                             <div id="filter-rating">
                                 <label class="font-weight-bold">Minimum Rating: </label>
                                 <br>
-                                <button class="bg-light border-0 p-0" id="rating-1" onclick="filterMinRate(1)"
+                                <button class="bg-light border-0 p-0" id="rating-1" onclick="setMinRating(1)"
                                     type="button"></button>
-                                <button class="bg-light border-0 p-0" id="rating-2" onclick="filterMinRate(2)"
+                                <button class="bg-light border-0 p-0" id="rating-2" onclick="setMinRating(2)"
                                     type="button"></button>
-                                <button class="bg-light border-0 p-0" id="rating-3" onclick="filterMinRate(3)"
+                                <button class="bg-light border-0 p-0" id="rating-3" onclick="setMinRating(3)"
                                     type="button"></button>
-                                <button class="bg-light border-0 p-0" id="rating-4" onclick="filterMinRate(4)"
+                                <button class="bg-light border-0 p-0" id="rating-4" onclick="setMinRating(4)"
                                     type="button"></button>
-                                <button class="bg-light border-0 p-0" id="rating-5" onclick="filterMinRate(5)"
+                                <button class="bg-light border-0 p-0" id="rating-5" onclick="setMinRating(5)"
                                     type="button"></button>
                             </div>
                             <br>
@@ -118,8 +117,8 @@
                     <div class=" col-lg-3 col-md-4 col-sm-6 col-12 my-2 scaleup" id="product-0" hidden>
                         <div class=" card shadow-sm border-0">
                             <a id="link-0" class="text-center">
-                                <img alt="Card image" class="custom-product-image card-img-top" id="img-0"
-                                    src="" style="width:100%;margin:auto">
+                                <img alt="Card image" class="custom-product-image card-img-top" id="img-0" src=""
+                                    style="width:100%;margin:auto">
                             </a>
                             <div class="card-body">
                                 <a id="link-price-0" class="text-dark">
@@ -165,7 +164,7 @@
             </div>
         </div>
         <div class="modal fade" tabindex="-1" id="confirm-remove" role="dialog">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog modal-dialog-centered  " role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Confirm Remove</h5>
@@ -191,7 +190,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="../resources/js/app.js"></script>
-    <script src="../resources/js/products.js"></script>
+    <script src="../resources/js/products1.js"></script>
 </body>
 
 </html>

@@ -101,7 +101,8 @@ async function checkUserLogStatus() {
   await fetch('../resources/passwords.json')
     .then(response => response.json())
     .then(jsonResponse => passwords = jsonResponse)
-  if (currentUser == undefined || passwords[currentUser] == undefined)
+  var currentUserObject = passwords.find(o => o.username == currentUser)
+  if (currentUser == undefined || currentUserObject == undefined)
     window.location.replace(`login.html?redirect=${window.location.href}`)
   else {
     cart = JSON.parse(localStorage.getItem("cart"))

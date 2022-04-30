@@ -3,7 +3,8 @@ async function checkFor(username, password) {
     await fetch('../resources/passwords.json')
         .then(response => response.json())
         .then(jsonResponse => passwords = jsonResponse)
-    if (passwords[username] == password) {
+    var currentUserObject = passwords.find(o => o.username == username)
+    if (currentUserObject != undefined && currentUserObject.password == password) {
         await localStorage.setItem("currentUser", username)
 
         const redirect = new URLSearchParams(window.location.search).get('redirect');

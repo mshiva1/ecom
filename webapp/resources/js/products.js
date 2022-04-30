@@ -1,6 +1,9 @@
 var itemsArray = []
 var maximum = 0, minimum = 0;
-var brandsSet = new Set()
+var filterMax = 0, filterMin = 0;
+var brandsSet = new Set();
+var filterBrandSet;
+var sortBy = "default";
 var minRatingDisplayed = 1;
 var cart;
 
@@ -52,12 +55,12 @@ function addNewProduct(id, imgsrc, brand, name, price, rating, quantity) {
 }
 
 //initiate slider for price range
-function initiateSlider(maximum, minimum = 0) {
+function initiateSlider(maximum, minimum, filterMax, filterMin) {
   $("#slider-range").slider({
     range: true,
     min: minimum,
     max: maximum,
-    values: [minimum, maximum],
+    values: [filterMin, filterMax],
     slide: async function (event, ui) {
       await $("#prices").val("Rs " + ui.values[0] + " - Rs " + ui.values[1]);
       loadAllItems()
@@ -84,6 +87,34 @@ function addNewBrand(brandName) {
   newBrand.appendTo("#brands-list")
 }
 
+async function setCheckedToCurrentBrands() {
+  var brands = $(".filter-brand-names")
+  //remove all checkboxes
+  brands.each(function (index, element) { $(this).prop("checked", false) });
+  if (filterBrandSet.size == 0)
+    filterBrandSet = getAllBrandsFromForm();
+  else
+    brands.each(function (index, element) {
+      if (filterBrandSet.has($(this).prop("id"))) $(this).prop("checked", true);
+    });
+  await console.log($("#Lays").prop("checked"))
+}
+function loadFiltersIntoGlobalVariables() {
+  sortBy = new URLSearchParams(window.location.search).get('sortby')
+  var minURL = new URLSearchParams(window.location.search).get('min')
+  var maxURL = new URLSearchParams(window.location.search).get('max')
+  var ratingURL = new URLSearchParams(window.location.search).get('minRating')
+  var brandsArray = new URLSearchParams(window.location.search).get('brandsSet')
+
+  if (minURL != null) filterMin = parseInt(minURL);
+  else filterMin = 0;
+  if (maxURL != null) filterMax = parseInt(maxURL);
+  else filterMax = maximum
+  if (ratingURL != null) minRatingDisplayed = parseInt(ratingURL);
+  if (brandsArray != null) filterBrandSet = new Set(JSON.parse(brandsArray))
+  else filterBrandSet = new Set()
+}
+
 //load Page on init
 async function loadPage() {
   cart = JSON.parse(localStorage.getItem("cart"))
@@ -93,53 +124,61 @@ async function loadPage() {
     .then(response => response.json())
     .then(jsonResponse => temp = jsonResponse)
 
-  itemsArray = []
+
   //empty itemsArray at initial
+  itemsArray = []
+
   await temp.forEach(loadItem)
+
+  //loads the variables from URL
+  await loadFiltersIntoGlobalVariables()
   //loads slider based on maximum and minimum
-  initiateSlider(maximum, minimum)
+  initiateSlider(maximum, minimum, filterMax, filterMin)
   //loads min rating
-  filterMinRate(1)
+  filterMinRate(minRatingDisplayed)
   //loads unique brandNames in filter brands
   loadBrandsInFilter()
   //load with this filters
+  setCheckedToCurrentBrands()
+
+  console.log($("#Lays").prop("checked"))
   loadAllItems()
-  //remove display
-  removeFiltersDisplay()
+
+  await console.log($("#Lays").prop("checked"))
 }
 
 //called when sort or filters are changed
 function loadAllItems(event) {
   var filterObject = {};
-  var sortMethod = $("#sort-by").val();
-  filterObject["min"] = $("#slider-range").slider("values", 0);
-  filterObject["max"] = $("#slider-range").slider("values", 1);
+  filterObject["min"] = filterMin;
+  filterObject["max"] = filterMax;
   filterObject["rating"] = minRatingDisplayed;
-  filterObject["brand-set"] = getBrandsFromForm()
-  sortFilterDisplay(filterObject, sortMethod)
-  if (minRatingDisplayed != 1) {
-    $("#rating-display").html(minRatingDisplayed)
-    $("#filter-rating-display").css("display", "block")
-  }
-  else {
-    $("#filter-rating-display").css("display", "none")
-  }
-  if (filterObject["min"] != 0 || filterObject["max"] != maximum) {
-    $('#price-display').html(filterObject["min"] + "to" + filterObject["max"])
-    $("#filter-price-display").css("display", "block")
-  }
-  else {
-    $("#filter-price-display").css("display", "none")
-  }
-  if (!eqSet(filterObject["brand-set"], getAllBrandsFromForm())) {
-    var str = ''
-    filterObject["brand-set"].forEach(function (value) { if (value != "brand0") str = str + value + ", " })
-    $("#brands-display").html(str.substr(0, str.length - 2))
-    $("#filter-brands-display").css("display", "block")
-  }
-  else {
-    $("#filter-brands-display").css("display", "none")
-  }
+  filterObject["brand-set"] = filterBrandSet
+  sortFilterDisplay(filterObject, sortBy)
+  /*
+    if (minRatingDisplayed != 1) {
+      $("#rating-display").html(minRatingDisplayed)
+      $("#filter-rating-display").css("display", "block")
+    }
+    else {
+      $("#filter-rating-display").css("display", "none")
+    }
+    if (filterObject["min"] != 0 || filterObject["max"] != maximum) {
+      $('#price-display').html(filterObject["min"] + "to" + filterObject["max"])
+      $("#filter-price-display").css("display", "block")
+    }
+    else {
+      $("#filter-price-display").css("display", "none")
+    }
+    if (!eqSet(filterObject["brand-set"], getAllBrandsFromForm())) {
+      var str = ''
+      filterObject["brand-set"].forEach(function (value) { if (value != "brand0") str = str + value + ", " })
+      $("#brands-display").html(str.substr(0, str.length - 2))
+      $("#filter-brands-display").css("display", "block")
+    }
+    else {
+      $("#filter-brands-display").css("display", "none")
+    }*/
 }
 //compare sets
 function eqSet(as, bs) {
@@ -151,12 +190,13 @@ function eqSet(as, bs) {
 function getBrandsFromForm() {
   var brands = $(".filter-brand-names")
   var checked = []
-  brands.each(function (index, element) { if ($(this).prop("checked")) checked.push(this); });
-  if (checked.length == 0 || checked.length == 1 && checked[0].getAttribute("id") == "brand0")
-    return getAllBrandsFromForm()
+  console.log(brands)
+  brands.each(function (index, element) { if ($(this).prop("checked") == true) checked.push($(this)); });
 
   var retval = new Set()
   brands.each(function (index, element) { if ($(this).prop("checked")) retval.add($(this).prop("id")); });
+
+  if (retval.size == 1 && retval.has("brand0")) return new Set();
   return retval;
 }
 //get all brands from form
@@ -180,42 +220,41 @@ function sortFilterDisplay(filterObject, sortMethod) {
   itemsArray.forEach(function (value, index, array) { checkFilter(value, filterObject); })
 
   //sort
-  if (sortMethod == "low-to-high")
+  if (sortMethod == "low-to-high") {
+    $("#sort-by").val(sortMethod)
     newItemsArray.sort(function (a, b) { return a.prop("price") - b.prop("price"); })
-  else if (sortMethod == "high-to-low")
+  }
+
+  else if (sortMethod == "high-to-low") {
+    $("#sort-by").val(sortMethod)
     newItemsArray.sort(function (a, b) { return b.prop("price") - a.prop("price"); })
-  else if (sortMethod == "rating-low-to-high")
+  }
+  else if (sortMethod == "rating-low-to-high") {
+    $("#sort-by").val(sortMethod)
     newItemsArray.sort(function (a, b) { return a.prop("rating") - b.prop("rating"); })
-  else if (sortMethod == "rating-high-to-low")
+  }
+
+  else if (sortMethod == "rating-high-to-low") {
+    $("#sort-by").val(sortMethod)
     newItemsArray.sort(function (a, b) { return b.prop("rating") - a.prop("rating"); })
-  else
+  }
+
+  else {
     newItemsArray.sort(function (a, b) { return a.prop("item-id") - b.prop("item-id"); })
+  }
+
 
   //load after filter and sort
   itemsArray.forEach(function (value, index, array) { value.remove() })
   newItemsArray.forEach(function (value, index, array) { value.appendTo("#products") })
   $("#display-item-count").html(newItemsArray.length)
 }
-//set specific filters
-async function setFilters(filterObject, sortMethod = null) {
-  if (sortMethod)
-    $("#sort-by").val(sortMethod);
-  $("#slider-range").slider("values", 0, filterObject["min"]);
-  $("#slider-range").slider("values", 1, filterObject["max"]);
-  $(".filter-brand-names").each(function (index, element) { $(this).prop("checked", false); })
-  filterObject["brand-set"].forEach(function (value) { $("#" + value).prop("checked", true) })
-  await filterMinRate(filterObject["rating"])
-}
+
 
 //removes all filters
 async function removeFilters() {
-  var filterObject = {}
-  filterObject.min = 0;
-  filterObject.max = maximum;
-  filterObject.rating = 1;
-  filterObject["brand-set"] = getAllBrandsFromForm()
-  await setFilters(filterObject)
-  removeFiltersDisplay()
+  str = window.location.pathname;
+  window.location.replace(str.substring(str.lastIndexOf('/') + 1))
 }
 function removeFiltersDisplay() {
   $(".filter-brand-names").each(function (index, element) { $(this).prop("checked", false); })
@@ -226,13 +265,8 @@ function filterMinRate(minRating) {
     $("#rating-" + i).html(getDark(i))
   for (; i <= 5; i++)
     $("#rating-" + i).html(getLight(i))
-
-  $("#prices").val("Rs " + $("#slider-range").slider("values", 0) +
-    " - Rs " + $("#slider-range").slider("values", 1));
-  minRatingDisplayed = minRating;
-  loadAllItems()
 }
-
+//
 
 //item removed i.e. quantity is 0
 function removeAtProducts(id) {
@@ -247,7 +281,8 @@ function addcart(id) {
   $("#three-button-" + id).css("display", "block")
   increment(id)
 }
-//remove specific filter
+
+//remove specific filter for buttons of showing in smaller displays
 async function removeSpecificFilter(filter) {
   if (filter == 'brands') {
     removeFiltersDisplay()
@@ -263,7 +298,6 @@ async function removeSpecificFilter(filter) {
       " - Rs " + $("#slider-range").slider("values", 1));
     loadAllItems()
   }
-
 }
 //toggle
 function toggleFilter() {
@@ -278,10 +312,29 @@ function toggleFilter() {
     $("#overlay").css("display", "none")
   }
 }
+
+function setMinRating(minRatingInput) {
+  minRatingDisplayed = minRatingInput;
+  newPageWithCurrentSort()
+}
+
+function newPageWithCurrentSort() {
+  console.log("hello")
+  var str = window.location.pathname;
+  sortMethod = $("#sort-by").val();
+  var newBrandsSet = getBrandsFromForm()
+  var newBrandsArray = Array.from(newBrandsSet)
+  var newMinimum = $("#slider-range").slider("values", 0)
+  var newMaximum = $("#slider-range").slider("values", 1)
+  var minRating = minRatingDisplayed;
+  window.location.replace(str.substring(str.lastIndexOf('/') + 1) + `?sortby=${sortMethod}&min=${newMinimum}&max=${newMaximum}&minRating=${minRating}&brandsSet=${JSON.stringify(newBrandsArray)}`)
+}
+
 async function init() {
   await loadPage()
-  $("#sort-by").on("change", loadAllItems)
-  $(".filter-brand-names").on("change", loadAllItems)
+  $("#sort-by").on("change", newPageWithCurrentSort)
+  $(".filter-brand-names").on("change", newPageWithCurrentSort)
+  $("#slider-range").focusout(newPageWithCurrentSort)
   $("#remove-filters").on("click", removeFilters)
 }
 
