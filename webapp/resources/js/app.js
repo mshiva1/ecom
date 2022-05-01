@@ -149,5 +149,6 @@ function getDark(star) {
 function init() {
   setNavAndFooter();
   checkUserLogStatus();
+  $('[data-toggle="tooltip"]').tooltip()
 }
 $(document).ready(init)

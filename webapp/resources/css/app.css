@@ -109,7 +109,14 @@ nav {
   width: 90%;
   margin: 0 5%;
 }
+#remove-filter-icon{
+width:15px;
+fill:red;
+}
 
+#remove-filter-icon:hover{
+ fill:white;
+ }
 #overlay {
   /*overlay for filters, products page*/
   display: none;
