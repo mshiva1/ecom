@@ -150,7 +150,7 @@ async function checkOut() {
 	});
 	downloadCsvFile(csv)
 	emptyCart(currentUser)
-	notify("Checkout Success", "checkout-success", 5000, "Order Placed Successfully. Thank You", "green")
+	notify("Checkout", "checkout-success", 5000, "Order Placed Successfully. Thank You", "green")
 	emptyCartDisplay()
 	checkUserLogStatus()
 }

@@ -19,14 +19,14 @@
             <div class="col-12 col-md-10 col-lg-8 " id="upload-order">
                 <div class="row my-1">
                     <div class="col-8 col-md-5">
-                        <input class="custom-file-input" id="order-file" type="file" required>
+                        <input class="custom-file-input" id="order-file" type="file" accept="text/csv" required>
                         <label class="custom-file-label" id="order-file-name" for="order-file">Choose file</label>
                     </div>
                     <div class="col-4 col-md-3">
                         <button class="btn btn-outline-primary py-1" id="order-file-button">Upload</button>
                     </div>
                     <div class="col-12 col-md-4 my-1 my-md-0 p-0">
-                        <button class="btn btn-outline-primary" onclick="downloadSample()">Download Sample</button>
+                        <a class="" onclick="downloadSample()">Download Sample</a>
                     </div>
                 </div>
             </div>
@@ -35,9 +35,9 @@
 
         <div class="row m-0" id="order-details" style="display:none">
             <div class="col-lg-8 p-md-2 p-0" id="order-items">
-                <table class="table custom-bordered table-striped align-items-center" id="item-table">
+                <table class="table align-items-center" id="item-table">
                     <thead>
-                        <tr class="shadow-sm custom-stick-top" id="item-table-head">
+                        <tr class="custom-stick-top" id="item-table-head">
                             <th scope="col" style="width:16.66%">&nbsp;</th>
                             <th class="p-0" scope="col" style="width:41.66%">
                                 <h4>Name</h4>
@@ -72,23 +72,23 @@
                     </tbody>
                 </table>
             </div>
-            <div class=" sticky col-lg-4 shadow-sm  custom-stick-top" id="order-summary">
+            <div class=" sticky col-lg-4 shadow-sm my-md-2 custom-stick-top" id="order-summary">
                 <div class="w-100 my-2">
                     <div class="header">
                         <h4>Order Summary</h4>
                     </div>
                     <div class="my-3">
-                        <h4 class="row">
-                            <span class="col-9 p-0">Total Quantity :</span>
-                            <span class="col-3 p-0">
+                        <h4 class="row m-0">
+                            <span class="col-8 p-0">Total Quantity </span>
+                            <span class="col-4 p-0">:
                                 <span id="total-quantity"></span>
                             </span>
                         </h4>
-                        <h4 class="row">
-                            <span class="col-9 p-0">
-                                Total Amount :
+                        <h4 class="row m-0">
+                            <span class="col-8 p-0">
+                                Total Amount
                             </span>
-                            <span class="col-3 p-0">
+                            <span class="col-4 p-0">:
                                 Rs<span id="total-price"></span>
                             </span>
                         </h4>

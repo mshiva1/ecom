@@ -10,6 +10,7 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link href="../resources/css/app.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/be3a23fc60.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -33,11 +34,9 @@
                     </div>
 
                     <select class="col-4 col-lg-6 form-control p-0" id="sort-by" style="font-size:small">
-                        <option value="default">Default</option>
+                        <option value="rating-high-to-low">Rating</option>
                         <option value="low-to-high">Price: Low to High</option>
                         <option value="high-to-low">Price: High to Low</option>
-                        <option value="rating-low-to-high">Rating: Low to High</option>
-                        <option value="rating-high-to-low">Rating: High to Low</option>
                     </select>
                 </div>
             </div>
@@ -69,24 +68,24 @@
             <div class="col-lg-2 col-10 d-lg-flex d-none custom-stick-top justify-content-center bg-transparent p-2"
                 id="filters" style="z-index:auto">
                 <div class="row w-100 justify-content-center">
-                    <div class=" border bg-light col-lg-12 col-md-6 col-sm-8 col-10 p-1" style="z-index:6">
+                    <div class=" shadow-sm bg-light col-lg-12 col-md-6 col-sm-8 col-10 p-1" style="z-index:6">
                         <div class="d-flex justify-content-between">
                             <h5>Filters</h5>
                             <button class="btn btn-sm btn-outline-danger p-0" id="remove-filters" type="button" data-toggle="tooltip" data-placement="right" title="Remove All Filters">
                                 <span class="m-1 icon-sm">
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="remove-filter-icon" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M3.853 22.87C10.47 8.904 24.54 0 40 0H472C487.5 0 501.5 8.904 508.1 22.87C514.8 36.84 512.7 53.37 502.1 65.33L396.4 195.6C316.2 212.1 255.1 283 255.1 368C255.1 395.4 262.3 421.4 273.5 444.5C271.8 443.7 270.3 442.7 268.8 441.6L204.8 393.6C196.7 387.6 192 378.1 192 368V288.9L9.042 65.33C-.745 53.37-2.765 36.84 3.854 22.87H3.853zM287.1 368C287.1 288.5 352.5 224 432 224C511.5 224 576 288.5 576 368C576 447.5 511.5 512 432 512C352.5 512 287.1 447.5 287.1 368zM491.3 331.3C497.6 325.1 497.6 314.9 491.3 308.7C485.1 302.4 474.9 302.4 468.7 308.7L432 345.4L395.3 308.7C389.1 302.4 378.9 302.4 372.7 308.7C366.4 314.9 366.4 325.1 372.7 331.3L409.4 368L372.7 404.7C366.4 410.9 366.4 421.1 372.7 427.3C378.9 433.6 389.1 433.6 395.3 427.3L432 390.6L468.7 427.3C474.9 433.6 485.1 433.6 491.3 427.3C497.6 421.1 497.6 410.9 491.3 404.7L454.6 368L491.3 331.3z"/></svg>
+                                    <span class="fa-solid fa-filter-circle-xmark"></span>
                                 </span>
                             </button>
                         </div>
                         <form id="filter-form">
-                            <div id="filter-price">
+                            <div id="filter-price d-flex">
                                 <label for="prices" class="font-weight-bold">Price :</label>
                                 <input class="w-75 bg-light p-2 border-0" id="prices" type="text" readonly>
                                 <div id="slider-range"></div>
                             </div>
                             <br>
                             <div id="filter-rating">
-                                <label class="font-weight-bold">Minimum Rating: </label>
+                                <label class="font-weight-bold">Avg Rating: </label>
                                 <br>
                                 <button class="bg-light border-0 p-0" id="rating-1" onclick="setMinRating(1)"
                                     type="button"></button>
@@ -114,7 +113,8 @@
             </div>
             <div class="col col-lg-10 ">
                 <div class="row" id="products">
-                    <div class=" col-lg-3 col-md-4 col-sm-6 col-12 my-2 scaleup" id="product-0" hidden>
+                    <div class=" col-lg-3 col-md-4 col-sm-6 col-12 my-2 h-100    scaleup" id="product-0" hidden>
+                        <div class="row">
                         <div class=" card shadow-sm border-0">
                             <a id="link-0" class="text-center">
                                 <img alt="Card image" class="custom-product-image card-img-top" id="img-0" src=""
@@ -122,7 +122,7 @@
                             </a>
                             <div class="card-body">
                                 <a id="link-price-0" class="text-dark">
-                                    <h4 class="card-title p-0" id="name-0"></h4>
+                                    <h4 class="card-title p-0 m-0" id="name-0"></h4>
                                     <div class="d-flex justify-content-between py-2">
                                         <span>
                                             Rs : <span class="card-text" id="price-0"></span>
@@ -159,6 +159,7 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,7 +171,7 @@
                         <h5 class="modal-title">Confirm Remove</h5>
                     </div>
                     <div class="modal-body">
-                        <p>This Product will be removed from Cart <span id="remove-item-name"></span>?</p>
+                        <p>This product will be removed from cart <span id="remove-item-name"></span>?</p>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -190,7 +191,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="../resources/js/app.js"></script>
-    <script src="../resources/js/products1.js"></script>
+    <script src="../resources/js/products.js"></script>
 </body>
 
 </html>

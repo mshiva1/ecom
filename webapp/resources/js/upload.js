@@ -46,7 +46,7 @@ function getOrderItems() {
 function checkHeaders(filedata) {
   console.log(filedata)
   const item = filedata[0]
-  var setOfHeaders = new Set(["ID", "Quantity", "Name", "Price"])
+  var setOfHeaders = new Set(["ID", "Quantity"])
   for (const header in item)
     setOfHeaders.delete(header)
   if (setOfHeaders.size == 0)
@@ -79,7 +79,7 @@ async function loadData(fileData) {
   errorsCount = 0
   for (const item in temp) {
     if (temp[item]) {
-      var error = "no error"
+      var error = "No error"
 
       var obj = getProduct(temp[item]["ID"], products);
       if (Number.isInteger(parseInt((temp[item]["Quantity"]))) == false)
@@ -99,7 +99,7 @@ async function loadData(fileData) {
       errorsArray.push(newError)
 
       //only add if no error
-      if (error == "no error") {
+      if (error == "No error") {
         //find if previous element present with same ID
         var prev = await itemsArray.find(o => o.prop("id_no") == temp[item]["ID"]);
 
@@ -138,7 +138,7 @@ async function loadData(fileData) {
 }
 //for showing that error occurred while parsing
 function showUploadError() {
-  notify("Error", "upload-error", 0, "Some error occurred while parsing the CSV file . Check Downloaded File for more details", "Red")
+  notify("Error", "upload-error", 0, "Error in uploading file", "Red")
   $("#display-error").css("display", "block")
   $("#order-details").css("display", "none")
 }
