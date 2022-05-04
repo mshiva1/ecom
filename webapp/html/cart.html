@@ -52,33 +52,39 @@
                                 </span>
                             </h5>
                         </div>
-                        <div class="col-3 row px-0">
-                            <div class="col-12 m-1 text-right p-0">
-                                <button class="btn btn-sm btn-outline-danger  p-0 p-sm-1 m-1" id="remove-0"
+                        <div class="col-3 px-0 h-100">
+                            <div class="row m-0 h-100" style="justify-content: space-between;">
+
+                            <div class="col-12 text-right p-0 m-1">
+                                <button class="btn btn-sm btn-outline-danger  p-0" id="remove-0"
                                     onclick="removeItem(0)" type="button">
                                     <span class="material-icons-outlined m-1 icon-sm">
                                         delete_outline
                                     </span>
                                 </button>
                             </div>
-                            <div class="col-12 text-right p-0">
+                            <div class="col-12 text-right p-0 m-1">
 
-                                <button class="btn btn-sm btn-outline-primary  p-0 p-sm-1" id="decrement-0"
+                                <button class="btn btn-sm btn-outline-primary  p-0" id="decrement-0"
                                     onclick="decrementItem(0)" type="button">
                                     <span class="material-icons-outlined m-1 icon-sm">
                                         remove
                                     </span>
                                 </button>
-                                <button class="btn btn-sm disabled font-weight-bold  p-0 p-sm-1" id="quantity-0"
+                                <button class="btn btn-sm disabled font-weight-bold  px-2 py-0" id="quantity-0"
                                     type="button">0
                                 </button>
-                                <button class="btn btn-sm btn-outline-primary  p-0 p-sm-1" id="increment-0"
+                                <button class="btn btn-sm btn-outline-primary  p-0" id="increment-0"
                                     onclick="incrementItem(0)" type="button">
                                     <span class="material-icons-outlined m-1 icon-sm">
                                         add
                                     </span>
                                 </button>
                             </div>
+                                <div class="m-1">
+                                    &nbsp;
+                                </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -151,8 +157,24 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <button type="button" id="confirm-clear-button" data-dismiss="modal" class="btn btn-danger"
-                            onclick="clearCart()">Confirm</button>
+                                onclick="clearCart()">Confirm</button>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" id="pop-up" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-body justify-content-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <img src="../resources/tick_mark.png" style="width:100%;aspect-ratio:1">
+                        <h5 class="d-flex justify-content-center">Order has been placed</h5>
+                        <h6 class="d-flex justify-content-center"><a href="products.html">Click here to add new products</a></h6>
+                    </div>
+
                 </div>
             </div>
         </div>

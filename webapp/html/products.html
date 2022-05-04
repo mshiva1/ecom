@@ -22,9 +22,12 @@
             <h3 class="col-3 py-2 my-3">Products</h3>
             <div class="col-11 col-sm-8 col-md-8 col-lg-4 m-1">
                 <div class="row justify-content-between align-items-end">
-                    <h6 class="col-lg-6 col-6 ">
-                        Showing <span id="display-item-count"></span> Items
-                    </h6>
+                    <div class="col-6">
+                        <h6 class="text-right">
+                            Showing <span id="display-item-count"></span> Items
+                        </h6>
+
+                    </div>
                     <div class="d-block d-lg-none col-2 col-md-1 p-1 align-items-center">
                         <button class=" btn btn-sm btn-outline-secondary p-0 w-75" type=button onclick="toggleFilter()">
                             <span class="material-icons-outlined m-1 icon-sm">
@@ -79,8 +82,8 @@
                         </div>
                         <form id="filter-form">
                             <div id="filter-price">
-                                <div class="row m-0 align-items-baseline">
-                                    <label for="prices" class="col-5 m-0 p-0 font-weight-bold">Price :</label>
+                                <div class="row my-2 mx-0 align-items-baseline">
+                                    <label for="prices" class="col-5 m-0 p-0 font-weight-bold">Price:</label>
                                     <input class="col-7 m-0 p-0 bg-light border-0 text-right" id="prices" type="text" readonly>
                                 </div>
                                 <div id="slider-range"></div>
@@ -135,15 +138,15 @@
                                 </a>
                                 <div id="three-button-0">
                                     <div class="d-flex justify-content-center">
-                                        <button class="btn btn-sm btn-outline-primary " id="decrement-0"
+                                        <button class="btn btn-sm btn-outline-primary p-0" id="decrement-0"
                                             onclick="decrement(0)" type="button">
                                             <span class="material-icons-outlined m-1 icon-sm">
                                                 remove
                                             </span>
                                         </button>&nbsp;
-                                        <button class="btn btn-sm disabled" id="quantity-0"
+                                        <button class="btn btn-sm disabled py-0 px-2" id="quantity-0"
                                             type="button">0</button>&nbsp;
-                                        <button class="btn btn-sm btn-outline-primary " id="increment-0"
+                                        <button class="btn btn-sm btn-outline-primary p-0" id="increment-0"
                                             onclick="increment(0)" type="button">
                                             <span class="material-icons-outlined m-1 icon-sm">
                                                 add
@@ -153,7 +156,7 @@
                                 </div>
                                 <div id="one-button-0">
                                     <div class="d-flex justify-content-center">
-                                        <button class="btn btn-sm btn-outline-primary px-3 py-2 " id="addcart-0"
+                                        <button class="btn btn-sm btn-outline-primary px-1 py-1 " id="addcart-0"
                                             onclick="addcart(0)" type="button">
                                             Add to Cart
                                         </button>
