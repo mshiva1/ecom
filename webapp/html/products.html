@@ -22,7 +22,7 @@
             <h3 class="col-3 py-2 my-3">Products</h3>
             <div class="col-11 col-sm-8 col-md-8 col-lg-4 m-1">
                 <div class="row justify-content-between align-items-end">
-                    <h6 class="col-lg-6 col-6 font-italic">
+                    <h6 class="col-lg-6 col-6 ">
                         Showing <span id="display-item-count"></span> Items
                     </h6>
                     <div class="d-block d-lg-none col-2 col-md-1 p-1 align-items-center">
@@ -78,9 +78,11 @@
                             </button>
                         </div>
                         <form id="filter-form">
-                            <div id="filter-price d-flex">
-                                <label for="prices" class="font-weight-bold">Price :</label>
-                                <input class="w-75 bg-light p-2 border-0" id="prices" type="text" readonly>
+                            <div id="filter-price">
+                                <div class="row m-0 align-items-baseline">
+                                    <label for="prices" class="col-5 m-0 p-0 font-weight-bold">Price :</label>
+                                    <input class="col-7 m-0 p-0 bg-light border-0 text-right" id="prices" type="text" readonly>
+                                </div>
                                 <div id="slider-range"></div>
                             </div>
                             <br>
@@ -114,7 +116,7 @@
             <div class="col col-lg-10 ">
                 <div class="row" id="products">
                     <div class=" col-lg-3 col-md-4 col-sm-6 col-12 my-2 h-100    scaleup" id="product-0" hidden>
-                        <div class="row">
+                        <div class="row justify-content-center">
                         <div class=" card shadow-sm border-0">
                             <a id="link-0" class="text-center">
                                 <img alt="Card image" class="custom-product-image card-img-top" id="img-0" src=""
