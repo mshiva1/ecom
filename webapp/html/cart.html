@@ -15,6 +15,7 @@
     <div id="navbar-stub" class="fixed-top">
     </div>
     <div class="container-fluid">
+        <h3 class="col-3 pt-2 px-2 mt-3">Items in Cart</h3>
         <div id="toast-body"></div>
         <div class="text-center shadow-sm row py-4 m-0" id="empty-cart" style="display:none;">
             <img src="../resources/empty_cart.png" style="width:10%;aspect-ratio:1">
@@ -23,23 +24,8 @@
             There are no Items in Cart . <a href="products.html">Click here to add products</a>
         </div>
         <div class="row m-0">
-            <div class="col col-lg-8 px-3 py-2 my-0" id="cart-items">
-                <div class="items-in-cart row my-2 custom-stick-top" id="cart-header">
-                    <div class="d-flex col-12 align-items-center py-2 px-0">
-                        <div class="col-2 ">
-                            &nbsp;
-                        </div>
-                        <div class="col-5 px-1">
-                            <h4> Name </h4>
-                        </div>
-                        <div class="col-2 px-1">
-                            <h4> Price</h4>
-                        </div>
-                        <div class="col-3 d-block text-right px-1">
-                            <h4> Quantity</h4>
-                        </div>
-                    </div>
-                </div>
+            <div class="col col-lg-8 pl-1 pr-3 py-2 my-0" id="cart-items">
+
                 <div class="items-in-cart row my-2" id="cart-item-0" hidden>
                     <div class="d-flex col-12 align-items-center shadow-sm p-1">
                         <div class="col-2 px-0">
@@ -55,7 +41,7 @@
                                 </span>
                             </h5>
                         </div>
-                        <div class="col-3 px-0 h-100">
+                        <div class="col-3 pl-0 h-100 pr-2">
                             <div class="row m-0 h-100" style="justify-content: space-between;">
 
                             <div class="col-12 text-right p-0 m-1">
@@ -92,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 " id="cart-summary">
+            <div class="col-lg-4 pr-0" id="cart-summary">
                 <div class="col-12  my-3 custom-stick-top pt-2">
                     <h4 class="row justify-content-between m-0">
                         <span>Cart Summary</span>
