@@ -137,10 +137,15 @@ fill:red;
   /*product image in product page*/
   max-width: 250px;
 }
-
+.card-title{
+max-width: fit-content;
+}
+.card{
+width:100%;
+}
 #product-name {
   /*product name in product page*/
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .custom-bordered {

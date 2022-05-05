@@ -2,7 +2,7 @@
 var itemsArray = []
 var maximum = 0, minimum = 0;
 var brandsSet = new Set()
-var minRatingDisplayed = 1;
+var minRatingDisplayed = 0;
 var cart;
 
 //load specific item
@@ -13,6 +13,8 @@ function loadItem(value, index, array) {
 
 //add new Product to itemsArray
 function addNewProduct(id, imgsrc, brand, name, price, rating, quantity) {
+//imgsrc="https://m.media-amazon.com/images/I/814gWY+drSL._SX679_.jpg";
+//name="Lays American Style"
     var newItem = $("#product-0").clone();
     newItem.prop("item-id", id);
     newItem.prop("brand", brand);
@@ -100,7 +102,7 @@ async function loadPage() {
     //loads slider based on maximum and minimum
     initiateSlider(maximum, minimum)
     //loads min rating
-    setMinRating(1)
+    setMinRating(0)
     //loads unique brandNames in filter brands
     loadBrandsInFilter()
     //load with this filters
@@ -118,7 +120,7 @@ function loadAllItems(event) {
     filterObject["rating"] = minRatingDisplayed;
     filterObject["brand-set"] = getBrandsFromForm()
     sortFilterDisplay(filterObject, sortMethod)
-    if (minRatingDisplayed != 1) {
+    if (minRatingDisplayed != 0) {
         $("#rating-display").html(minRatingDisplayed)
         $("#filter-rating-display").css("display", "block")
     }
@@ -213,7 +215,7 @@ async function removeFilters() {
     var filterObject = {}
     filterObject.min = 0;
     filterObject.max = maximum;
-    filterObject.rating = 1;
+    filterObject.rating = 0;
     filterObject["brand-set"] = getAllBrandsFromForm()
     await setFilters(filterObject)
     removeFiltersDisplay()
@@ -223,6 +225,7 @@ function removeFiltersDisplay() {
 }
 //invoked when min-rating in filter is changed
 function setMinRating(minRating) {
+	var i=0;
     for (i = 1; i <= minRating; i++)
         $("#rating-" + i).html(getDark(i))
     for (; i <= 5; i++)
@@ -255,7 +258,7 @@ async function removeSpecificFilter(filter) {
         loadAllItems()
     }
     else if (filter == 'rating') {
-        setMinRating(1)
+        setMinRating(0)
     }
     else if (filter == 'price') {
         $("#slider-range").slider("values", 0, 0);
