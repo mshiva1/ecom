@@ -161,11 +161,11 @@ width:100%;
   }
 
   h4 {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   h5 {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .container-fluid {
@@ -183,11 +183,11 @@ width:100%;
   }
 
   h4 {
-    font-size: 20px;
+    font-size: 19px;
   }
 
   h5 {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .container-fluid {
@@ -195,7 +195,7 @@ width:100%;
   }
 
   .icon-sm {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 @media (min-width:768px and max-width: 992px) {
@@ -204,11 +204,11 @@ width:100%;
   }
 
   h4 {
-    font-size: 22px;
+    font-size: 21px;
   }
 
   h5 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .container {
@@ -216,7 +216,7 @@ width:100%;
   }
 
   .icon-sm {
-    font-size: 15px;
+    font-size: 145px;
   }
 }
 
@@ -234,15 +234,15 @@ width:100%;
   }
 
   h6 {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .container {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .icon-sm {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 @media (max-width : 992px) {

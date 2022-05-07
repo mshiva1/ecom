@@ -221,7 +221,7 @@ async function removeFilters() {
     filterObject["brand-set"] = getAllBrandsFromForm()
     await setFilters(filterObject)
     removeFiltersDisplay()
-    localStorage.removeItem("filters")
+    sessionStorage.removeItem("filters")
 }
 function removeFiltersDisplay() {
     $(".filter-brand-names").each(function (index, element) { $(this).prop("checked", false); })
@@ -292,11 +292,11 @@ console.log(filterObject,sortMethod)
   };
 	fo["brand-set"]=Array.from(fo["brand-set"])
 	fo=[JSON.stringify(fo),sortMethod]
-	localStorage.setItem("filters", JSON.stringify(fo))
+	sessionStorage.setItem("filters", JSON.stringify(fo))
 }
 function checkForFiltersInSession(){
 save=1;
-var prevFilters = localStorage.getItem("filters")
+var prevFilters = sessionStorage.getItem("filters")
 if(prevFilters==null) return;
 var filterArray= JSON.parse(prevFilters)
 var fo = JSON.parse(filterArray[0])

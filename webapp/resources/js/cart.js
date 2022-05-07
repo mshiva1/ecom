@@ -53,11 +53,11 @@ function decrementItem(id) {
 }
 
 //adds new item to the html page
-function addNewCartItem(id, imgsrc, name, price, quantity) {
+function addNewCartItem(id, imgsrc, name, price, rating, quantity) {
 	var newItem = $("#cart-item-0").clone();
 	newItem.prop("id", "cart-item-" + id);
 	newItem.prop("hidden", false);
-	newItem.find("#cart-item-name-0").html(`<a id="link-0" href="product.html?id="${id}">${name}</a>`);
+	newItem.find("#cart-item-name-0").html(`<a id="link-0" href="product.html?id="${id}">${name}</a> ${getHtmlForRating(rating)}`);
 	newItem.find("#cart-item-name-0").prop("id", "cart-item-name-" + id);
 	if (imgsrc == '')
 		newItem.find("#img-0").prop("src", "../resources/prod" + 1 + ".jpg");
@@ -115,7 +115,7 @@ async function loadPage() {
 				notify("Error", "error-in-cart", 0, "Some Error occured, so some Items are removed", "red");
 			}
 			else
-				addNewCartItem(item, obj["img"], obj["name"], obj["price"], temp[item])
+				addNewCartItem(item, obj["img"], obj["name"], obj["price"], obj["rating"], temp[item])
 		}
 	}
 	if (totalQuantity == 0)
