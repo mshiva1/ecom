@@ -4,7 +4,7 @@ var maximum = 0, minimum = 0;
 var brandsSet = new Set()
 var minRatingDisplayed = 0;
 var cart;
-
+var save=0;
 //load specific item
 function loadItem(value, index, array) {
     var obj = value
@@ -13,8 +13,6 @@ function loadItem(value, index, array) {
 
 //add new Product to itemsArray
 function addNewProduct(id, imgsrc, brand, name, price, rating, quantity) {
-//imgsrc="https://m.media-amazon.com/images/I/814gWY+drSL._SX679_.jpg";
-//name="Lays American Style"
     var newItem = $("#product-0").clone();
     newItem.prop("item-id", id);
     newItem.prop("brand", brand);
@@ -112,13 +110,15 @@ async function loadPage() {
 }
 
 //called when sort or filters are changed
-function loadAllItems(event) {
+function loadAllItems() {
     var filterObject = {};
     var sortMethod = $("#sort-by").val();
     filterObject["min"] = $("#slider-range").slider("values", 0);
     filterObject["max"] = $("#slider-range").slider("values", 1);
     filterObject["rating"] = minRatingDisplayed;
     filterObject["brand-set"] = getBrandsFromForm()
+    if(save)
+		saveFiltersInSession(filterObject,sortMethod)
     sortFilterDisplay(filterObject, sortMethod)
     if (minRatingDisplayed != 0) {
         $("#rating-display").html(minRatingDisplayed)
@@ -205,6 +205,7 @@ async function setFilters(filterObject, sortMethod = null) {
         $("#sort-by").val(sortMethod);
     $("#slider-range").slider("values", 0, filterObject["min"]);
     $("#slider-range").slider("values", 1, filterObject["max"]);
+    if(eqSet(filterObject["brand-set"],brandsSet))
     $(".filter-brand-names").each(function (index, element) { $(this).prop("checked", false); })
     filterObject["brand-set"].forEach(function (value) { $("#" + value).prop("checked", true) })
     await setMinRating(filterObject["rating"])
@@ -212,6 +213,7 @@ async function setFilters(filterObject, sortMethod = null) {
 
 //removes all filters
 async function removeFilters() {
+
     var filterObject = {}
     filterObject.min = 0;
     filterObject.max = maximum;
@@ -219,6 +221,7 @@ async function removeFilters() {
     filterObject["brand-set"] = getAllBrandsFromForm()
     await setFilters(filterObject)
     removeFiltersDisplay()
+    localStorage.removeItem("filters")
 }
 function removeFiltersDisplay() {
     $(".filter-brand-names").each(function (index, element) { $(this).prop("checked", false); })
@@ -282,13 +285,33 @@ function toggleFilter() {
         $("#overlay").css("display", "none")
     }
 }
+function saveFiltersInSession(filterObject,sortMethod){
+console.log(filterObject,sortMethod)
+	var  fo = {
+      ...filterObject
+  };
+	fo["brand-set"]=Array.from(fo["brand-set"])
+	fo=[JSON.stringify(fo),sortMethod]
+	localStorage.setItem("filters", JSON.stringify(fo))
+}
+function checkForFiltersInSession(){
+save=1;
+var prevFilters = localStorage.getItem("filters")
+if(prevFilters==null) return;
+var filterArray= JSON.parse(prevFilters)
+var fo = JSON.parse(filterArray[0])
+var sortMethod = filterArray[1]
+fo["brand-set"]=new Set(fo["brand-set"])
+setFilters(fo,sortMethod)
+}
 async function init() {
     await loadPage()
-    $("#sort-by").on("change", loadAllItems)
-    $(".filter-brand-names").on("change", loadAllItems)
+    $("#sort-by").on("change",function(){ loadAllItems()})
+    $(".filter-brand-names").on("change", function(){ loadAllItems()})
     $("#remove-filters").on("click", removeFilters)
-}
+    checkForFiltersInSession()
 
+}
 $(document).ready(init)
 
 
