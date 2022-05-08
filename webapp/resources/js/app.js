@@ -127,12 +127,12 @@ function enableTooltip() {
 }
 //get HTML string for display of stars
 function getHtmlForRating(rating) {
-  var str = '';
+  var str = '<span class="no-break">';
   for (i = 1; i <= rating; i++)
     str += getDark(i)
   for (; i <= 5; i++)
     str += getLight(i)
-  return str;
+  return str+"</span>";
 }
 //get light star
 function getLight(star) {

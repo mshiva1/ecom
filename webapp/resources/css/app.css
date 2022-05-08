@@ -86,7 +86,9 @@ nav {
   font-size: 15px;
   margin-left: -10px;
 }
-
+.no-break{
+white-space:nowrap;
+}
 .navbar {
   z-index: 5
 }
@@ -173,7 +175,7 @@ nav {
   .h5 {
     font-size: 15px;
   }
-  .h6 {
+  .h6,footer {
         font-size: 12px;
       }
 
@@ -198,7 +200,7 @@ nav {
   .h5 {
     font-size: 17px;
   }
-  .h6 {
+  .h6,footer {
         font-size: 14px;
       }
 
@@ -223,7 +225,7 @@ nav {
   .h5 {
     font-size: 18px;
   }
-  .h6 {
+  .h6,footer {
       font-size: 15px;
     }
 
@@ -249,7 +251,7 @@ nav {
     font-size: 19px;
   }
 
-  .h6 {
+  .h6,footer {
     font-size: 16px;
   }
 
