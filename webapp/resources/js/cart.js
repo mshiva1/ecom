@@ -57,7 +57,7 @@ function addNewCartItem(id, imgsrc, name, price, rating, quantity) {
 	var newItem = $("#cart-item-0").clone();
 	newItem.prop("id", "cart-item-" + id);
 	newItem.prop("hidden", false);
-	newItem.find("#cart-item-name-0").html(`<a id="link-0" href="product.html?id="${id}">${name}</a> ${getHtmlForRating(rating)}`);
+	newItem.find("#cart-item-name-0").html(`<a id="link-0" href="product.html?id="${id}">${name}</a><span class="d-inline d-md-none"><br></span> ${getHtmlForRating(rating)}`);
 	newItem.find("#cart-item-name-0").prop("id", "cart-item-name-" + id);
 	if (imgsrc == '')
 		newItem.find("#img-0").prop("src", "../resources/prod" + 1 + ".jpg");

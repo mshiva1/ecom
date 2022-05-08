@@ -4,7 +4,7 @@ var maximum = 0, minimum = 0;
 var brandsSet = new Set()
 var minRatingDisplayed = 0;
 var cart;
-var save=0;
+var save = 0;
 //load specific item
 function loadItem(value, index, array) {
     var obj = value
@@ -117,8 +117,8 @@ function loadAllItems() {
     filterObject["max"] = $("#slider-range").slider("values", 1);
     filterObject["rating"] = minRatingDisplayed;
     filterObject["brand-set"] = getBrandsFromForm()
-    if(save)
-		saveFiltersInSession(filterObject,sortMethod)
+    if (save)
+        saveFiltersInSession(filterObject, sortMethod)
     sortFilterDisplay(filterObject, sortMethod)
     if (minRatingDisplayed != 0) {
         $("#rating-display").html(minRatingDisplayed)
@@ -205,8 +205,8 @@ async function setFilters(filterObject, sortMethod = null) {
         $("#sort-by").val(sortMethod);
     $("#slider-range").slider("values", 0, filterObject["min"]);
     $("#slider-range").slider("values", 1, filterObject["max"]);
-    if(eqSet(filterObject["brand-set"],brandsSet))
-    $(".filter-brand-names").each(function (index, element) { $(this).prop("checked", false); })
+    if (eqSet(filterObject["brand-set"], brandsSet))
+        $(".filter-brand-names").each(function (index, element) { $(this).prop("checked", false); })
     filterObject["brand-set"].forEach(function (value) { $("#" + value).prop("checked", true) })
     await setMinRating(filterObject["rating"])
 }
@@ -228,7 +228,7 @@ function removeFiltersDisplay() {
 }
 //invoked when min-rating in filter is changed
 function setMinRating(minRating) {
-	var i=0;
+    var i = 0;
     for (i = 1; i <= minRating; i++)
         $("#rating-" + i).html(getDark(i))
     for (; i <= 5; i++)
@@ -285,29 +285,29 @@ function toggleFilter() {
         $("#overlay").css("display", "none")
     }
 }
-function saveFiltersInSession(filterObject,sortMethod){
-console.log(filterObject,sortMethod)
-	var  fo = {
-      ...filterObject
-  };
-	fo["brand-set"]=Array.from(fo["brand-set"])
-	fo=[JSON.stringify(fo),sortMethod]
-	sessionStorage.setItem("filters", JSON.stringify(fo))
+function saveFiltersInSession(filterObject, sortMethod) {
+    console.log(filterObject, sortMethod)
+    var fo = {
+        ...filterObject
+    };
+    fo["brand-set"] = Array.from(fo["brand-set"])
+    fo = [JSON.stringify(fo), sortMethod]
+    sessionStorage.setItem("filters", JSON.stringify(fo))
 }
-function checkForFiltersInSession(){
-save=1;
-var prevFilters = sessionStorage.getItem("filters")
-if(prevFilters==null) return;
-var filterArray= JSON.parse(prevFilters)
-var fo = JSON.parse(filterArray[0])
-var sortMethod = filterArray[1]
-fo["brand-set"]=new Set(fo["brand-set"])
-setFilters(fo,sortMethod)
+function checkForFiltersInSession() {
+    save = 1;
+    var prevFilters = sessionStorage.getItem("filters")
+    if (prevFilters == null) return;
+    var filterArray = JSON.parse(prevFilters)
+    var fo = JSON.parse(filterArray[0])
+    var sortMethod = filterArray[1]
+    fo["brand-set"] = new Set(fo["brand-set"])
+    setFilters(fo, sortMethod)
 }
 async function init() {
     await loadPage()
-    $("#sort-by").on("change",function(){ loadAllItems()})
-    $(".filter-brand-names").on("change", function(){ loadAllItems()})
+    $("#sort-by").on("change", function () { loadAllItems() })
+    $(".filter-brand-names").on("change", function () { loadAllItems() })
     $("#remove-filters").on("click", removeFilters)
     checkForFiltersInSession()
 

@@ -4,6 +4,7 @@
   color: #111111;
   min-height: calc(100vh - 65px);
 }
+
 .btn {
   z-index: 1;
 }
@@ -31,7 +32,7 @@ img {
 
 .custom-stick-top {
   height: fit-content;
-  background-color: #f2f2f2;
+
   position: sticky;
   top: 70px;
   z-index: 2;
@@ -107,14 +108,16 @@ nav {
   width: 90%;
   margin: 0 5%;
 }
-#remove-filter-icon{
-width:15px;
-fill:red;
+
+#remove-filter-icon {
+  width: 15px;
+  fill: red;
 }
 
-#remove-filter-icon:hover{
- fill:white;
- }
+#remove-filter-icon:hover {
+  fill: white;
+}
+
 #overlay {
   /*overlay for filters, products page*/
   display: none;
@@ -136,12 +139,15 @@ fill:red;
   /*product image in product page*/
   max-width: 250px;
 }
-.card-title{
-max-width: fit-content;
+
+.card-title {
+  max-width: fit-content;
 }
-.card{
-width:100%;
+
+.card {
+  width: 100%;
 }
+
 #product-name {
   /*product name in product page*/
   font-weight: 700;
@@ -156,17 +162,20 @@ width:100%;
 /*media queries*/
 
 @media (max-width: 576px) {
-  h3 {
+  .h3 {
     font-size: 20px;
   }
 
-  h4 {
+  .h4 {
     font-size: 17px;
   }
 
-  h5 {
+  .h5 {
     font-size: 15px;
   }
+  .h6 {
+        font-size: 12px;
+      }
 
   .container-fluid {
     font-size: 11px;
@@ -177,18 +186,21 @@ width:100%;
   }
 }
 
-@media (min-width:576px and max-width: 768px) {
-  h3 {
+@media (min-width:576px) and (max-width: 768px) {
+  .h3 {
     font-size: 22px;
   }
 
-  h4 {
+  .h4 {
     font-size: 19px;
   }
 
-  h5 {
+  .h5 {
     font-size: 17px;
   }
+  .h6 {
+        font-size: 14px;
+      }
 
   .container-fluid {
     font-size: 12px;
@@ -198,42 +210,46 @@ width:100%;
     font-size: 12px;
   }
 }
-@media (min-width:768px and max-width: 992px) {
-  h3 {
+
+@media (min-width:768px) and (max-width: 992px) {
+  .h3 {
     font-size: 24px;
   }
 
-  h4 {
+  .h4 {
     font-size: 21px;
   }
 
-  h5 {
+  .h5 {
     font-size: 18px;
   }
+  .h6 {
+      font-size: 15px;
+    }
 
   .container {
     font-size: 14px;
   }
 
   .icon-sm {
-    font-size: 145px;
+    font-size: 14px;
   }
 }
 
 @media (min-width:992px) {
-  h3 {
+  .h3 {
     font-size: 26px;
   }
 
-  h4 {
+  .h4 {
     font-size: 22px;
   }
 
-  h5 {
+  .h5 {
     font-size: 19px;
   }
 
-  h6 {
+  .h6 {
     font-size: 16px;
   }
 
@@ -245,6 +261,7 @@ width:100%;
     font-size: 15px;
   }
 }
+
 @media (max-width : 992px) {
   #filters {
     position: absolute;

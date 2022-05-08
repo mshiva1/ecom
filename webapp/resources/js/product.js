@@ -39,25 +39,24 @@ async function load(id) {
     $("#delete-0").prop("id", "delete-" + id);
     updateDisabled(id)
 }
-function updateDisabled(id){
-console.log(parseInt($("#quantity-"+id).html()))
-	if(parseInt($("#quantity-"+id).html()) == 0)
-	  {
-	    $("#one-button").css("display","block")
-	    $("#three-button").css("display","none")
-	  }
-	else{
-	    $("#one-button").css("display","none")
-	    $("#three-button").css("display","block")
-	}
+function updateDisabled(id) {
+    console.log(parseInt($("#quantity-" + id).html()))
+    if (parseInt($("#quantity-" + id).html()) == 0) {
+        $("#one-button").css("display", "block")
+        $("#three-button").css("display", "none")
+    }
+    else {
+        $("#one-button").css("display", "none")
+        $("#three-button").css("display", "block")
+    }
 }
-async function removeItemProduct(id){
-	await remove(id)
-	updateDisabled(id)
+async function removeItemProduct(id) {
+    await remove(id)
+    updateDisabled(id)
 }
-async function incrementItemProduct(id){
-	await increment(id)
-	updateDisabled(id)
+async function incrementItemProduct(id) {
+    await increment(id)
+    updateDisabled(id)
 }
 //invoked when quantity is clicked
 function startEdit(id) {
