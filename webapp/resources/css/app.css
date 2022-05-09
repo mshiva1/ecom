@@ -26,10 +26,6 @@ img {
   padding: 0;
 }
 
-. {
-  padding: 0;
-}
-
 .custom-stick-top {
   height: fit-content;
 
@@ -86,9 +82,7 @@ nav {
   font-size: 15px;
   margin-left: -10px;
 }
-.no-break{
-white-space:nowrap;
-}
+
 .navbar {
   z-index: 5
 }
@@ -118,6 +112,13 @@ white-space:nowrap;
 
 #remove-filter-icon:hover {
   fill: white;
+}
+
+.name-of-item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-lines: 2;
 }
 
 #overlay {
@@ -165,6 +166,32 @@ white-space:nowrap;
 
 @media (max-width: 576px) {
   .h3 {
+    font-size: 18px;
+  }
+
+  .h4 {
+    font-size: 15px;
+  }
+
+  .h5 {
+    font-size: 13px;
+  }
+
+  .h6 {
+    font-size: 11px;
+  }
+
+  .container-fluid {
+    font-size: 10px;
+  }
+
+  .icon-sm {
+    font-size: 11 px;
+  }
+}
+
+@media (min-width:576px) and (max-width: 768px) {
+  .h3 {
     font-size: 20px;
   }
 
@@ -175,92 +202,69 @@ white-space:nowrap;
   .h5 {
     font-size: 15px;
   }
-  .h6,footer {
-        font-size: 12px;
-      }
 
-  .container-fluid {
-    font-size: 11px;
+  .h6 {
+    font-size: 13px;
   }
-
-  .icon-sm {
-    font-size: 12 px;
-  }
-}
-
-@media (min-width:576px) and (max-width: 768px) {
-  .h3 {
-    font-size: 22px;
-  }
-
-  .h4 {
-    font-size: 19px;
-  }
-
-  .h5 {
-    font-size: 17px;
-  }
-  .h6,footer {
-        font-size: 14px;
-      }
 
   .container-fluid {
     font-size: 12px;
   }
 
   .icon-sm {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
 @media (min-width:768px) and (max-width: 992px) {
   .h3 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .h4 {
-    font-size: 21px;
+    font-size: 19px;
   }
 
   .h5 {
-    font-size: 18px;
+    font-size: 16px;
   }
-  .h6,footer {
-      font-size: 15px;
-    }
+
+  .h6 {
+    font-size: 13px;
+  }
 
   .container {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .icon-sm {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
 @media (min-width:992px) {
   .h3 {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .h4 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .h5 {
-    font-size: 19px;
+    font-size: 17px;
   }
 
-  .h6,footer {
-    font-size: 16px;
-  }
-
-  .container {
+  .h6 {
     font-size: 14px;
   }
 
+  .container {
+    font-size: 12px;
+  }
+
   .icon-sm {
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 

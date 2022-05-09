@@ -78,41 +78,41 @@
             </div>
             <div class="col-lg-4 pl-1 pr-3 custom-stick-top my-0 pl-lg-4 " id="cart-summary">
                 <div class="row">
-                <div class="col-12  my-3 pt-2 bg-light">
-                    <h4 class="h4 row justify-content-between m-0">
-                        <span>Cart Summary</span>
-                        <span>
-                            <button class="btn btn-sm btn-outline-danger p-0" id="clear-cart" type="button"
-                                data-toggle="tooltip" data-placement="left" data-animate="true" title="Clear Cart"
-                                onclick="confirmClearCart()">
-                                <span class="material-icons-outlined m-1 icon-sm">
-                                    remove_shopping_cart
-                                </span>
-                            </button>
-                        </span>
-                    </h4>
+                    <div class="col-12  my-3 pt-2 bg-light">
+                        <h4 class="h4 row justify-content-between m-0">
+                            <span>Cart Summary</span>
+                            <span>
+                                <button class="btn btn-sm btn-outline-danger p-0" id="clear-cart" type="button"
+                                    data-toggle="tooltip" data-placement="left" data-animate="true" title="Clear Cart"
+                                    onclick="confirmClearCart()">
+                                    <span class="material-icons-outlined m-1 icon-sm">
+                                        remove_shopping_cart
+                                    </span>
+                                </button>
+                            </span>
+                        </h4>
 
-                    <div class="my-3 align-items-bottom">
-                        <h4 class="h4 d-flex">
-                            <span class="col-8 p-0">Total Quantity </span>
-                            <span class="col-4 p-0">
-                                :
-                                <span id="total-quantity"></span>
-                            </span>
-                        </h4>
-                        <h4 class="h4 d-flex">
-                            <span class="col-8 p-0">Total Amount </span>
-                            <span class="col-4 p-0">
-                                : Rs
-                                <span id="total-price"></span>
-                            </span>
-                        </h4>
-                        <div class="text-right my-2">
-                            <button class="btn btn btn-success m-2" id="checkout">Checkout</button>
+                        <div class="my-3 align-items-bottom">
+                            <h4 class="h4 d-flex">
+                                <span class="col-8 p-0">Total Quantity </span>
+                                <span class="col-4 p-0">
+                                    :
+                                    <span id="total-quantity"></span>
+                                </span>
+                            </h4>
+                            <h4 class="h4 d-flex">
+                                <span class="col-8 p-0">Total Amount </span>
+                                <span class="col-4 p-0">
+                                    : Rs
+                                    <span id="total-price"></span>
+                                </span>
+                            </h4>
+                            <div class="text-right my-2">
+                                <button class="btn btn btn-success m-2" id="checkout">Checkout</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
         <div class="modal fade" tabindex="-1" id="confirm-remove" role="dialog">
