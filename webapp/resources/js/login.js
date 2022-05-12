@@ -16,10 +16,11 @@ async function checkFor(username, password) {
     else {
         $("#wrong-cred-message").html("Wrong Credentials");
     }
+    return false
 }
 
 //validation function
-function checkUser() {
+function checkUser(event) {
     var username = $("#login-form [name=username]").val()
     var password = $("#login-form [name=password]").val()
     checkFor(username, password)
@@ -35,6 +36,6 @@ function logOutIfRequired() {
 
 function init() {
     logOutIfRequired()
-    $("#login").click(checkUser);
+    $("#login-form").submit(function () { checkUser(); return false; });
 }
 $(document).ready(init)

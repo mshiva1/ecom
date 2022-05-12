@@ -70,6 +70,7 @@ function initiateSlider(maximum, minimum = 0) {
 
 //loading all brands into checkbox in filters div
 function loadBrandsInFilter() {
+    brandsSet = new Set(Array.from(brandsSet).sort())
     brandsSet.forEach(function (value, index, array) { addNewBrand(value) })
 }
 
@@ -82,7 +83,7 @@ function addNewBrand(brandName) {
     newBrand.find('#brand0').prop("id", brandName)
     newBrand.find('#brand0').prop("value", brandName)
     newBrand.find('#label-0').html(brandName)
-    newBrand.appendTo("#brands-list")
+    newBrand.appendTo("#all-brands")
 }
 
 //load Page on init

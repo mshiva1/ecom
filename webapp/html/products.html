@@ -26,7 +26,6 @@
                         <h6 class="h6 text-right">
                             Showing <span id="display-item-count"></span> Items
                         </h6>
-
                     </div>
                     <div class="d-block d-lg-none col-2 col-md-1 p-1 align-items-center">
                         <button class=" btn btn-sm btn-outline-secondary p-0 w-75" type=button onclick="toggleFilter()">
@@ -35,7 +34,6 @@
                             </span>
                         </button>
                     </div>
-
                     <select class="col-4 col-lg-6 form-control p-0" id="sort-by" style="font-size:small">
                         <option value="rating-high-to-low">Rating</option>
                         <option value="low-to-high">Price: Low to High</option>
@@ -106,13 +104,19 @@
                                     type="button"></button>
                             </div>
                             <br>
-                            <div id="brands-list">
-                                <label for="prices" class="">Brands :</label>
-                                <div id="brand-0" hidden>
-                                    <input class="filter-brand-names" id="brand0" type="checkbox" checked name=""
-                                        value="">
-                                    <label for="brand0" id="label-0"></label>
+                            <div id="brands-list" class="border-top border-bottom">
+                                <label class="dropdown-toggle" data-toggle="collapse" href="#all-brands" role="button"
+                                    aria-expanded="false" aria-controls="all-brands">
+                                    Brands
+                                </label>
+                                <div class="collapse" id="all-brands">
+                                    <div id="brand-0" hidden>
+                                        <input class="filter-brand-names" id="brand0" type="checkbox" checked name=""
+                                            value="">
+                                        <label for="brand0" id="label-0"></label>
+                                    </div>
                                 </div>
+
                             </div>
                         </form>
                     </div>

@@ -116,6 +116,8 @@ async function checkUserLogStatus() {
 
 }
 function updateCartCount() {
+
+  if (window.location.href.includes("login.html")) return;
   cart = JSON.parse(localStorage.getItem("cart"))
   cartcurrent = cart[currentUser]
   let count = 0
@@ -147,13 +149,11 @@ function getHtmlForRating(rating) {
 //get light star
 function getLight(star) {
   return '<span class="material-icons-outlined icon-normal" style="color:#cccc00">star_border</span>';
-
 }
 
 //get dark star
 function getDark(star) {
   return '<span class="material-icons-outlined icon-normal" style="color:#cccc00">star</span>';
-
 }
 
 function init() {
