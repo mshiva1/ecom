@@ -29,7 +29,7 @@ function checkUser() {
 function logOutIfRequired() {
     if (localStorage.getItem("currentUser") != null) {
         localStorage.removeItem("currentUser")
-        notify("Logout Success", "logout-success", 5000, "User Logged out Successfully. Login Again", "green")
+        notify("Success", "logout-success", 5000, "User Logged out Successfully")
     }
 }
 

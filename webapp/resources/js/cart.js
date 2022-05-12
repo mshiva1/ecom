@@ -1,14 +1,14 @@
 var totalAmount, totalQuantity;
 
 //remove item from cart
-function removeItem(id) {
-	askConfirmRemoveCart(id)
+function removeItem(id, name) {
+	askConfirmRemoveCart(id, name)
 	return;
 }
 
 //ask for confirmation while removing
-function askConfirmRemoveCart(id) {
-	$("#remove-item-name").html(name)
+function askConfirmRemoveCart(id, name) {
+	$("#name-in-modal").html(name)
 	$("#confirm-remove-button").attr("onclick", `finalRemoveItem(${id})`)
 	$("#confirm-remove").modal("toggle");
 }
@@ -37,10 +37,10 @@ function incrementItem(id) {
 }
 
 //decrement quantity of product with id:id
-function decrementItem(id) {
+function decrementItem(id, name) {
 	let initial = parseInt($("#quantity-" + id).html())
 	if (initial == 1) {
-		removeItem(id)
+		removeItem(id, name)
 		return;
 	}
 	decrement(id);
@@ -68,9 +68,9 @@ function addNewCartItem(id, imgsrc, name, price, rating, quantity) {
 	newItem.find("#increment-0").prop("id", "increment-" + id);
 	newItem.find("#quantity-0").html(quantity);
 	newItem.find("#quantity-0").prop("id", "quantity-" + id);
-	newItem.find("#decrement-0").attr("onclick", `decrementItem(${id})`);
+	newItem.find("#decrement-0").attr("onclick", `decrementItem(${id},'${name}')`);
 	newItem.find("#decrement-0").prop("id", "decrement-" + id);
-	newItem.find("#remove-0").attr("onclick", `removeItem(${id})`);
+	newItem.find("#remove-0").attr("onclick", `removeItem(${id},'${name}')`);
 	newItem.find("#remove-0").prop("id", "remove-" + id);
 	newItem.appendTo("#cart-items");
 	totalQuantity += quantity;
@@ -109,7 +109,7 @@ async function loadPage() {
 			var obj = getProduct(item, products);
 			if (obj == undefined) {
 				removeItem(item)
-				notify("Error", "error-in-cart", 0, "Some Error occured, so some Items are removed", "red");
+				notify("Error", "error-in-cart", 0, "Some Error occured, so some Items are removed");
 			}
 			else
 				addNewCartItem(item, obj["img"], obj["name"], obj["price"], obj["rating"], temp[item])

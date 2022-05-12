@@ -36,7 +36,7 @@ function addNewProduct(id, imgsrc, brand, name, price, rating, quantity) {
     newItem.find("#increment-0").prop("id", "increment-" + id);
     newItem.find("#quantity-0").html(quantity);
     newItem.find("#quantity-0").prop("id", "quantity-" + id);
-    newItem.find("#decrement-0").attr("onclick", `decrement(${id},'removeAtProducts')`);
+    newItem.find("#decrement-0").attr("onclick", `decrement(${id},'${name}','removeAtProducts')`);
     newItem.find("#decrement-0").prop("id", "decrement-" + id);
     newItem.find("#addcart-0").attr("onclick", `addcart(${id})`);
     newItem.find("#addcart-0").prop("id", "addcart-" + id);
@@ -286,7 +286,6 @@ function toggleFilter() {
     }
 }
 function saveFiltersInSession(filterObject, sortMethod) {
-    console.log(filterObject, sortMethod)
     var fo = {
         ...filterObject
     };

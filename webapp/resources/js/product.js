@@ -33,9 +33,9 @@ async function load(id) {
     $("#quantity-0").prop("id", "quantity-" + id);
     $("#quantity-" + id).click(function () { startEdit(id) });
     $("#quantity-" + id + "-edit").blur(function () { endEdit(id) });
-    $("#decrement-0").attr("onclick", `decrement(${id},"removeItemProduct")`);
+    $("#decrement-0").attr("onclick", `decrement(${id},"","removeItemProduct")`);
     $("#decrement-0").prop("id", "decrement-" + id);
-    $("#delete-0").attr("onclick", `askConfirmRemove(${id},"removeItemProduct")`);
+    $("#delete-0").attr("onclick", `askConfirmRemove(${id},"","removeItemProduct")`);
     $("#delete-0").prop("id", "delete-" + id);
     updateDisabled(id)
 }
@@ -57,44 +57,6 @@ async function removeItemProduct(id) {
 async function incrementItemProduct(id) {
     await increment(id)
     updateDisabled(id)
-}
-//invoked when quantity is clicked
-function startEdit(id) {
-    var initial = $("#quantity-" + id).html()
-    $("#quantity-" + id + "-edit").css("display", "inline-block")
-    $("#quantity-" + id + "-edit").focus()
-    $("#quantity-" + id + "-edit").val(initial)
-    $("#quantity-" + id).css("display", "none")
-}
-
-//invoked when focus is moved from quantity
-function endEdit(id) {
-    var initial = $("#quantity-" + id).val()
-    var input = initial;
-    input = parseInt($(`#quantity-${id}-edit`).val())
-    if (isNaN(input)) {
-        notify("Error", "edit-error", 0, "Please enter only an Integer", "red")
-    }
-    else if (input == 0)
-        askConfirmRemove(id, "removePlusDisplay")
-    else {
-        let item = $("#quantity-" + id);
-        username = localStorage.getItem("currentUser")
-        var cart = JSON.parse(localStorage.getItem("cart"))
-        cart[username][id.toString()] = input
-        localStorage.setItem("cart", JSON.stringify(cart))
-        item.html(input)
-        checkUserLogStatus()
-        $(`#quantity-${id}-edit`).css("display", "none")
-        $("#quantity-" + id).css("display", "inline-block")
-    }
-}
-
-//function called when item is removed from cart by typing quantity as 0
-function removePlusDisplay(id) {
-    remove(id)
-    $("#quantity-" + id + "-edit").css("display", "none")
-    $("#quantity-" + id).css("display", "inline-block")
 }
 
 //called when specific product not found

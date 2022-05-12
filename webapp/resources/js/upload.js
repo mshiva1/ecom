@@ -36,7 +36,7 @@ function clearDisplay() {
 function getOrderItems() {
   var file = $('#order-file')[0].files[0];
   if (file.type != "text/csv") {
-    notify("Error", "upload-error", 0, "Please Select a CSV file. Only CSV files cab be read", "Red")
+    notify("Error", "upload-error", 0, "Please Select a CSV file. Only CSV files cab be read")
     $("#order-details").css("display", "none")
   }
   else
@@ -60,7 +60,7 @@ function readFileDataCallback(results) {
   if (checkHeaders(fileData))
     loadData(fileData)
   else {
-    notify("Error", "upload-error", 0, "There are some problems with the File Headers. Download the CSV again ", "Red")
+    notify("Error", "upload-error", 0, "There are some problems with the File Headers. Download the CSV again ")
     $("#order-details").css("display", "none")
   }
 }
@@ -111,7 +111,8 @@ async function loadData(fileData) {
           var x = parseInt(prev.find("#quantity-" + temp[item]["ID"]).html())
           x = x + parseInt(temp[item]["Quantity"])
           prev.find("#quantity-" + temp[item]["ID"]).html(x)
-          //TODO
+          total_quantity += parseInt(temp[item]["Quantity"])
+          totalAmount += parseInt(temp[item]["Quantity"]) * obj["price"]
         }
       }
       else {
@@ -139,7 +140,7 @@ async function loadData(fileData) {
 }
 //for showing that error occurred while parsing
 function showUploadError() {
-  notify("Error", "upload-error", 0, "Error in uploading file", "Red")
+  notify("Error", "upload-error", 0, "Error in uploading file")
   $("#display-error").css("display", "block")
   $("#order-details").css("display", "none")
 }
