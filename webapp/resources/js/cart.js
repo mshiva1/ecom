@@ -59,10 +59,7 @@ function addNewCartItem(id, imgsrc, name, price, rating, quantity) {
 	newItem.prop("hidden", false);
 	newItem.find("#cart-item-name-0").html(`<a id="link-0" href="product.html?id="${id}">${name}</a> ${getHtmlForRating(rating)}`);
 	newItem.find("#cart-item-name-0").prop("id", "cart-item-name-" + id);
-	if (imgsrc == '')
-		newItem.find("#img-0").prop("src", "../resources/prod" + 1 + ".jpg");
-	else
-		newItem.find("#img-0").prop("src", imgsrc);
+	newItem.find("#img-0").prop("src", imgsrc);
 	newItem.find("#cart-item-price-0").html(price);
 	newItem.find("#cart-item-price-0").prop("id", "cart-item-price-" + id);
 	newItem.find("#link-0").prop("href", "product.html?id=" + id);
@@ -126,6 +123,7 @@ async function loadPage() {
 
 //runs when checkout is clicked
 async function checkOut() {
+	checkUserLogStatus()
 	var cart = JSON.parse(localStorage.getItem("cart"))
 	var currentUser = localStorage.getItem("currentUser")
 	await fetch('../resources/products.json')
@@ -152,7 +150,7 @@ async function checkOut() {
 	emptyCart(currentUser)
 	$("#pop-up").modal("show")
 	emptyCartDisplay()
-	checkUserLogStatus()
+	updateCartCount()
 }
 //confirm clear cart
 function confirmClearCart() {
@@ -164,6 +162,7 @@ function clearCart() {
 	emptyCart()
 	emptyCartDisplay()
 	checkUserLogStatus()
+	updateCartCount()
 }
 
 //empties the cart

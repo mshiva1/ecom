@@ -143,6 +143,10 @@ nav {
   max-width: 250px;
 }
 
+.no-break {
+  white-space: nowrap;
+}
+
 .card-title {
   max-width: fit-content;
 }
@@ -177,7 +181,8 @@ nav {
     font-size: 13px;
   }
 
-  .h6 {
+  .h6,
+  footer {
     font-size: 11px;
   }
 
@@ -203,7 +208,8 @@ nav {
     font-size: 15px;
   }
 
-  .h6 {
+  .h6,
+  footer {
     font-size: 13px;
   }
 
@@ -229,7 +235,8 @@ nav {
     font-size: 16px;
   }
 
-  .h6 {
+  .h6,
+  footer {
     font-size: 13px;
   }
 
@@ -255,7 +262,8 @@ nav {
     font-size: 17px;
   }
 
-  .h6 {
+  .h6,
+  footer {
     font-size: 14px;
   }
 

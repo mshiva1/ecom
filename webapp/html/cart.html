@@ -15,7 +15,7 @@
     <div id="navbar-stub" class="fixed-top">
     </div>
     <div class="container-fluid">
-        <h3 class="h3 col-6 pt-2 px-2 mt-3">Cart Items</h3>
+        <h3 class="h3 col-6 pt-2 px-2 mt-3">Cart</h3>
         <div id="toast-body"></div>
         <div class="text-center shadow-sm row py-4 m-0" id="empty-cart" style="display:none;">
             <img src="../resources/empty_cart.png" style="width:10%;aspect-ratio:1">
@@ -74,13 +74,16 @@
                             </div>
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
             <div class="col-lg-4 pl-1 pr-3 custom-stick-top my-0 pl-lg-4 " id="cart-summary">
                 <div class="row">
                     <div class="col-12  my-3 pt-2 bg-light">
                         <h4 class="h4 row justify-content-between m-0">
-                            <span>Cart Summary</span>
+                            <span>Summary</span>
                             <span>
                                 <button class="btn btn-sm btn-outline-danger p-0" id="clear-cart" type="button"
                                     data-toggle="tooltip" data-placement="left" data-animate="true" title="Clear Cart"
@@ -93,22 +96,35 @@
                         </h4>
 
                         <div class="my-3 align-items-bottom">
-                            <h4 class="h4 d-flex">
-                                <span class="col-8 p-0">Total Quantity </span>
-                                <span class="col-4 p-0">
-                                    :
-                                    <span id="total-quantity"></span>
-                                </span>
-                            </h4>
-                            <h4 class="h4 d-flex">
-                                <span class="col-8 p-0">Total Amount </span>
-                                <span class="col-4 p-0">
-                                    : Rs
-                                    <span id="total-price"></span>
-                                </span>
-                            </h4>
+                            <h5 class="h5">
+                                <div class="row m-0">
+                                    <div class="col-8 p-0">Total Quantity </div>
+                                    <div class="col-4 p-0">
+                                        <div class="d-flex justify-content-between">
+
+                                            <span>:</span>
+                                            <span id="total-quantity"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h5>
+                            <h5 class="h5">
+                                <div class="row m-0">
+                                    <div class="col-8 p-0">Total Amount </div>
+                                    <div class="col-4 p-0">
+                                        <div class="d-flex justify-content-between">
+
+                                            <span>: </span>
+                                            <span> Rs
+                                                <span id="total-price">
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h5>
                             <div class="text-right my-2">
-                                <button class="btn btn btn-success m-2" id="checkout">Checkout</button>
+                                <button class="btn btn btn-success my-2" id="checkout">Checkout</button>
                             </div>
                         </div>
                     </div>
@@ -162,7 +178,8 @@
                         </button>
                         <img src="../resources/tick_mark.png" style="width:100%;aspect-ratio:1">
                         <h5 class="h5 d-flex justify-content-center">Order has been placed</h5>
-                        <h6 class="h6 d-flex justify-content-center"><a href="products.html">Click here to add new products</a></h6>
+                        <h6 class="h6 d-flex justify-content-center"><a href="products.html">Click here to add new
+                                products</a></h6>
                     </div>
 
                 </div>

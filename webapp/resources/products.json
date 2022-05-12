@@ -21,7 +21,7 @@
   },
   {
     "id": 3,
-    "brand": "Lays",
+    "brand": "Lay1",
     "name": "Lays Magic Masala",
     "img": "https://m.media-amazon.com/images/I/71J93R3+TkL._SX679_.jpg",
     "price": 20,
@@ -29,6 +29,61 @@
     "quantity": 0,
     "rating": 1
   },
+  {
+  "id": 13,
+  "brand": "Lay2",
+  "name": "Lays Magic Masala",
+  "img": "https://m.media-amazon.com/images/I/71J93R3+TkL._SX679_.jpg",
+  "price": 20,
+  "description": "Weight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : India's Magic Masala",
+  "quantity": 0,
+  "rating": 1
+},{
+  "id": 14,
+  "brand": "Lay3",
+  "name": "Lays Magic Masala",
+  "img": "https://m.media-amazon.com/images/I/71J93R3+TkL._SX679_.jpg",
+  "price": 20,
+  "description": "Weight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : India's Magic Masala",
+  "quantity": 0,
+  "rating": 1
+},{
+  "id": 15,
+  "brand": "Lay4",
+  "name": "Lays Magic Masala",
+  "img": "https://m.media-amazon.com/images/I/71J93R3+TkL._SX679_.jpg",
+  "price": 20,
+  "description": "Weight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : India's Magic Masala",
+  "quantity": 0,
+  "rating": 1
+},{
+  "id": 16,
+  "brand": "Lay5",
+  "name": "Lays Magic Masala",
+  "img": "https://m.media-amazon.com/images/I/71J93R3+TkL._SX679_.jpg",
+  "price": 20,
+  "description": "Weight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : India's Magic Masala",
+  "quantity": 0,
+  "rating": 1
+},{
+  "id": 17,
+  "brand": "Lay6",
+  "name": "Lays Magic Masala",
+  "img": "https://m.media-amazon.com/images/I/71J93R3+TkL._SX679_.jpg",
+  "price": 20,
+  "description": "Weight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : India's Magic Masala",
+  "quantity": 0,
+  "rating": 1
+},{
+  "id": 18,
+  "brand": "Lay7",
+  "name": "Lays Magic Masala",
+  "img": "https://m.media-amazon.com/images/I/71J93R3+TkL._SX679_.jpg",
+  "price": 20,
+  "description": "Weight: 52g \nVegetarian Snacks \nManufactured: PepsiCo India \nFlavour : India's Magic Masala",
+  "quantity": 0,
+  "rating": 1
+},
   {
     "id": 4,
     "brand": "Lays",
