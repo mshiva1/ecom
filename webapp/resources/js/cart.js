@@ -95,7 +95,7 @@ function emptyCartDisplay() {
 async function loadPage() {
 	var cart = JSON.parse(localStorage.getItem("cart"))
 	var currentUser = localStorage.getItem("currentUser")
-	await fetch('../resources/products.json')
+	await fetch('../resources/json/products.json')
 		.then(response => response.json())
 		.then(jsonResponse => products = jsonResponse)
 	var temp = cart[currentUser];
@@ -126,7 +126,7 @@ async function checkOut() {
 	checkUserLogStatus()
 	var cart = JSON.parse(localStorage.getItem("cart"))
 	var currentUser = localStorage.getItem("currentUser")
-	await fetch('../resources/products.json')
+	await fetch('../resources/json/products.json')
 		.then(response => response.json())
 		.then(jsonResponse => products = jsonResponse)
 	var temp = cart[currentUser];

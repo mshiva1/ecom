@@ -27,7 +27,7 @@ function askConfirmRemove(id, name, nextFun = "remove") {
 
 //inserts NavBar and Footer
 function setNavAndFooter() {
-  var navstr = '<nav class="navbar navbar-expand navbar-light container-fluid-sm p-2"><a class="navbar-brand" href="products.html"><img alt="Increff" class="d-inline-block align-top"  data-toggle="tooltip" data-placement="top" title="All Products" id="logo" src="../resources/logo.png"></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="d-flex collapse navbar-collapse" id="navbarCollapse"><ul class="col-12 px-0 navbar-nav justify-content-end"><li class="nav-item active"  data-toggle="tooltip" data-placement="top" title="Upload Order"><a class="nav-link" href="upload.html"><span class="material-icons-outlined m-1 icon-large">file_upload</span></a></li><li class="nav-item active"  data-toggle="tooltip" data-placement="top" title="Cart"><a class="nav-link" href="cart.html"><span class="material-icons-outlined m-1 icon-large">shopping_cart</span><sub><span class="badge badge-warning" id="cart-count">0</span></sub></a></li><li class="nav-item active"><a class="nav-link pr-0" href="login.html"  data-toggle="tooltip" data-placement="top" title="Logout"><span class="material-icons-outlined icon-large m-1">logout</span></a></li></ul></div></nav>'
+  var navstr = '<nav class="navbar navbar-expand navbar-light container-fluid-sm p-2"><a class="navbar-brand" href="products.html"><img alt="Increff" class="d-inline-block align-top"  data-toggle="tooltip" data-placement="top" title="All Products" id="logo" src="../resources/images/logo.png"></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="d-flex collapse navbar-collapse" id="navbarCollapse"><ul class="col-12 px-0 navbar-nav justify-content-end"><li class="nav-item active"  data-toggle="tooltip" data-placement="top" title="Upload Order"><a class="nav-link" href="upload.html"><span class="material-icons-outlined m-1 icon-large">file_upload</span></a></li><li class="nav-item active"  data-toggle="tooltip" data-placement="top" title="Cart"><a class="nav-link" href="cart.html"><span class="material-icons-outlined m-1 icon-large">shopping_cart</span><sub><span class="badge badge-warning" id="cart-count">0</span></sub></a></li><li class="nav-item active"><a class="nav-link pr-0" href="login.html"  data-toggle="tooltip" data-placement="top" title="Logout"><span class="material-icons-outlined icon-large m-1">logout</span></a></li></ul></div></nav>'
   var footerstr = '<footer class="footer d-flex justify-content-between px-1 container-fluid-sm">    <span>&copy;INCREFF 2022 </span><span id="date-time"></span></footer>'
 
   $("#navbar-stub").html(navstr)
@@ -107,7 +107,7 @@ function readFileData(file, callback) {
 async function checkUserLogStatus() {
   if (window.location.href.includes("login.html")) return;
   currentUser = localStorage.getItem("currentUser")
-  await fetch('../resources/passwords.json')
+  await fetch('../resources/json/passwords.json')
     .then(response => response.json())
     .then(jsonResponse => passwords = jsonResponse)
   var currentUserObject = passwords.find(o => o.username == currentUser)

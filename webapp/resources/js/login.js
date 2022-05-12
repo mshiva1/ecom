@@ -1,6 +1,6 @@
 //access file and check for username and password
 async function checkFor(username, password) {
-    await fetch('../resources/passwords.json')
+    await fetch('../resources/json/passwords.json')
         .then(response => response.json())
         .then(jsonResponse => passwords = jsonResponse)
     var currentUserObject = passwords.find(o => o.username == username)

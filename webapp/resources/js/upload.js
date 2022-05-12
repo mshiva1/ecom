@@ -71,7 +71,7 @@ async function loadData(fileData) {
   var temp = fileData
   totalAmount = 0;
   total_quantity = 0;
-  await fetch('../resources/products.json')
+  await fetch('../resources/json/products.json')
     .then(response => response.json())
     .then(jsonResponse => products = jsonResponse)
   itemsArray = []
@@ -82,9 +82,13 @@ async function loadData(fileData) {
       var error = "No error"
 
       var obj = getProduct(temp[item]["ID"], products);
-      if (Number.isInteger(parseInt((temp[item]["Quantity"]))) == false)
+      if (temp[item]["Quantity"] == '')
+        error = "Quantity is required"
+      else if (Number.isInteger(parseInt((temp[item]["Quantity"]))) == false)
         error = "Quantity should be an Integer"
       //error in quantity
+      else if (parseInt(temp[item]["Quantity"]) <= 0)
+        error = "Quantity should be Positive"
       else if (obj == undefined)
         error = "Product ID:" + temp[item]["ID"] + " doesn't exist"
       //error in product id
@@ -174,7 +178,7 @@ function updateFileName() {
   $('#order-file-name').html(str);
 }
 function downloadSample() {
-  window.location.href = '../resources/sample.csv';
+  window.location.href = '../resources/csv/sample.csv';
 }
 function init() {
   $('#order-file-button').click(getOrderItems);

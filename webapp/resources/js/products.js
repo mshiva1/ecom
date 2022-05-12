@@ -91,7 +91,7 @@ async function loadPage() {
     cart = JSON.parse(localStorage.getItem("cart"))
     var currentUser = localStorage.getItem("currentUser")
 
-    await fetch('../resources/products.json')
+    await fetch('../resources/json/products.json')
         .then(response => response.json())
         .then(jsonResponse => temp = jsonResponse)
 
