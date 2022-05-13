@@ -55,23 +55,23 @@ function decrementItem(id, name) {
 //adds new item to the html page
 function addNewCartItem(id, imgsrc, name, price, rating, quantity) {
 	var newItem = $("#cart-item-0").clone();
-	newItem.prop("id", "cart-item-" + id);
-	newItem.prop("hidden", false);
-	newItem.find("#cart-item-name-0").html(`<a id="link-0" href="product.html?id="${id}">${name}</a> ${getHtmlForRating(rating)}`);
-	newItem.find("#cart-item-name-0").prop("id", "cart-item-name-" + id);
+	newItem.prop("id", "cart-item-" + id)
+		.prop("hidden", false);
+	newItem.find("#cart-item-name-0").html(`<a id="link-0" href="product.html?id="${id}">${name}</a> ${getHtmlForRating(rating)}`)
+		.prop("id", "cart-item-name-" + id);
 	newItem.find("#img-0").prop("src", imgsrc);
-	newItem.find("#cart-item-price-0").html(price);
-	newItem.find("#cart-item-price-0").prop("id", "cart-item-price-" + id);
-	newItem.find("#link-0").prop("href", "product.html?id=" + id);
-	newItem.find("#link-0").prop("id", "link-" + id);
-	newItem.find("#increment-0").attr("onclick", `incrementItem(${id})`);
-	newItem.find("#increment-0").prop("id", "increment-" + id);
-	newItem.find("#quantity-0").html(quantity);
-	newItem.find("#quantity-0").prop("id", "quantity-" + id);
-	newItem.find("#decrement-0").attr("onclick", `decrementItem(${id},'${name}')`);
-	newItem.find("#decrement-0").prop("id", "decrement-" + id);
-	newItem.find("#remove-0").attr("onclick", `removeItem(${id},'${name}')`);
-	newItem.find("#remove-0").prop("id", "remove-" + id);
+	newItem.find("#cart-item-price-0").html(price)
+		.prop("id", "cart-item-price-" + id);
+	newItem.find("#link-0").prop("href", "product.html?id=" + id)
+		.prop("id", "link-" + id);
+	newItem.find("#increment-0").attr("onclick", `incrementItem(${id})`)
+		.prop("id", "increment-" + id);
+	newItem.find("#quantity-0").html(quantity)
+		.prop("id", "quantity-" + id);
+	newItem.find("#decrement-0").attr("onclick", `decrementItem(${id},'${name}')`)
+		.prop("id", "decrement-" + id);
+	newItem.find("#remove-0").attr("onclick", `removeItem(${id},'${name}')`)
+		.prop("id", "remove-" + id);
 	newItem.appendTo("#cart-items");
 	totalQuantity += quantity;
 	totalAmount += quantity * price;
@@ -95,9 +95,9 @@ function emptyCartDisplay() {
 async function loadPage() {
 	var cart = JSON.parse(localStorage.getItem("cart"))
 	var currentUser = localStorage.getItem("currentUser")
-	await fetch('../resources/json/products.json')
-		.then(response => response.json())
-		.then(jsonResponse => products = jsonResponse)
+
+	const productsJson = await fetch('../resources/json/products.json')
+	products = await productsJson.json()
 	var temp = cart[currentUser];
 	totalAmount = 0;
 	totalQuantity = 0;
@@ -126,9 +126,9 @@ async function checkOut() {
 	checkUserLogStatus()
 	var cart = JSON.parse(localStorage.getItem("cart"))
 	var currentUser = localStorage.getItem("currentUser")
-	await fetch('../resources/json/products.json')
-		.then(response => response.json())
-		.then(jsonResponse => products = jsonResponse)
+
+	const productsJson = await fetch('../resources/json/products.json')
+	products = await productsJson.json()
 	var temp = cart[currentUser];
 	var itemArray = []
 	for (const item in temp) {

@@ -14,32 +14,32 @@ function loadItem(value, index, array) {
 //add new Product to itemsArray
 function addNewProduct(id, imgsrc, brand, name, price, rating, quantity) {
     var newItem = $("#product-0").clone();
-    newItem.prop("item-id", id);
-    newItem.prop("brand", brand);
     brandsSet.add(brand)
-    newItem.prop("price", price);
-    newItem.prop("rating", rating);
-    newItem.prop("id", "product-" + id);
-    newItem.prop("hidden", false);
-    newItem.find("#name-0").html(name);
+    newItem.prop("item-id", id)
+        .prop("brand", brand)
+        .prop("price", price)
+        .prop("rating", rating)
+        .prop("id", "product-" + id)
+        .prop("hidden", false);
+    newItem.find("#name-0").html(name)
+        .prop("id", "name-" + id);
     newItem.find("#img-0").prop("src", imgsrc);
-    newItem.find("#name-0").prop("id", "name-" + id);
-    newItem.find("#price-0").html(price);
-    newItem.find("#price-0").prop("id", "price-" + id);
-    newItem.find("#rating-0").html(getHtmlForRating(rating));
-    newItem.find("#rating-0").prop("id", "rating-" + id);
-    newItem.find("#link-0").prop("href", `product.html?id=${id}`);
-    newItem.find("#link-0").prop("id", "link-" + id);
-    newItem.find("#link-price-0").prop("href", `product.html?id=${id}`);
-    newItem.find("#link-price-0").prop("id", "link-price-" + id);
-    newItem.find("#increment-0").attr("onclick", `increment(${id})`);
-    newItem.find("#increment-0").prop("id", "increment-" + id);
-    newItem.find("#quantity-0").html(quantity);
-    newItem.find("#quantity-0").prop("id", "quantity-" + id);
-    newItem.find("#decrement-0").attr("onclick", `decrement(${id},'${name}','removeAtProducts')`);
-    newItem.find("#decrement-0").prop("id", "decrement-" + id);
-    newItem.find("#addcart-0").attr("onclick", `addcart(${id})`);
-    newItem.find("#addcart-0").prop("id", "addcart-" + id);
+    newItem.find("#price-0").html(price)
+        .prop("id", "price-" + id);
+    newItem.find("#rating-0").html(getHtmlForRating(rating))
+        .prop("id", "rating-" + id);
+    newItem.find("#link-0").prop("href", `product.html?id=${id}`)
+        .prop("id", "link-" + id);
+    newItem.find("#link-price-0").prop("href", `product.html?id=${id}`)
+        .prop("id", "link-price-" + id);
+    newItem.find("#increment-0").attr("onclick", `increment(${id})`)
+        .prop("id", "increment-" + id);
+    newItem.find("#quantity-0").html(quantity)
+        .prop("id", "quantity-" + id);
+    newItem.find("#decrement-0").attr("onclick", `decrement(${id},'${name}','removeAtProducts')`)
+        .prop("id", "decrement-" + id);
+    newItem.find("#addcart-0").attr("onclick", `addcart(${id})`)
+        .prop("id", "addcart-" + id);
     newItem.find("#one-button-0").prop("id", "one-button-" + id);
     newItem.find("#three-button-0").prop("id", "three-button-" + id);
     if (quantity > 0)
@@ -80,8 +80,8 @@ function addNewBrand(brandName) {
     newBrand.prop("hidden", false);
     newBrand.prop("id", "brand-" + brandName);
     newBrand.find('#brand0').prop("name", brandName)
-    newBrand.find('#brand0').prop("id", brandName)
-    newBrand.find('#brand0').prop("value", brandName)
+        .prop("id", brandName)
+        .prop("value", brandName)
     newBrand.find('#label-0').html(brandName)
     newBrand.appendTo("#all-brands")
 }
@@ -91,9 +91,8 @@ async function loadPage() {
     cart = JSON.parse(localStorage.getItem("cart"))
     var currentUser = localStorage.getItem("currentUser")
 
-    await fetch('../resources/json/products.json')
-        .then(response => response.json())
-        .then(jsonResponse => temp = jsonResponse)
+    const productsJson = await fetch('../resources/json/products.json')
+    temp = await productsJson.json()
 
     itemsArray = []
     //empty itemsArray at initial

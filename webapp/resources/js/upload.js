@@ -6,13 +6,13 @@ function addNewOrderItem(id, imgsrc, name, price, quantity) {
   newItem.prop("id_no", id);
   newItem.prop("id", `order-item-${id}`);
   newItem.prop("hidden", false);
-  newItem.find("#order-item-name-0").html(`<a id="link-0" href="product.html?id=${id}">${name}</a>`);
-  newItem.find("#order-item-name-0").prop("id", `order-item-name-${id}`);
+  newItem.find("#order-item-name-0").html(`<a id="link-${id}" href="product.html?id=${id}">${name}</a>`)
+    .prop("id", `order-item-name-${id}`);
   newItem.find("#img-0").prop("src", imgsrc);
-  newItem.find("#order-item-price-0").html(price);
-  newItem.find("#order-item-price-0").prop("id", `order-item-price-${id}`);
-  newItem.find("#quantity-0").html(quantity);
-  newItem.find("#quantity-0").prop("id", `quantity-${id}`);
+  newItem.find("#order-item-price-0").html(price)
+    .prop("id", `order-item-price-${id}`);
+  newItem.find("#quantity-0").html(quantity)
+    .prop("id", `quantity-${id}`);
   total_quantity += quantity;
   totalAmount += quantity * price;
   return newItem;
@@ -71,9 +71,9 @@ async function loadData(fileData) {
   var temp = fileData
   totalAmount = 0;
   total_quantity = 0;
-  await fetch('../resources/json/products.json')
-    .then(response => response.json())
-    .then(jsonResponse => products = jsonResponse)
+  const productsJson = await fetch('../resources/json/products.json')
+  products = await productsJson.json()
+
   itemsArray = []
   errorsArray = []
   errorsCount = 0

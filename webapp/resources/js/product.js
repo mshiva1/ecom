@@ -1,8 +1,7 @@
 //gets data from json and returns data of specific item
 async function getData(id) {
-    await fetch('../resources/json/products.json')
-        .then(response => response.json())
-        .then(jsonResponse => temp = jsonResponse)
+    const productsJson = await fetch('../resources/json/products.json')
+    temp= await productsJson.json()
     var retval = await temp.find(o => o.id == id);
     if (retval == undefined) {
         productNotFound();

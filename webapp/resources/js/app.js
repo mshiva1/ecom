@@ -107,9 +107,8 @@ function readFileData(file, callback) {
 async function checkUserLogStatus() {
   if (window.location.href.includes("login.html")) return;
   currentUser = localStorage.getItem("currentUser")
-  await fetch('../resources/json/passwords.json')
-    .then(response => response.json())
-    .then(jsonResponse => passwords = jsonResponse)
+  const passwordsJson = await fetch('../resources/json/passwords.json')
+      passwords= await passwordsJson.json()
   var currentUserObject = passwords.find(o => o.username == currentUser)
   if (currentUser == undefined || currentUserObject == undefined)
     window.location.replace(`login.html?redirect=${window.location.href}`)
@@ -160,6 +159,6 @@ function init() {
   setNavAndFooter();
   checkUserLogStatus();
   updateCartCount();
-  $('[data-toggle="tooltip"]').tooltip();
+  enableTooltip();
 }
 $(document).ready(init)

@@ -1,8 +1,8 @@
 //access file and check for username and password
 async function checkFor(username, password) {
-    await fetch('../resources/json/passwords.json')
-        .then(response => response.json())
-        .then(jsonResponse => passwords = jsonResponse)
+
+    const passwordsJson = await fetch('../resources/json/passwords.json')
+        passwords= await passwordsJson.json()
     var currentUserObject = passwords.find(o => o.username == username)
     if (currentUserObject != undefined && currentUserObject.password == password) {
         await localStorage.setItem("currentUser", username)
