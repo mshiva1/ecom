@@ -9,7 +9,7 @@ async function checkFor(username, password) {
 
         const redirect = new URLSearchParams(window.location.search).get('redirect');
         if (redirect == undefined)
-            window.location.replace('products.html')
+            window.location.replace('products_list.html')
         else
             window.location.replace(redirect)
     }

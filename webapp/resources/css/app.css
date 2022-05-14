@@ -57,7 +57,7 @@ img {
   line-height: 60px;
   background-color: #e9f3ff;
   z-index: 2;
-  padding: 0 4%;
+  padding: 0 5%;
 }
 
 nav {
@@ -65,6 +65,21 @@ nav {
   top: 0;
   left: 0;
   right: 0;
+}
+
+.increff-logo {
+  font-size: xxx-large;
+  color: #ff6565;
+}
+
+.increff-text {
+  font-size: x-large;
+  color: #162c55;
+}
+
+.increff-image {
+  font-size: xxx-large;
+
 }
 
 #navbar-stub {
@@ -75,7 +90,7 @@ nav {
   line-height: 60px;
   background-color: #e9f3ff;
   z-index: 100;
-  padding: 0 4%;
+  padding: 0 5%;
 }
 
 #cart-count {
