@@ -116,7 +116,7 @@ function loadAllItems() {
     filterObject["min"] = $("#slider-range").slider("values", 0);
     filterObject["max"] = $("#slider-range").slider("values", 1);
     filterObject["rating"] = minRatingDisplayed;
-    filterObject["brand-set"] = getBrandsFromForm()
+    filterObject["brand-set"] = getCheckedBrandsFromForm()
     if (save)
         saveFiltersInSession(filterObject, sortMethod)
     sortFilterDisplay(filterObject, sortMethod)
@@ -151,7 +151,7 @@ function eqSet(as, bs) {
     return true;
 }
 //get brands from Form that are checked //used for filters
-function getBrandsFromForm() {
+function getCheckedBrandsFromForm() {
     var brands = $(".filter-brand-names")
     var checked = []
     brands.each(function (index, element) { if ($(this).prop("checked")) checked.push(this); });
@@ -309,7 +309,6 @@ async function init() {
     $(".filter-brand-names").on("change", function () { loadAllItems() })
     $("#remove-filters").on("click", removeFilters)
     checkForFiltersInSession()
-
 }
 $(document).ready(init)
 

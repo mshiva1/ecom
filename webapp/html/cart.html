@@ -9,26 +9,23 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link href="../resources/css/app.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://static.increff.com/assets/favicon.ico">
 </head>
 
 <body>
     <div id="navbar-stub" class="fixed-top">
     </div>
     <div class="container-fluid">
-        <div class="row">
-            <h3 class="h3 col-6 pt-2 pr-2 mt-3">Cart</h3>
-        </div>
+        <h3 class="h3 pt-2 pr-2 mt-3">Cart</h3>
         <div id="toast-body"></div>
-        <div class="text-center shadow-sm row py-4 m-0" id="empty-cart" style="display:none;">
+        <div class="text-center shadow-sm py-4 m-0" id="empty-cart" style="display:none;">
             <img src="../resources/images/empty_cart.png" style="width:10%;aspect-ratio:1">
             <br>
             <br>
-            <div class="col">
-                There are no Items in Cart . <a href="products.html">Click here to add products</a>
-            </div>
+            There are no Items in Cart . <a href="products.html">Click here to add products</a>
         </div>
         <div class="row m-0">
-            <div class="col col-lg-8 pr-3 py-2 my-0" id="cart-items">
+            <div class="col col-lg-8  py-2 my-0" id="cart-items">
 
                 <div class="items-in-cart row my-2" id="cart-item-0" hidden>
                     <div class="d-flex col-12 align-items-center shadow-sm py-lg-2 px-lg-3">
@@ -80,56 +77,55 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 pl-1 pr-3 custom-stick-top my-0 pl-lg-4 " id="cart-summary">
-                <div class="row">
-                    <div class="col-12  my-3 pt-2 bg-light">
-                        <h4 class="h4 row justify-content-between m-0">
-                            <span>Summary</span>
-                            <span>
-                                <button class="btn btn-sm btn-outline-danger p-0" id="clear-cart" type="button"
-                                    data-toggle="tooltip" data-placement="left" data-animate="true" title="Clear Cart"
-                                    onclick="confirmClearCart()">
-                                    <span class="material-icons-outlined m-1 icon-sm">
-                                        remove_shopping_cart
-                                    </span>
-                                </button>
-                            </span>
-                        </h4>
+            <div class="col-lg-4  custom-stick-top my-0 pl-lg-4 p-0 " id="cart-summary">
+                <div class=" my-3 p-3 bg-light">
+                    <h4 class="h4 row justify-content-between m-0">
+                        <span>Summary</span>
+                        <span>
+                            <button class="btn btn-sm btn-outline-danger p-0" id="clear-cart" type="button"
+                                data-toggle="tooltip" data-placement="left" data-animate="true" title="Clear Cart"
+                                onclick="confirmClearCart()">
+                                <span class="material-icons-outlined m-1 icon-sm">
+                                    remove_shopping_cart
+                                </span>
+                            </button>
+                        </span>
+                    </h4>
 
-                        <div class="my-3 align-items-bottom">
-                            <h5 class="h5">
-                                <div class="row m-0">
-                                    <div class="col-8 p-0">Total Quantity </div>
-                                    <div class="col-4 p-0">
-                                        <div class="d-flex justify-content-between">
+                    <div class="my-3 align-items-bottom">
+                        <h5 class="h5">
+                            <div class="row m-0">
+                                <div class="col-8 p-0">Total Quantity </div>
+                                <div class="col-4 p-0">
+                                    <div class="d-flex justify-content-between">
 
-                                            <span>:</span>
-                                            <span id="total-quantity"></span>
-                                        </div>
+                                        <span>:</span>
+                                        <span id="total-quantity"></span>
                                     </div>
                                 </div>
-                            </h5>
-                            <h5 class="h5">
-                                <div class="row m-0">
-                                    <div class="col-8 p-0">Total Amount </div>
-                                    <div class="col-4 p-0">
-                                        <div class="d-flex justify-content-between">
-
-                                            <span>: </span>
-                                            <span> Rs
-                                                <span id="total-price">
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </h5>
-                            <div class="text-right my-2">
-                                <button class="btn btn btn-success my-2" id="checkout">Checkout</button>
                             </div>
+                        </h5>
+                        <h5 class="h5">
+                            <div class="row m-0">
+                                <div class="col-8 p-0">Total Amount </div>
+                                <div class="col-4 p-0">
+                                    <div class="d-flex justify-content-between">
+
+                                        <span>: </span>
+                                        <span> Rs
+                                            <span id="total-price">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </h5>
+                        <div class="text-right my-2">
+                            <button class="btn btn btn-success my-2" id="checkout">Checkout</button>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="modal fade" tabindex="-1" id="confirm-remove" role="dialog">
