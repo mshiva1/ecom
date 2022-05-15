@@ -103,6 +103,9 @@ nav {
 }
 
 /*single pages css*/
+.jumbotron{
+background-color:#e9f3ff
+}
 .scaleup:hover {
   /*scaleup products page*/
   transform: scale(1.05);
